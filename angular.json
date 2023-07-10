@@ -26,10 +26,23 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/assets/vendor/aos/aos.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/assets/vendor/bootstrap-icons/bootstrap-icons.min.css",
+              "src/assets/vendor/boxicons/css/boxicons.min.css",
+              "src/assets/vendor/glightbox/css/glightbox.min.css",
+              "src/assets/vendor/swiper/swiper-bundle.min.css",
+              "src/assets/css/style.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/aos/aos.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/vendor/glightbox/js/glightbox.min.js",
+              "src/assets/vendor/isotope-layout/isotope.pkgd.min.js",
+              "src/assets/vendor/swiper/swiper-bundle.min.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
