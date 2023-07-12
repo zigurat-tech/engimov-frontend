@@ -9,6 +9,8 @@ import {FooterComponent} from './components/shared/footer/footer.component';
 import {TopBarComponent} from "./components/top-bar/top-bar.component";
 import {HeroComponent} from "./components/hero/hero.component";
 import { AboutComponent } from './components/about/about.component';
+import {NotificationModule} from "@app/services";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AboutComponent } from './components/about/about.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NotificationModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
