@@ -1,7 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { IndexRoutingModule } from './index-routing.module';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {IndexRoutingModule} from "@app/pages/index/index-routing.module";
 
 
 @NgModule({
@@ -11,4 +10,5 @@ import { IndexRoutingModule } from './index-routing.module';
     IndexRoutingModule
   ]
 })
-export class IndexModule { }
+export class IndexModule {
+}

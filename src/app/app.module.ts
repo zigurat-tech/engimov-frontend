@@ -1,16 +1,15 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {LoaderComponent} from './components/shared/loader/loader.component'
-import {NavbarComponent} from './components/shared/navbar/navbar.component';
-import {FooterComponent} from './components/shared/footer/footer.component';
-import {TopBarComponent} from "./components/top-bar/top-bar.component";
-import {HeroComponent} from "./components/hero/hero.component";
-import { AboutComponent } from './components/about/about.component';
 import {NotificationModule} from "@app/services";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AppRoutingModule} from "@app/app-routing.module";
+import {AppComponent} from "@app/app.component";
+import {LoaderComponent} from "@app/components/shared/loader/loader.component";
+import {NavbarComponent} from "@app/components/shared/navbar/navbar.component";
+import {FooterComponent} from "@app/components/shared/footer/footer.component";
+import {TopBarComponent} from "@app/components/top-bar/top-bar.component";
+import {HeroComponent} from "@app/components/hero/hero.component";
+import {AboutComponent} from "@app/components/about/about.component";
 
 @NgModule({
   declarations: [
