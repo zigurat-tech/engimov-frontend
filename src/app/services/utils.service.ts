@@ -14,5 +14,6 @@ export class UtilsService {
 
   index(): Observable<any> {
     return this.http.get(this.url + '/sections/index/')
+    // return this.http.get('https://mipymes.onrender.com/api/empresa/')
   }
 }
