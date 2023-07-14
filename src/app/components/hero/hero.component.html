@@ -1,7 +1,9 @@
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-center">
+<section id="hero" [style.background-image]="!loading? 'url(assets/img/hero-bg.jpg)': 'url('+image+')'">
+<!--<section id="hero" style="background: url({{image}})">-->
   <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
     <h1>{{title}}</h1>
+    <!--    <h1 style="backdrop-filter: blur(5px);">Titulo statico</h1>-->
     <h2>{{subtitle}}</h2>
     <a href="#about" class="btn-get-started scrollto">Get Started</a>
   </div>

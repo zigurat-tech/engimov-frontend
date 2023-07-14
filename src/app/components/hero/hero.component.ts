@@ -10,6 +10,7 @@ export class HeroComponent implements OnInit {
   title: string = ''
   subtitle: string = ''
   image: string = ''
+  loading: boolean = false
 
   constructor(private utilsService: UtilsService) {
   }
@@ -19,6 +20,7 @@ export class HeroComponent implements OnInit {
     this.title = data.title
     this.subtitle = data.subtitle
     this.image = data.image
+    this.loading = true
     console.log(response)
     console.log(data)
   })
