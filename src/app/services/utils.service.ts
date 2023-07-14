@@ -12,8 +12,15 @@ export class UtilsService {
   constructor(private http: HttpClient) {
   }
 
-  index(): Observable<any> {
+  section_index(): Observable<any> {
     return this.http.get(this.url + '/sections/index/')
-    // return this.http.get('https://mipymes.onrender.com/api/empresa/')
+  }
+
+  section_about(): Observable<any> {
+    return this.http.get(this.url + '/sections/about/')
+  }
+
+  section_contact(): Observable<any> {
+    return this.http.get(this.url + '/sections/contact/')
   }
 }

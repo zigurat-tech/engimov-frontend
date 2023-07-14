@@ -11,6 +11,7 @@ import {TopBarComponent} from "@app/components/top-bar/top-bar.component";
 import {HeroComponent} from "@app/components/hero/hero.component";
 import {AboutComponent} from "@app/components/about/about.component";
 import {HttpClientModule} from "@angular/common/http";
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    AboutComponent
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

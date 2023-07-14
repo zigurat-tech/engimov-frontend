@@ -2,20 +2,24 @@ import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 
 @Component({
-  selector: 'app-hero',
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.css']
+  selector: 'app-contact',
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css']
 })
-export class HeroComponent implements OnInit {
+export class ContactComponent implements OnInit {
   title: string = ''
   subtitle: string = ''
   image: string = ''
   loading: boolean = false
 
+  ngOnInit(): void {
+    this.contact()
+  }
+
   constructor(private utilsService: UtilsService) {
   }
 
-  dataHero = () => this.utilsService.section_index().subscribe(response => {
+  contact = () => this.utilsService.section_contact().subscribe(response => {
     const data = response[0]
     this.title = data.title
     this.subtitle = data.subtitle
@@ -24,8 +28,4 @@ export class HeroComponent implements OnInit {
     console.log(response)
     console.log(data)
   })
-
-  ngOnInit(): void {
-    this.dataHero()
-  }
 }
