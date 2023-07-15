@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  cargarScript() {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'assets/js/mi-script.js';
+    document.body.appendChild(script);
+  }
 
 }

@@ -1,5 +1,5 @@
 import {Component, OnInit, Inject} from '@angular/core';
-import {MAT_SNACK_BAR_DATA} from "@angular/material/snack-bar";
+// import {MAT_SNACK_BAR_DATA} from "@angular/material/snack-bar";
 
 export interface Notification {
   message: string
@@ -14,7 +14,9 @@ export class NotificationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: Notification) {
+  constructor()
+  // constructor(@Inject(MAT_SNACK_BAR_DATA) public data: Notification)
+  {
   }
 
 }

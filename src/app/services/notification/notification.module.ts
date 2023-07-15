@@ -2,7 +2,7 @@ import {ModuleWithProviders, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {NotificationComponent} from "@app/services/notification/notification.component";
 import {NotificationService} from "@app/services";
-import {MatSnackBarModule} from "@angular/material/snack-bar";
+// import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -11,7 +11,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
   ],
   imports: [
     CommonModule,
-    MatSnackBarModule
+    // MatSnackBarModule
   ]
 })
 export class NotificationModule {
