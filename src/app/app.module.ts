@@ -12,6 +12,8 @@ import {HeroComponent} from "@app/components/hero/hero.component";
 import {AboutComponent} from "@app/components/about/about.component";
 import {HttpClientModule} from "@angular/common/http";
 import { ContactComponent } from './components/contact/contact.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
   declarations: [
@@ -22,7 +24,7 @@ import { ContactComponent } from './components/contact/contact.component';
     TopBarComponent,
     HeroComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,8 @@ import { ContactComponent } from './components/contact/contact.component';
     NotificationModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
+    NgbModule,
+    // NgbDropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
