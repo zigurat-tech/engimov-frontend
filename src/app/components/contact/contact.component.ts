@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
+import {EnterpriseService} from "@app/services/enterprise.service";
 
 @Component({
   selector: 'app-contact',
@@ -11,12 +12,16 @@ export class ContactComponent implements OnInit {
   subtitle: string = ''
   image: string = ''
   loading: boolean = false
+  enterprise_data: any[] = [];
 
   ngOnInit(): void {
     this.contact()
+    this.enterpriseService.getData().subscribe(data => {
+      this.enterprise_data = data
+    });
   }
 
-  constructor(private utilsService: UtilsService) {
+  constructor(private utilsService: UtilsService, private enterpriseService: EnterpriseService) {
   }
 
   contact = () => this.utilsService.section_contact().subscribe(response => {

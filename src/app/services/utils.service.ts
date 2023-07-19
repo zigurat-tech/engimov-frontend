@@ -23,4 +23,7 @@ export class UtilsService {
   section_contact(): Observable<any> {
     return this.http.get(this.url + '/sections/contact/')
   }
+  enterprise_data():Observable<any>{
+    return this.http.get(this.url + '/core/enterprise_data/')
+  }
 }

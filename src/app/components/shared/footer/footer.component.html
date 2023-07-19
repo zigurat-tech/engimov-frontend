@@ -5,12 +5,12 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="footer-info">
-            <h3>Day</h3>
+            <h3>{{enterprise_data[0].enterprise_name}}</h3>
             <p>
-              A108 Adam Street <br>
-              NY 535022, USA<br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              {{enterprise_data[0].location}} <br>
+              {{enterprise_data[0].address}}<br><br>
+              <strong>Phone:</strong> {{enterprise_data[0].tel}}<br>
+              <strong>Email:</strong> {{enterprise_data[0].email}}<br>
             </p>
             <div class="social-links mt-3">
               <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -23,13 +23,14 @@
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Useful Links</h4>
+          <h4>Enlaces útiles</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Quiénes somos</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Trabajos</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Productos</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Términos de servicio</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
           </ul>
         </div>
 
@@ -59,7 +60,7 @@
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span>Engimov</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span>Engimov</span></strong>. Todos los derechos reservados
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->

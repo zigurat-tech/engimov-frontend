@@ -9,8 +9,9 @@ import {LoadScriptService} from "@app/services/load-script.service";
 export class AppComponent implements OnInit {
   title = 'engimov';
 
-  constructor(private loadScriptService: LoadScriptService) {
+  constructor(private loadScriptService: LoadScriptService, ) {
   }
+
 
   ngOnInit(): void {
     this.loadScriptService.loadScript('../assets/js/main.js').then(() => {
@@ -19,4 +20,5 @@ export class AppComponent implements OnInit {
       console.log('External script failed to load');
     });
   }
+
 }

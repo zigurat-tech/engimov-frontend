@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { LoadScriptService } from './load-script.service';
+import { EnterpriseService } from './enterprise.service';
 
-describe('LoadScriptService', () => {
-  let service: LoadScriptService;
+describe('EnterpriseService', () => {
+  let service: EnterpriseService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(LoadScriptService);
+    service = TestBed.inject(EnterpriseService);
   });
 
   it('should be created', () => {
