@@ -14,6 +14,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ContactComponent} from './components/contact/contact.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgOptimizedImage} from "@angular/common";
 
 export function initApp() {
   return () => {
@@ -38,15 +39,16 @@ export function initApp() {
     AboutComponent,
     ContactComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NotificationModule.forRoot(),
-    BrowserAnimationsModule,
-    HttpClientModule,
-    NgbModule,
-    NgbDropdownModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        NotificationModule.forRoot(),
+        BrowserAnimationsModule,
+        HttpClientModule,
+        NgbModule,
+        NgbDropdownModule,
+        NgOptimizedImage,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
