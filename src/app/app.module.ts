@@ -9,24 +9,12 @@ import {NavbarComponent} from "@app/components/shared/navbar/navbar.component";
 import {FooterComponent} from "@app/components/shared/footer/footer.component";
 import {TopBarComponent} from "@app/components/top-bar/top-bar.component";
 import {HeroComponent} from "@app/components/hero/hero.component";
-import {AboutComponent} from "@app/components/about/about.component";
 import {HttpClientModule} from "@angular/common/http";
-import {ContactComponent} from './components/contact/contact.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
-
-export function initApp() {
-  return () => {
-    return new Promise<void>((resolve, reject) => {
-      const script:any = document.createElement('script');
-      script.onload = resolve;
-      script.onerror = reject;
-      script.src = '../assets/js/main.js';
-      document.body.appendChild(script);
-    });
-  };
-}
+import {IndexModule} from "@app/pages/index/index.module";
+import {IndexRoutingModule} from "@app/pages/index/index-routing.module";
 
 @NgModule({
   declarations: [
@@ -36,19 +24,21 @@ export function initApp() {
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    AboutComponent,
-    ContactComponent,
+    // AboutComponent,
+    // ContactComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        NotificationModule.forRoot(),
-        BrowserAnimationsModule,
-        HttpClientModule,
-        NgbModule,
-        NgbDropdownModule,
-        NgOptimizedImage,
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NotificationModule.forRoot(),
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgbModule,
+    NgbDropdownModule,
+    NgOptimizedImage,
+    IndexModule,
+    IndexRoutingModule,
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
