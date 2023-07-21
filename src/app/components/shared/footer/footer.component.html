@@ -5,20 +5,24 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="footer-info pt-0">
-<!--            <h3>{{enterprise_data[0].enterprise_name}}</h3>-->
+            <!--            <h3>{{enterprise_data[0].enterprise_name}}</h3>-->
             <h3><img src="assets/img/engi_logo.png" class="img-fluid w-75"></h3>
             <p>
-              {{enterprise_data[0].location}} <br>
+              <span *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</span> <br>
               {{enterprise_data[0].address}}<br><br>
               <strong>Phone:</strong> {{enterprise_data[0].tel}}<br>
               <strong>Email:</strong> {{enterprise_data[0].email}}<br>
             </p>
             <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a *ngIf="enterprise_data[0].twitter" href="{{enterprise_data[0].twitter}}" class="twitter"><i
+                class="bx bxl-twitter"></i></a>
+              <a *ngIf="enterprise_data[0].facebook" href="{{enterprise_data[0].facebook}}" class="facebook"><i
+                class="bx bxl-facebook"></i></a>
+              <a *ngIf="enterprise_data[0].instagram" href="{{enterprise_data[0].instagram}}" class="instagram"><i
+                class="bx bxl-instagram"></i></a>
+              <a *ngIf="enterprise_data[0].youtube" href="{{enterprise_data[0].youtube}}" class="google-plus"><i
+                class="bx bxl-youtube"></i></a>
+<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
             </div>
           </div>
         </div>
