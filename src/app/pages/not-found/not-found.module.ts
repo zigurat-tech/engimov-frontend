@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NotFoundComponent} from "@app/pages/static/pages/not-found/not-found.component";
-import {NotFoundRoutingModule} from "@app/pages/static/pages/not-found/not-found-routing.module";
 
-
+import { NotFoundRoutingModule } from './not-found-routing.module';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 @NgModule({
