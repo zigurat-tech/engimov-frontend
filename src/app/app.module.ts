@@ -4,16 +4,14 @@ import {NotificationModule} from "@app/services";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from "@app/app-routing.module";
 import {AppComponent} from "@app/app.component";
-import {LoaderComponent} from "@app/components/shared/loader/loader.component";
 import {NavbarComponent} from "@app/components/shared/navbar/navbar.component";
 import {FooterComponent} from "@app/components/shared/footer/footer.component";
 import {TopBarComponent} from "@app/components/top-bar/top-bar.component";
 import {HeroComponent} from "@app/components/hero/hero.component";
-import {AboutComponent} from "@app/components/about/about.component";
 import {HttpClientModule} from "@angular/common/http";
-import {ContactComponent} from './components/contact/contact.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgOptimizedImage} from "@angular/common";
 
 export function initApp() {
   return () => {
@@ -30,13 +28,12 @@ export function initApp() {
 @NgModule({
   declarations: [
     AppComponent,
-    LoaderComponent,
     NavbarComponent,
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    AboutComponent,
-    ContactComponent,
+    // AboutComponent,
+    // ContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +43,7 @@ export function initApp() {
     HttpClientModule,
     NgbModule,
     NgbDropdownModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]
