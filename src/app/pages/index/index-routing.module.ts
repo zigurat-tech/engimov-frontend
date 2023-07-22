@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {IndexComponent} from "@app/pages/index/components/index/index.component";
 
 const routes: Routes = [
-  {path: '', loadChildren: () => import('./pages/inicio/inicio.module').then(m => m.InicioModule)}
+  {path: '', component: IndexComponent}
 ];
 
 @NgModule({

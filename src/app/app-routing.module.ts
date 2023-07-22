@@ -3,11 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '', children: [
-      {path: '', loadChildren: () => import('./pages/index/index.module').then(m => m.IndexModule)},
-      {path: '', loadChildren: () => import('./pages/static/static.module').then(m => m.StaticModule)},
-
-    ]
+    path: '', loadChildren: () => import('@app/pages/index/index.module').then(m => m.IndexModule)
+  },
+  {
+    path: '', loadChildren: () => import('@app/pages/not-found/not-found.module').then(m => m.NotFoundModule)
   },
   {path: '**', pathMatch: "full", redirectTo: '404'}
 ];
