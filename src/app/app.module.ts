@@ -12,7 +12,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
-import { ToastComponent } from './components/shared/toast/toast.component';
 
 export function initApp() {
   return () => {
@@ -33,7 +32,6 @@ export function initApp() {
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    ToastComponent,
   ],
   imports: [
     BrowserModule,

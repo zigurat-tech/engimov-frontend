@@ -1,0 +1,10 @@
+<div aria-live="polite" aria-atomic="true" class="position-relative">
+  <div class="toast-container top-0 end-0 p-3">
+    <ngb-toast class="text-light" [autohide]="false" [ngClass]="classes" (hidden)="closeToast()">
+      <ng-template ngbToastHeader>
+        <div class="me-auto" [innerHTML]="header"></div>
+      </ng-template>
+      {{message}}
+    </ngb-toast>
+  </div>
+</div>

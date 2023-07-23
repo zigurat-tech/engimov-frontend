@@ -8,6 +8,7 @@ import {ContactComponent} from "@app/components/contact/contact.component";
 import {LoaderComponent} from "@app/components/shared/loader/loader.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
+import {ToastComponent} from "@app/components/shared/toast/toast.component";
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
     AboutComponent,
     ContactComponent,
     LoaderComponent,
+    ToastComponent,
   ],
   imports: [
     CommonModule,

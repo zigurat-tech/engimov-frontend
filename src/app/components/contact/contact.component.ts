@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {EnterpriseService} from "@app/services/enterprise.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastService} from "@app/components/shared/toast/toast.service";
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +10,9 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  constructor(private utilsService: UtilsService, private enterpriseService: EnterpriseService) {
+  constructor(private utilsService: UtilsService,
+              private enterpriseService: EnterpriseService,
+              public toastService: ToastService) {
   }
 
   title: string = ''
@@ -25,8 +28,10 @@ export class ContactComponent implements OnInit {
     text: new FormControl('', [Validators.required,]),
   });
   loadingForm = false
-  showSuccess = false;
-  showError = false
+  showToast = false;
+  headToast = 'algo'
+  messageToast = ''
+  classes = ''
 
   contact = () => this.utilsService.section_contact().subscribe(response => {
     const data = response[0]
@@ -34,8 +39,6 @@ export class ContactComponent implements OnInit {
     this.subtitle = data.subtitle
     this.image = data.image
     this.loading = true
-    console.log(response)
-    console.log(data)
   })
 
   onSubmit($event: any) {
@@ -49,12 +52,24 @@ export class ContactComponent implements OnInit {
       error: (e) => {
         console.error(e)
         console.log('Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.')
-        this.showError = true
+        this.headToast =
+          `<i class="bx bxs-message-error fs-6 text-danger"></i>
+          <strong class="mx-1">Error!</strong>`
+        this.messageToast = 'Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.'
+        this.classes = 'bg-danger'
+        // this.showToast = true
+        this.toastService.showToast = true
         this.loadingForm = false
       },
       complete: () => {
         console.info('Su mensaje ha sido enviado, por favor espere por nuestra respuesta.')
-        this.showSuccess = true
+        this.headToast = `
+          <i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
+          <strong class="mx-1">Mensaje enviado!</strong>`
+        this.messageToast = 'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'
+        this.classes = 'bg-primary'
+        // this.showToast = true
+        this.toastService.showToast = true
         this.contactForm.reset()
         this.loadingForm = false
       }
@@ -62,9 +77,8 @@ export class ContactComponent implements OnInit {
   }
 
 
-  closeSuccess = () => this.showSuccess = false;
+  closeToast = () => this.showToast = false;
 
-  closeError = () => this.showError = false;
 
   ngOnInit(): void {
     this.contact()

@@ -1,3 +1,4 @@
+<!--
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <div class="toast-container top-0 end-0 p-3">
     <ngb-toast *ngIf="showSuccess" class="bg-primary text-light" [autohide]="false"
@@ -27,6 +28,10 @@
     </ngb-toast>
   </div>
 </div>
+-->
+
+<app-toast *ngIf="this.toastService.showToast" [classes]="classes" [header]="headToast"
+           [message]="messageToast"></app-toast>
 
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
@@ -100,7 +105,7 @@
           </div>
           <div class="text-center">
             <button type="submit" [style.background]="!contactForm.invalid ? '#cc1616': '#444444'"
-                    [disabled]="contactForm.invalid">
+            >
               <span *ngIf="loadingForm" class="spinner-border spinner-border-sm" role="status"
                     aria-hidden="true"></span> Enviar
             </button>
