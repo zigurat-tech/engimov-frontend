@@ -23,7 +23,12 @@ export class UtilsService {
   section_contact(): Observable<any> {
     return this.http.get(this.url + '/sections/contact/')
   }
-  enterprise_data():Observable<any>{
+
+  enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')
+  }
+
+  create_contact(formData: any): Observable<any> {
+    return this.http.post(this.url + '/core/contacts/', formData)
   }
 }

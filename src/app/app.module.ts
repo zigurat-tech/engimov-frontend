@@ -12,11 +12,12 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
+import {ReactiveFormsModule} from "@angular/forms";
 
 export function initApp() {
   return () => {
     return new Promise<void>((resolve, reject) => {
-      const script:any = document.createElement('script');
+      const script: any = document.createElement('script');
       script.onload = resolve;
       script.onerror = reject;
       script.src = '../assets/js/main.js';
@@ -44,6 +45,7 @@ export function initApp() {
     NgbModule,
     NgbDropdownModule,
     NgOptimizedImage,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
