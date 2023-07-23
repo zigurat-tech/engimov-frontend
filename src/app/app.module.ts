@@ -1,6 +1,5 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {NotificationModule} from "@app/services";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AppRoutingModule} from "@app/app-routing.module";
 import {AppComponent} from "@app/app.component";
@@ -13,6 +12,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
+import { ToastComponent } from './components/shared/toast/toast.component';
 
 export function initApp() {
   return () => {
@@ -33,13 +33,11 @@ export function initApp() {
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    // AboutComponent,
-    // ContactComponent,
+    ToastComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NotificationModule.forRoot(),
     BrowserAnimationsModule,
     HttpClientModule,
     NgbModule,

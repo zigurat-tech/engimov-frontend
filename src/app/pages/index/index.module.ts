@@ -7,6 +7,7 @@ import {AboutComponent} from "@app/components/about/about.component";
 import {ContactComponent} from "@app/components/contact/contact.component";
 import {LoaderComponent} from "@app/components/shared/loader/loader.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -20,6 +21,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     IndexRoutingModule,
     ReactiveFormsModule,
+    NgbToast,
+    NgbToastHeader,
   ],
   exports: [
     AboutComponent,

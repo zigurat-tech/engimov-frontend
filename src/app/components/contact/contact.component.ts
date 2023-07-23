@@ -9,6 +9,9 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  constructor(private utilsService: UtilsService, private enterpriseService: EnterpriseService) {
+  }
+
   title: string = ''
   subtitle: string = ''
   image: string = ''
@@ -22,16 +25,8 @@ export class ContactComponent implements OnInit {
     text: new FormControl('', [Validators.required,]),
   });
   loadingForm = false
-
-  ngOnInit(): void {
-    this.contact()
-    this.enterpriseService.getData().subscribe(data => {
-      this.enterprise_data = data
-    });
-  }
-
-  constructor(private utilsService: UtilsService, private enterpriseService: EnterpriseService) {
-  }
+  showSuccess = false;
+  showError = false
 
   contact = () => this.utilsService.section_contact().subscribe(response => {
     const data = response[0]
@@ -54,13 +49,27 @@ export class ContactComponent implements OnInit {
       error: (e) => {
         console.error(e)
         console.log('Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.')
+        this.showError = true
         this.loadingForm = false
       },
       complete: () => {
         console.info('Su mensaje ha sido enviado, por favor espere por nuestra respuesta.')
+        this.showSuccess = true
         this.contactForm.reset()
         this.loadingForm = false
       }
     })
+  }
+
+
+  closeSuccess = () => this.showSuccess = false;
+
+  closeError = () => this.showError = false;
+
+  ngOnInit(): void {
+    this.contact()
+    this.enterpriseService.getData().subscribe(data => {
+      this.enterprise_data = data
+    });
   }
 }
