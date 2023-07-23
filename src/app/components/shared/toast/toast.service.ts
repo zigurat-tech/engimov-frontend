@@ -9,4 +9,14 @@ export class ToastService {
   }
 
   public showToast = false
+  public classes = ''
+  public headToast = ''
+  public messageToast = ''
+
+  openToast = (head: string, message: string, classes: string) => {
+    this.headToast = head
+    this.messageToast = message
+    this.classes = classes
+    this.showToast = true
+  }
 }

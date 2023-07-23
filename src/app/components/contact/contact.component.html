@@ -30,8 +30,7 @@
 </div>
 -->
 
-<app-toast *ngIf="this.toastService.showToast" [classes]="classes" [header]="headToast"
-           [message]="messageToast"></app-toast>
+<app-toast *ngIf="this.toastService.showToast"></app-toast>
 
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
@@ -105,7 +104,7 @@
           </div>
           <div class="text-center">
             <button type="submit" [style.background]="!contactForm.invalid ? '#cc1616': '#444444'"
-            >
+                    [disabled]="contactForm.invalid">
               <span *ngIf="loadingForm" class="spinner-border spinner-border-sm" role="status"
                     aria-hidden="true"></span> Enviar
             </button>

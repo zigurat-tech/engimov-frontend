@@ -28,10 +28,6 @@ export class ContactComponent implements OnInit {
     text: new FormControl('', [Validators.required,]),
   });
   loadingForm = false
-  showToast = false;
-  headToast = 'algo'
-  messageToast = ''
-  classes = ''
 
   contact = () => this.utilsService.section_contact().subscribe(response => {
     const data = response[0]
@@ -44,41 +40,30 @@ export class ContactComponent implements OnInit {
   onSubmit($event: any) {
     this.loadingForm = true
     const formData = this.contactForm.value;
-    console.log(formData)
     this.utilsService.create_contact(formData).subscribe({
       next: (v) => {
         console.log(v)
       },
       error: (e) => {
         console.error(e)
-        console.log('Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.')
-        this.headToast =
+        this.toastService.openToast(
           `<i class="bx bxs-message-error fs-6 text-danger"></i>
-          <strong class="mx-1">Error!</strong>`
-        this.messageToast = 'Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.'
-        this.classes = 'bg-danger'
-        // this.showToast = true
-        this.toastService.showToast = true
+          <strong class="mx-1">Error!</strong>`,
+          'Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.',
+          'bg-danger')
         this.loadingForm = false
       },
       complete: () => {
-        console.info('Su mensaje ha sido enviado, por favor espere por nuestra respuesta.')
-        this.headToast = `
-          <i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
-          <strong class="mx-1">Mensaje enviado!</strong>`
-        this.messageToast = 'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'
-        this.classes = 'bg-primary'
-        // this.showToast = true
-        this.toastService.showToast = true
+        this.toastService.openToast(
+          `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
+          <strong class="mx-1">Mensaje enviado!</strong>`,
+          'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.',
+          'bg-primary')
         this.contactForm.reset()
         this.loadingForm = false
       }
     })
   }
-
-
-  closeToast = () => this.showToast = false;
-
 
   ngOnInit(): void {
     this.contact()
