@@ -1,11 +1,12 @@
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <div class="toast-container top-0 end-0 p-3">
-    <ngb-toast class="text-light" [autohide]="false" [ngClass]="this.toastService.classes"
-               (hidden)="this.toastService.showToast = false">
+    <ngb-toast class="text-light" [autohide]="false" [ngClass]="toast.classes"
+               *ngFor="let toast of this.toastService.listToast;  let i=index"
+               (hidden)="this.toastService.closeToast(i)">
       <ng-template ngbToastHeader>
-        <div class="me-auto" [innerHTML]="this.toastService.headToast"></div>
+        <div class="me-auto" [innerHTML]="toast.headToast"></div>
       </ng-template>
-      {{this.toastService.messageToast}}
+      {{toast.messageToast}}
     </ngb-toast>
   </div>
 </div>

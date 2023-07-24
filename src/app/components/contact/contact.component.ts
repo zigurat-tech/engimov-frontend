@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {EnterpriseService} from "@app/services/enterprise.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastService} from "@app/components/shared/toast/toast.service";
+import {Toast} from "@app/components/shared/toast/toast";
 
 @Component({
   selector: 'app-contact',
@@ -46,19 +47,18 @@ export class ContactComponent implements OnInit {
       },
       error: (e) => {
         console.error(e)
-        this.toastService.openToast(
+        this.toastService.openToast(new Toast('bg-danger',
           `<i class="bx bxs-message-error fs-6 text-danger"></i>
           <strong class="mx-1">Error!</strong>`,
           'Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.',
-          'bg-danger')
+        ))
         this.loadingForm = false
       },
       complete: () => {
-        this.toastService.openToast(
+        this.toastService.openToast(new Toast('bg-primary',
           `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
           <strong class="mx-1">Mensaje enviado!</strong>`,
-          'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.',
-          'bg-primary')
+          'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'))
         this.contactForm.reset()
         this.loadingForm = false
       }

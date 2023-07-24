@@ -10,16 +10,12 @@ export class ToastService {
   }
 
   listToast: Toast[] = []
-  public showToast = false
-  public classes = ''
-  public headToast = ''
-  public messageToast = ''
 
-  openToast = (head: string, message: string, classes: string) => {
-    this.headToast = head
-    this.messageToast = message
-    this.classes = classes
-    this.showToast = true
-    this.listToast.push(new Toast(true, classes, head, message))
+  openToast = (toast: Toast) => {
+    this.listToast.push(toast)
+  }
+
+  closeToast(i: number) {
+    this.listToast.splice(i,1)
   }
 }

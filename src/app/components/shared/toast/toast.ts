@@ -4,7 +4,7 @@ export class Toast {
   private _headToast = ''
   private _messageToast = ''
 
-  constructor(showToast: boolean, classes: string, headToast: string, messageToast: string) {
+  constructor(classes: string, headToast: string, messageToast: string, showToast = true) {
     this._showToast = showToast;
     this._classes = classes;
     this._headToast = headToast;
