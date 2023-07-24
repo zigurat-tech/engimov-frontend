@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Toast} from "@app/components/shared/toast/toast";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ export class ToastService {
   constructor() {
   }
 
+  listToast: Toast[] = []
   public showToast = false
   public classes = ''
   public headToast = ''
@@ -18,5 +20,6 @@ export class ToastService {
     this.messageToast = message
     this.classes = classes
     this.showToast = true
+    this.listToast.push(new Toast(true, classes, head, message))
   }
 }
