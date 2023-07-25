@@ -16,6 +16,10 @@ export class ToastService {
   }
 
   closeToast(i: number) {
-    this.listToast.splice(i,1)
+    this.listToast.splice(i, 1)
+  }
+
+  clear() {
+    this.listToast.splice(0, this.listToast.length);
   }
 }

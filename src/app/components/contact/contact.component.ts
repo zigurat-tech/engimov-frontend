@@ -66,9 +66,11 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.contactForm.disable()
     this.contact()
     this.enterpriseService.getData().subscribe(data => {
       this.enterprise_data = data
     });
+    this.contactForm.enable()
   }
 }

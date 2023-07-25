@@ -32,8 +32,7 @@
               "src/assets/vendor/boxicons/css/boxicons.min.css",
               "src/assets/vendor/glightbox/css/glightbox.min.css",
               "src/assets/vendor/swiper/swiper-bundle.min.css",
-              "src/assets/css/style.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "src/assets/css/style.css"
             ],
             "scripts": [
               "src/assets/vendor/aos/aos.js",

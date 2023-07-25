@@ -28,6 +28,9 @@ export class UtilsService {
     return this.http.get(this.url + '/core/enterprise_data/')
   }
 
+  get_products = (page = '1') => this.http.get(this.url + '/core/products/?page=' + page)
+  get_products_categories = () => this.http.get(this.url + '/core/productcategories/')
+
   create_contact(formData: any): Observable<any> {
     return this.http.post(this.url + '/core/contacts/', formData)
   }
