@@ -13,13 +13,15 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   listCategories: any = []
   listProducts: any = []
+  loading = true
 
   ngOnInit(): void {
-    this.utilsService.get_products().subscribe((res: any) => {
+    this.utilsService.get_products(['index=1']).subscribe((res: any) => {
       this.listProducts = res
       console.log(this.listProducts)
+      this.loading = false
     })
-    this.utilsService.get_products_categories().subscribe(res => {
+    this.utilsService.get_products_categories(['index=1']).subscribe(res => {
       this.listCategories = res
       console.log(this.listCategories)
     })
