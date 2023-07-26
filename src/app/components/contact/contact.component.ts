@@ -27,7 +27,8 @@ export class ContactComponent implements OnInit {
     email: new FormControl('', [Validators.email, Validators.required]),
     subject: new FormControl('', [Validators.required, Validators.maxLength(100)]),
     text: new FormControl('', [Validators.required,]),
-  });
+    // recaptcha: new FormControl('', [Validators.required])
+  })
   loadingForm = false
 
   contact = () => this.utilsService.section_contact().subscribe(response => {

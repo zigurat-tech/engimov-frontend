@@ -9,8 +9,8 @@ import {LoaderComponent} from "@app/components/shared/loader/loader.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
 import {ToastComponent} from "@app/components/shared/toast/toast.component";
-import { PortfolioComponent } from './components/portfolio/portfolio.component';
-
+import {PortfolioComponent} from './components/portfolio/portfolio.component';
+import {NgxCaptchaModule} from "ngx-captcha";
 
 @NgModule({
   declarations: [
@@ -27,6 +27,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     ReactiveFormsModule,
     NgbToast,
     NgbToastHeader,
+    NgxCaptchaModule,
   ],
   exports: [
     AboutComponent,
