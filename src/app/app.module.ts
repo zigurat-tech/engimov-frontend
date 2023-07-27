@@ -12,6 +12,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
+import {IndexModule} from "@app/pages/index/index.module";
+// import {LoaderComponent} from "@app/components/shared/loader/loader.component";
 
 export function initApp() {
   return () => {
@@ -32,6 +34,7 @@ export function initApp() {
     FooterComponent,
     TopBarComponent,
     HeroComponent,
+    // LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +45,7 @@ export function initApp() {
     NgbDropdownModule,
     NgOptimizedImage,
     ReactiveFormsModule,
+    IndexModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

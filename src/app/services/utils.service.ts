@@ -24,6 +24,10 @@ export class UtilsService {
     return this.http.get(this.url + '/sections/contact/')
   }
 
+  section_portfolio(): Observable<any> {
+    return this.http.get(this.url + '/sections/products_portfolio/')
+  }
+
   enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')
   }

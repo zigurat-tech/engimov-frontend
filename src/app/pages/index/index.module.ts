@@ -29,10 +29,11 @@ import {NgxCaptchaModule} from "ngx-captcha";
     NgbToastHeader,
     NgxCaptchaModule,
   ],
-  exports: [
-    AboutComponent,
-    ContactComponent
-  ],
+    exports: [
+        AboutComponent,
+        ContactComponent,
+        LoaderComponent
+    ],
 })
 export class IndexModule {
 }

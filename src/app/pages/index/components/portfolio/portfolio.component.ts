@@ -28,26 +28,26 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.loadScriptService.loadScript('../assets/vendor/glightbox/js/glightbox.min.js').then(() => {
-      console.log('External script loaded');
-    }).catch(() => {
-      console.log('External script failed to load');
-    });
-    this.loadScriptService.loadScript('../assets/vendor/isotope-layout/isotope.pkgd.min.js').then(() => {
-      console.log('External script loaded');
-    }).catch(() => {
-      console.log('External script failed to load');
-    });
-    this.loadScriptService.loadScript('../assets/vendor/swiper/swiper-bundle.min.js').then(() => {
-      console.log('External script loaded');
-    }).catch(() => {
-      console.log('External script failed to load');
-    });
-    this.loadScriptService.loadScript('../assets/js/main.js').then(() => {
-      console.log('External script loaded');
-    }).catch(() => {
-      console.log('External script failed to load');
-    });
+    // this.loadScriptService.loadScript('../assets/vendor/glightbox/js/glightbox.min.js').then(() => {
+    //   console.log('External script loaded');
+    // }).catch(() => {
+    //   console.log('External script failed to load');
+    // });
+    // this.loadScriptService.loadScript('../assets/vendor/isotope-layout/isotope.pkgd.min.js').then(() => {
+    //   console.log('External script loaded');
+    // }).catch(() => {
+    //   console.log('External script failed to load');
+    // });
+    // this.loadScriptService.loadScript('../assets/vendor/swiper/swiper-bundle.min.js').then(() => {
+    //   console.log('External script loaded');
+    // }).catch(() => {
+    //   console.log('External script failed to load');
+    // });
+    // this.loadScriptService.loadScript('../assets/js/main.js').then(() => {
+    //   console.log('External script loaded');
+    // }).catch(() => {
+    //   console.log('External script failed to load');
+    // });
   }
 
 }
