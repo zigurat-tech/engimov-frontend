@@ -8,6 +8,10 @@ const routes: Routes = [
   {
     path: '', loadChildren: () => import('@app/pages/not-found/not-found.module').then(m => m.NotFoundModule)
   },
+  {
+    path: '',
+    loadChildren: () => import('@app/pages/portfolio-product/portfolio-product.module').then(m => m.PortfolioProductModule)
+  },
   {path: '**', pathMatch: "full", redirectTo: '404'}
 ];
 

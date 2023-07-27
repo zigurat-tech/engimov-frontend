@@ -17,7 +17,6 @@ export class AboutComponent implements OnInit {
 
   get_about() {
     this.utilsService.section_about().subscribe(response => {
-      console.log(response)
       const data = response[0]
       this.title = data.title
       this.subtitle = data.subtitle

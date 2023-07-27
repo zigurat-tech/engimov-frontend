@@ -1,21 +1,29 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
-// import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
-// import '../../../../assets/js/main.js'
+import {NavigationEnd, Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent  implements AfterViewInit{
+export class NavbarComponent implements AfterViewInit, OnInit {
   collapsed = true;
+  current_url = ''
 
-  constructor(private elementRef: ElementRef){
+  constructor(private elementRef: ElementRef, private router: Router) {
+    this.current_url = router.url
+    console.log(this.current_url)
   }
 
   ngAfterViewInit(): void {
-    // const script = document.createElement('script');
-    // script.src = '../assets/js/main.js';
-    // document.body.appendChild(script);
+
+  }
+
+  ngOnInit() {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.current_url = event.url;
+      }
+    });
   }
 }

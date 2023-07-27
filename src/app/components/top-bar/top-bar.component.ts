@@ -15,7 +15,6 @@ export class TopBarComponent implements OnInit {
   ngOnInit(): void {
     this.enterpriseService.getData().subscribe(data => {
       this.enterprise_data = data
-      console.log(this.enterprise_data)
     });
   }
 
