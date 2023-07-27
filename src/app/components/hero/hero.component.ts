@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
+import {HeroService} from "@app/services/hero.service";
+import {take} from "rxjs";
 
 @Component({
   selector: 'app-hero',
@@ -12,7 +14,7 @@ export class HeroComponent implements OnInit {
   image: string = ''
   loading: boolean = false
 
-  constructor(private utilsService: UtilsService) {
+  constructor(private utilsService: UtilsService, public heroService: HeroService) {
   }
 
   dataHero = () => this.utilsService.section_index().subscribe(response => {
@@ -26,6 +28,18 @@ export class HeroComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.dataHero()
+    // this.dataHero()
+    this.heroService.get_image().subscribe(value => {
+      this.image = value
+    })
+    this.heroService.get_subtitle().subscribe(value => {
+      this.subtitle = value
+    })
+    this.heroService.get_title().subscribe(value => {
+      this.title = value
+    })
+    this.heroService.get_loading().subscribe(value => {
+      this.loading = value
+    })
   }
 }
