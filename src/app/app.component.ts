@@ -17,7 +17,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.loadScriptService.loadScript('../assets/js/main.js').then(() => {
+    // this.loadScriptService.loadScript('../assets/js/pastilla.js').then(() => {
     //   console.log('External script loaded');
     // }).catch(() => {
     //   console.log('External script failed to load');
