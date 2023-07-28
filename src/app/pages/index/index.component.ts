@@ -12,6 +12,7 @@ export class IndexComponent implements OnInit {
   }
 
   set_hero_data = () => {
+    this.heroService.set_loading(false)
     this.utilsService.section_index().subscribe(response => {
       this.heroService.set_title(response[0].title)
       this.heroService.set_subtitle(response[0].subtitle)

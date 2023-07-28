@@ -12,6 +12,7 @@ export class PortfolioProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.heroService.set_loading(false)
     this.utilsService.section_portfolio().subscribe(response => {
       this.heroService.set_image(response[0].image)
       this.heroService.set_subtitle(response[0].subtitle)

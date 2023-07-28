@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {HeroService} from "@app/services/hero.service";
 import {take} from "rxjs";
@@ -8,7 +8,7 @@ import {take} from "rxjs";
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent implements OnInit, AfterViewInit {
   title: string = ''
   subtitle: string = ''
   image: string = ''
@@ -28,7 +28,10 @@ export class HeroComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    // this.dataHero()
+    this.loading = false
+  }
+
+  ngAfterViewInit(): void {
     this.heroService.get_image().subscribe(value => {
       this.image = value
     })
@@ -37,9 +40,12 @@ export class HeroComponent implements OnInit {
     })
     this.heroService.get_title().subscribe(value => {
       this.title = value
+      console.log(this.title);
     })
     this.heroService.get_loading().subscribe(value => {
       this.loading = value
+      console.log(new Date().getMinutes(),new Date().getSeconds())
+      console.log('on init',this.loading)
     })
   }
 }
