@@ -11,6 +11,7 @@ export class AboutComponent implements OnInit {
   subtitle = ''
   image = ''
   loading = false
+  loadingImage = false
 
   constructor(private utilsService: UtilsService) {
   }
