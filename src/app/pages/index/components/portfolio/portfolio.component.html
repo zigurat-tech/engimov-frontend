@@ -13,7 +13,7 @@
         <ul id="portfolio-flters">
           <li data-filter="*" class="filter-active" (click)="filterProducts('*',0 )">Todos</li>
           <li *ngFor="let cat of listCategories;let i=index" class="" [attr.data-filter]="'.a' + cat.id"
-              (click)="filterProducts(cat.id,i+1)">{{cat.name}}</li>
+              (click)="filterProducts(cat.id.toString(),i+1)">{{cat.name}}</li>
         </ul>
       </div>
     </div>
@@ -27,7 +27,7 @@
           <h4>{{prod.name}}</h4>
           <br>
           <p>{{prod.description}}</p>
-          <a href="{{prod.image}}" data-gallery="portfolioGallery"
+          <a data-gallery="portfolioGallery" role="button" (click)="openModal(content, prod)"
              class="portfolio-lightbox preview-link" [attr.title]="prod.description"><i class="bx bx-plus"></i></a>
           <a href="portfolio-details.html" class="details-link" title="Más detalles"><i class="bx bx-link"></i></a>
         </div>
@@ -36,3 +36,22 @@
 
   </div>
 </section><!-- End Portfolio Section -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{objectModal.name}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <div class="card rounded-0">
+      <img src="{{objectModal.image}}" alt="Imagen del Producto" class="card-img-top rounded-0 img-fluid">
+      <div class="card-body">
+        <h5 class="card-title">{{objectModal.category.name}}</h5>
+        <p class="card-text">{{objectModal.description}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a role="button" class="btn-engimov" (click)="c('Save click')">Cerrar</a>
+  </div>
+</ng-template>
+

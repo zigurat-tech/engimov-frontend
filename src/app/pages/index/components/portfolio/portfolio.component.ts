@@ -1,6 +1,8 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, TemplateRef} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
-import {LoadScriptService} from "@app/services/load-script.service";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import {Product} from "@app/models/product";
+import {Category} from "@app/models/category";
 
 @Component({
   selector: 'app-portfolio',
@@ -8,20 +10,31 @@ import {LoadScriptService} from "@app/services/load-script.service";
   styleUrls: ['./portfolio.component.css'],
 })
 export class PortfolioComponent implements OnInit, AfterViewInit {
-  constructor(private utilsService: UtilsService, private loadScriptService: LoadScriptService) {
+  constructor(private utilsService: UtilsService,
+              config: NgbModalConfig,
+              private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
-  listCategories: any = []
-  listProducts: any = []
+  listCategories: Category[] = []
+  listProducts: Product[] = []
   loading = true
+  objectModal: Product = new Product('', '', '', 0,
+    '', false, new Category(1, ''))
 
   ngOnInit(): void {
     this.utilsService.get_products(['index=1']).subscribe((res: any) => {
-      this.listProducts = res
+      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
+        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
+      // this.listProducts = res
       this.loading = false
+      console.log(this.listProducts[0])
     })
     this.utilsService.get_products_categories(['index=1']).subscribe(res => {
-      this.listCategories = res
+      // this.listCategories = res
+      res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
+      console.log(this.listCategories[0])
     })
   }
 
@@ -48,4 +61,16 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
       }
     })
   }
+
+  openModal(content: TemplateRef<any>, prod: Product) {
+    this.objectModal = prod
+    this.modalService.open(content);
+  }
+
+  getProduct = (sku: string) => this.listProducts.find(p => p.sku === sku)
+
+  searchProduct = (name: string) => this.listProducts.filter(p => p.name.includes(name))
+
+  removeProduct = (sku: string) => this.listProducts.splice(this.listProducts.indexOf(<Product>this.getProduct(sku)), 1)
+
 }
