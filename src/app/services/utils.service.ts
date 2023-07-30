@@ -28,6 +28,9 @@ export class UtilsService {
     return this.http.get(this.url + '/sections/products_portfolio/')
   }
 
+  section_sale = (): Observable<any> => this.http.get(this.url + '/sections/sell/')
+
+
   enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')
   }
@@ -39,7 +42,14 @@ export class UtilsService {
     }
     return this.http.get(url)
   }
-  get_products_sale = (page = '1'): Observable<any> => this.http.get(this.url + '/core/products_sale/')
+  get_products_sale = (query_params: string[] = []): Observable<any> => {
+    let url = this.url + '/core/products_sale/?'
+    if (query_params) {
+      query_params.forEach(e => url += (e + '?'))
+    }
+    console.log(url)
+    return this.http.get(url)
+  }
 
   get_products_categories = (query_params: string[] = []): Observable<any> => {
     let url = this.url + '/core/productcategories/?'
