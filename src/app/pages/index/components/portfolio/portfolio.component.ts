@@ -20,23 +20,25 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   @Input() listCategories: Category[] = []
   @Input() listProducts: Product[] = []
-  loading = true
+  @Input() headerProducts = {title: '', subtitle: ''}
+  // loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
 
   ngOnInit(): void {
-    this.utilsService.get_products(['index=1']).subscribe((res: any) => {
-      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
-      // this.listProducts = res
-      this.loading = false
-      console.log(this.listProducts[0])
-    })
-    this.utilsService.get_products_categories(['index=1']).subscribe(res => {
-      // this.listCategories = res
-      res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
-      console.log(this.listCategories[0])
-    })
+    // this.loading = false
+    /*    this.utilsService.get_products(['index=1']).subscribe((res: any) => {
+          res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
+            p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
+          // this.listProducts = res
+          this.loading = false
+          console.log(this.listProducts[0])
+        })
+        this.utilsService.get_products_categories(['index=1']).subscribe(res => {
+          // this.listCategories = res
+          res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
+          console.log(this.listCategories[0])
+        })*/
   }
 
   ngAfterViewInit(): void {
@@ -65,7 +67,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   openModal(content: TemplateRef<any>, prod: Product) {
     this.objectModal = prod
-    this.modalService.open(content, );
+    this.modalService.open(content,);
   }
 
   getProduct = (sku: string) => this.listProducts.find(p => p.sku === sku)

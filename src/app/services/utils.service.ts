@@ -40,6 +40,7 @@ export class UtilsService {
     return this.http.get(url)
   }
   get_products_sale = (page = '1'): Observable<any> => this.http.get(this.url + '/core/products_sale/')
+
   get_products_categories = (query_params: string[] = []): Observable<any> => {
     let url = this.url + '/core/productcategories/?'
     if (query_params) {

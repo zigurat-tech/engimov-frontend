@@ -135,6 +135,8 @@
   </div>
 </section>-->
 <!-- End Services Section -->
-<app-portfolio [listCategories]=""></app-portfolio>
+<app-loader *ngIf="loading"></app-loader>
+<app-portfolio *ngIf="!loading" [listCategories]="listCategories" [listProducts]="listProducts"
+               [headerProducts]="headerProducts"></app-portfolio>
 
 <app-contact></app-contact>

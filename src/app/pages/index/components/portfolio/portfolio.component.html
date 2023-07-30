@@ -3,12 +3,12 @@
   <div class="container">
 
     <div class="section-title">
-      <span>Últimos Productos</span>
-      <h2>Últimos Productos</h2>
-      <!--      <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>-->
+      <span>{{headerProducts.title}}</span>
+      <h2>{{headerProducts.title}}</h2>
+      <p *ngIf="headerProducts.subtitle">{{headerProducts.subtitle}}</p>
     </div>
-    <app-loader *ngIf="loading"></app-loader>
-    <div class="row" data-aos="fade-up" *ngIf="!loading">
+<!--    <app-loader *ngIf="loading"></app-loader>-->
+    <div class="row" data-aos="fade-up" >
       <div class="col-lg-12 d-flex justify-content-center">
         <ul id="portfolio-flters">
           <li data-filter="*" class="filter-active" (click)="filterProducts('*',0 )">Todos</li>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150" *ngIf="!loading">
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150" >
 
       <div class="col-lg-4 col-md-6 portfolio-item background-image text-center {{prod.category.id}}"
            *ngFor="let prod of listProducts">
