@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, TemplateRef} from '@angular/core';
+import {AfterViewInit, Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {Product} from "@app/models/product";
@@ -15,10 +15,11 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
               private modalService: NgbModal) {
     config.backdrop = 'static';
     config.keyboard = false;
+    // config.scrollable = true
   }
 
-  listCategories: Category[] = []
-  listProducts: Product[] = []
+  @Input() listCategories: Category[] = []
+  @Input() listProducts: Product[] = []
   loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
@@ -64,7 +65,7 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
 
   openModal(content: TemplateRef<any>, prod: Product) {
     this.objectModal = prod
-    this.modalService.open(content);
+    this.modalService.open(content, );
   }
 
   getProduct = (sku: string) => this.listProducts.find(p => p.sku === sku)
