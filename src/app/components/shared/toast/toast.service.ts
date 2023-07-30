@@ -11,8 +11,12 @@ export class ToastService {
 
   listToast: Toast[] = []
 
-  openToast = (toast: Toast) => {
+  openToast = (toast: Toast, autocloseable = true) => {
     this.listToast.push(toast)
+    if (autocloseable)
+      setTimeout(() => {
+        this.closeToast(this.listToast.indexOf(toast))
+      }, 5000)
   }
 
   closeToast(i: number) {

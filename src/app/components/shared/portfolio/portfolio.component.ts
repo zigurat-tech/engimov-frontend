@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit, TemplateRef} from '@angular/core';
+import {Component, Input, TemplateRef} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {Product} from "@app/models/product";
@@ -9,7 +9,7 @@ import {Category} from "@app/models/category";
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css'],
 })
-export class PortfolioComponent implements OnInit, AfterViewInit {
+export class PortfolioComponent {
   constructor(private utilsService: UtilsService,
               config: NgbModalConfig,
               private modalService: NgbModal) {
@@ -25,24 +25,6 @@ export class PortfolioComponent implements OnInit, AfterViewInit {
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
 
-  ngOnInit(): void {
-    // this.loading = false
-    /*    this.utilsService.get_products(['index=1']).subscribe((res: any) => {
-          res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-            p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
-          // this.listProducts = res
-          this.loading = false
-          console.log(this.listProducts[0])
-        })
-        this.utilsService.get_products_categories(['index=1']).subscribe(res => {
-          // this.listCategories = res
-          res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
-          console.log(this.listCategories[0])
-        })*/
-  }
-
-  ngAfterViewInit(): void {
-  }
 
   filterProducts(s: string, i: number) {
     let lis = document.querySelectorAll('#portfolio-flters li'),

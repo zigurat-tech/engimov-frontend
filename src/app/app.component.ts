@@ -30,20 +30,5 @@ export class AppComponent implements AfterViewInit, OnInit {
     // }).catch(() => {
     //   console.log('External script failed to load');
     // });
-    /**
-     * Back to top button
-     */
-    // let backtotop: any = document.querySelector('.back-to-top')
-    // if (backtotop) {
-    //   const toggleBacktotop = () => {
-    //     if (window.scrollY > 100) {
-    //       backtotop.classList.add('active')
-    //     } else {
-    //       backtotop.classList.remove('active')
-    //     }
-    //   }
-    //   window.addEventListener('load', toggleBacktotop)
-    //   this.onscroll(document, toggleBacktotop)
-    // }
   }
 }

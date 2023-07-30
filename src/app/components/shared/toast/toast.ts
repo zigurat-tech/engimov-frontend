@@ -3,12 +3,14 @@ export class Toast {
   private _classes = ''
   private _headToast = ''
   private _messageToast = ''
+  private _id: number
 
   constructor(classes: string, headToast: string, messageToast: string, showToast = true) {
     this._showToast = showToast;
     this._classes = classes;
     this._headToast = headToast;
     this._messageToast = messageToast;
+    this._id = new Date().getTime()
   }
 
   get showToast(): boolean {
@@ -41,5 +43,9 @@ export class Toast {
 
   set messageToast(value: string) {
     this._messageToast = value;
+  }
+
+  get id(): number {
+    return this._id;
   }
 }

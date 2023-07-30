@@ -13,7 +13,8 @@ import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndexModule} from "@app/pages/index/index.module";
-// import {LoaderComponent} from "@app/components/shared/loader/loader.component";
+import {PortfolioProductModule} from "@app/pages/portfolio-product/portfolio-product.module";
+import {LoaderModule} from "@app/components/shared/loader/loader.module";
 
 export function initApp() {
   return () => {
@@ -34,7 +35,6 @@ export function initApp() {
     FooterComponent,
     TopBarComponent,
     HeroComponent,
-    // LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +45,12 @@ export function initApp() {
     NgbDropdownModule,
     NgOptimizedImage,
     ReactiveFormsModule,
+    LoaderModule,
     IndexModule,
+    PortfolioProductModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
