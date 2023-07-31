@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Product} from "@app/models/product";
-import {ToastService} from "@app/components/shared/toast/toast.service";
-import {Toast} from "@app/components/shared/toast/toast";
+import {SaleService} from "@app/services/sale.service";
 
 @Component({
   selector: 'app-list-grid-products',
@@ -11,12 +10,6 @@ import {Toast} from "@app/components/shared/toast/toast";
 export class ListGridProductsComponent {
   @Input() listProducts: Product[] = []
 
-  constructor(private toastService: ToastService) {
-  }
-
-  addCart(prod: Product) {
-    this.toastService.openToast(new Toast('bg-success',
-      `<i class="bi bi-cart-plus-fill fs-6 text-success"></i>
-          <strong class="mx-1">Carrito de compras!</strong>`,`${prod.name} fue añadido al carrito!`))
+  constructor(public saleService: SaleService) {
   }
 }

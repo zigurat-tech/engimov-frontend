@@ -8,8 +8,11 @@ export class Product {
   private _sku: string
   private _visible: boolean
   private _category: Category
+  private _waiting: boolean
+  private _quantity: number
 
-  constructor(image: string, name: string, description: string, price: number, sku: string, visible: boolean, category: Category) {
+  constructor(image: string, name: string, description: string, price: number,
+              sku: string, visible: boolean, category: Category, quantity: number = 0) {
     this._image = image;
     this._name = name;
     this._description = description;
@@ -17,6 +20,16 @@ export class Product {
     this._sku = sku;
     this._visible = visible;
     this._category = category;
+    this._waiting = false
+    this._quantity = quantity
+  }
+
+  get waiting(): boolean {
+    return this._waiting;
+  }
+
+  set waiting(value: boolean) {
+    this._waiting = value;
   }
 
   get image(): string {
