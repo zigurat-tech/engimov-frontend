@@ -15,9 +15,8 @@ export class ListGridProductsComponent {
   }
 
   addCart(prod: Product) {
-    console.log('evento')
     this.toastService.openToast(new Toast('bg-success',
-      `<i class="bx bx-cart-add fs-6 text-success"></i>
-          <strong class="mx-1">Mensaje enviado!</strong>`,`${prod.name} fue añadido al carrito!`))
+      `<i class="bi bi-cart-plus-fill fs-6 text-success"></i>
+          <strong class="mx-1">Carrito de compras!</strong>`,`${prod.name} fue añadido al carrito!`))
   }
 }

@@ -1,33 +1,40 @@
 <app-toast></app-toast>
 <div class="container">
-  <div class="row grid-products d-flex g-3 justify-content-center row-cols-2 row-cols-sm-3 row-cols-md-3
-row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="150">
+  <div class="row grid-products d-flex g-3 justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3
+    row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="150">
     <div class="col" *ngFor="let prod of listProducts">
       <div class="card h-100 rounded-0">
-        <div class="square-container div-img-product" style="background-image: url({{prod.image}})">
-<!--          <img ngSrc="{{prod.image}}" width="250" height="250" alt="{{prod.name}}" class="rounded-0">-->
-        </div>
-        <div class="card-body pb-2">
-          <h6 class="card-text mb-0">{{prod.name}}</h6>
-          <p class="card-text fw-bold">USD $ {{prod.price.toFixed(2)}}</p>
-        </div>
-        <div class="card-footer px-2 text-center bg-white rounded-0 border-0">
-
-          <div class="d-flex justify-content-between align-items-center">
-
-            <div class="input-group " style="width: 120px">
-              <button type="button"
-                      class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
-              </button>
-              <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
-                    style="font-size: .8rem">1</span>
-              <button type="button" class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
-              </button>
+        <div class="row g-0 h-100">
+          <div class="col-4 col-sm-12">
+            <div class="square-container div-img-product" style="background-image: url({{prod.image}})">
+              <!--          <img ngSrc="{{prod.image}}" width="250" height="250" alt="{{prod.name}}" class="rounded-0">-->
             </div>
-            <button class="btn btn-orange mx-1 rounded-circle" (click)="addCart(prod)"><i class="bi bi-cart3"></i></button>
           </div>
-          <!--          <input type="radio" class="btn-check" name="btnradio{{prod.sku}}" id="{{prod.sku}}" autocomplete="off">-->
-          <!--          <label class="btn btn-outline-primary" for="{{prod.sku}}">Radio 3</label>-->
+          <div class="col-8 col-sm-12 d-flex flex-column justify-content-between">
+            <div class="card-body pb-2">
+              <h6 class="card-text mb-0">{{prod.name}}</h6>
+              <p class="card-text fw-bold">USD $ {{prod.price.toFixed(2)}}</p>
+            </div>
+            <div class="card-footer px-sm-2 text-center bg-white rounded-0 border-0">
+
+              <div class="d-flex justify-content-between align-items-center">
+
+                <div class="input-group " style="width: 120px">
+                  <button type="button"
+                          class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
+                  </button>
+                  <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
+                        style="font-size: .8rem">1</span>
+                  <button type="button" class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
+                  </button>
+                </div>
+                <button class="btn btn-orange mx-1 rounded-circle" (click)="addCart(prod)"><i class="bi bi-cart3"></i>
+                </button>
+              </div>
+              <!--          <input type="radio" class="btn-check" name="btnradio{{prod.sku}}" id="{{prod.sku}}" autocomplete="off">-->
+              <!--          <label class="btn btn-outline-primary" for="{{prod.sku}}">Radio 3</label>-->
+            </div>
+          </div>
         </div>
       </div>
     </div>

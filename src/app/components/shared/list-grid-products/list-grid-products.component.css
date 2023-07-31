@@ -6,6 +6,13 @@
   /*height: 230px;*/
 }
 
+@media (max-width: 576px) {
+  .div-img-product {
+    background-position: center;
+  }
+}
+
+
 .square-container {
   width: 100%;
   position: relative;
