@@ -15,6 +15,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {IndexModule} from "@app/pages/index/index.module";
 import {PortfolioProductModule} from "@app/pages/portfolio-product/portfolio-product.module";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
+import {ToastModule} from "@app/components/shared/toast/toast.module";
 
 export function initApp() {
   return () => {
@@ -47,7 +48,8 @@ export function initApp() {
     ReactiveFormsModule,
     LoaderModule,
     IndexModule,
-    PortfolioProductModule
+    PortfolioProductModule,
+    ToastModule,
   ],
   providers: [],
   exports: [],

@@ -1,10 +1,11 @@
+<app-toast></app-toast>
 <div class="container">
   <div class="row grid-products d-flex g-3 justify-content-center row-cols-2 row-cols-sm-3 row-cols-md-3
 row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="150">
     <div class="col" *ngFor="let prod of listProducts">
       <div class="card h-100 rounded-0">
         <div class="square-container div-img-product" style="background-image: url({{prod.image}})">
-<!--          <img ngSrc="{{prod.image}}" width="250" height="250" alt="Imagen del producto" class="rounded-0">-->
+<!--          <img ngSrc="{{prod.image}}" width="250" height="250" alt="{{prod.name}}" class="rounded-0">-->
         </div>
         <div class="card-body pb-2">
           <h6 class="card-text mb-0">{{prod.name}}</h6>
@@ -18,15 +19,12 @@ row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="150">
               <button type="button"
                       class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
               </button>
-              <!--              <input type="text" class="form-control bg-white border-secondary-->
-              <!--            border-end-0 border-start-0 text-center "-->
-              <!--                     disabled value="1">-->
               <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
                     style="font-size: .8rem">1</span>
               <button type="button" class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
               </button>
             </div>
-            <button class="btn btn-orange mx-1 rounded-circle"><i class="bi bi-cart3"></i></button>
+            <button class="btn btn-orange mx-1 rounded-circle" (click)="addCart(prod)"><i class="bi bi-cart3"></i></button>
           </div>
           <!--          <input type="radio" class="btn-check" name="btnradio{{prod.sku}}" id="{{prod.sku}}" autocomplete="off">-->
           <!--          <label class="btn btn-outline-primary" for="{{prod.sku}}">Radio 3</label>-->

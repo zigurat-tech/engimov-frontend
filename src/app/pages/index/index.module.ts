@@ -6,11 +6,10 @@ import {IndexComponent} from './index.component';
 import {AboutComponent} from "@app/pages/index/components/about/about.component";
 import {ContactComponent} from "@app/components/globals/contact/contact.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {NgbToast, NgbToastHeader} from "@ng-bootstrap/ng-bootstrap";
-import {ToastComponent} from "@app/components/shared/toast/toast.component";
 import {NgxCaptchaModule} from "ngx-captcha";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {PortfolioModule} from "@app/components/shared/portfolio/portfolio.module";
+import {ToastModule} from "@app/components/shared/toast/toast.module";
 
 
 @NgModule({
@@ -18,18 +17,16 @@ import {PortfolioModule} from "@app/components/shared/portfolio/portfolio.module
     IndexComponent,
     AboutComponent,
     ContactComponent,
-    ToastComponent,
   ],
   imports: [
     CommonModule,
     IndexRoutingModule,
     ReactiveFormsModule,
-    NgbToast,
-    NgbToastHeader,
     NgxCaptchaModule,
     FormsModule,
     LoaderModule,
-    PortfolioModule
+    PortfolioModule,
+    ToastModule
   ],
   exports: [
     AboutComponent,

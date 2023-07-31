@@ -14,7 +14,7 @@ import {PortfolioModule} from "@app/components/shared/portfolio/portfolio.module
     CommonModule,
     PortfolioProductRoutingModule,
     LoaderModule,
-    PortfolioModule
+    PortfolioModule,
   ],
   exports: []
 })
