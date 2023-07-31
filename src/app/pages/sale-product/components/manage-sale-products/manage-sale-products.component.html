@@ -1,5 +1,5 @@
 <!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio">
+<section id="portfolio" class="portfolio bg-light">
   <div class="container">
 
     <div class="section-title">
@@ -17,18 +17,14 @@
         <div class=""><h2>AKi van los filters </h2></div>
       </div>
     </div>
-
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
-      <app-loader *ngIf="loading"></app-loader>
-      <div class="col" *ngIf="!loading">
-        <app-list-grid-products [listProducts]="listProducts"></app-list-grid-products>
-      </div>
-      <div class="col" *ngIf="!loading">
-        <app-list-table-products [listProducts]="listProducts"></app-list-table-products>
-      </div>
-    </div>
-
   </div>
+  <app-loader *ngIf="loading"></app-loader>
+  <app-list-grid-products *ngIf="!loading" [listProducts]="listProducts"></app-list-grid-products>
+
+  <!--      <div class="col" *ngIf="!loading">-->
+  <!--        <app-list-table-products [listProducts]="listProducts"></app-list-table-products>-->
+  <!--      </div>-->
+
 </section><!-- End Portfolio Section -->
 <!--<ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">

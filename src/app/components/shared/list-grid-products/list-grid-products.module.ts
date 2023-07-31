@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import { ListGridProductsComponent } from './list-grid-products.component';
 
 
@@ -12,7 +12,8 @@ import { ListGridProductsComponent } from './list-grid-products.component';
     ListGridProductsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgOptimizedImage
   ]
 })
 export class ListGridProductsModule { }

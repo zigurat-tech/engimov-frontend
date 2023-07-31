@@ -37,14 +37,14 @@
   </div>
 </section><!-- End Portfolio Section -->
 <ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
+  <div class="modal-header border-bottom-0">
     <h4 class="modal-title" id="modal-basic-title">{{objectModal.name}}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
   </div>
   <div class="modal-body p-0">
     <div class="img-fluid imgProdDetails"
-         style="background: url('{{objectModal.image}}') rgba(25, 25, 25, 0.95);"></div>
-    <div class="card rounded-0">
+         style="background: url('{{objectModal.image}}');"></div>
+    <div class="card rounded-0 border-0">
       <!--      <img src="{{objectModal.image}}" alt="Imagen del Producto" class="card-img-top rounded-0 img-fluid">-->
 
       <div class="card-body">

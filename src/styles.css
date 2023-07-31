@@ -263,3 +263,20 @@ body {
 .modal-content {
   border-radius: 0;
 }
+
+.btn-orange {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--bs-orange);
+  --bs-btn-border-color: var(--bs-orange);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #FD670B;
+  --bs-btn-hover-border-color: #FD670B;
+  --bs-btn-focus-shadow-rgb: 217, 164, 6;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #FD670B;
+  --bs-btn-active-border-color: #FD670B;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--bs-orange);
+  --bs-btn-disabled-border-color: var(--bs-orange);
+}
