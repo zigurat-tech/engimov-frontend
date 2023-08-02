@@ -21,13 +21,15 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   listProducts: Product[] = []
   headerProducts = {
     title: 'Productos en venta',
-    subtitle: '"Explora nuestra variedad de productos en venta, desde artículos de alta calidad hasta opciones' +
-      ' asequibles. ¡Encuentra lo que necesitas hoy!"'
+    subtitle: 'Explora nuestra variedad de productos en venta, desde artículos de alta calidad hasta opciones' +
+      ' asequibles. ¡Encuentra lo que necesitas hoy!'
   }
   loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
   viewMode = 'cards'
+  category_filter = -1
+  order_by = '-1'
 
   set_hero_data = () => {
     this.heroService.set_loading(false)
@@ -59,13 +61,30 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
       this.loading = false
     })
-    this.utilsService.get_products_categories().subscribe(res => {
+    this.utilsService.get_products_sale_categories().subscribe(res => {
       res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
     })
   }
 
   ngAfterViewInit(): void {
-    this.loading = false
   }
 
+  filterAndOrder() {
+    this.loading = true
+    console.log(this.category_filter)
+    let query_params = []
+    this.listProducts = []
+    if (this.category_filter > 0)
+      query_params.push(`category=${this.category_filter}`)
+    if (this.order_by == 'down' || this.order_by == 'up')
+      query_params.push(`price=${this.order_by}`)
+    if (this.order_by == 'desc' || this.order_by == 'asc')
+      query_params.push(`order=${this.order_by}`)
+    this.utilsService.get_products_sale(query_params).subscribe(res => {
+      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
+        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
+      this.loading = false
+      console.log(this.listProducts)
+    })
+  }
 }

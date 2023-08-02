@@ -29,9 +29,6 @@ export class HeroComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.loading = false
-  }
-
-  ngAfterViewInit(): void {
     this.heroService.get_image().subscribe(value => {
       this.image = value
     })
@@ -40,12 +37,15 @@ export class HeroComponent implements OnInit, AfterViewInit {
     })
     this.heroService.get_title().subscribe(value => {
       this.title = value
-      console.log(this.title);
     })
     this.heroService.get_loading().subscribe(value => {
       this.loading = value
       console.log(new Date().getMinutes(),new Date().getSeconds())
       console.log('on init',this.loading)
     })
+  }
+
+  ngAfterViewInit(): void {
+
   }
 }

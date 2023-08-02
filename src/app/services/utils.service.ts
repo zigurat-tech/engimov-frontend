@@ -45,7 +45,7 @@ export class UtilsService {
   get_products_sale = (query_params: string[] = []): Observable<any> => {
     let url = this.url + '/core/products_sale/?'
     if (query_params) {
-      query_params.forEach(e => url += (e + '?'))
+      query_params.forEach(e => url += (e + '&'))
     }
     console.log(url)
     return this.http.get(url)

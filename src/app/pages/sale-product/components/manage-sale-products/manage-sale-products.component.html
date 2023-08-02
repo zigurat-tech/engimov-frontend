@@ -20,12 +20,22 @@
             <span class="d-none d-md-inline"> Tabla</span></label>
           <hr class="vr mx-1">
         </div>
-        <select class="form-select w-auto" aria-label="Default select example">
-          <option selected value="-1">Ordenar por</option>
-          <option value="1">Menor precio</option>
-          <option value="2">Mayor precio</option>
-          <option value="3">Más nuevo</option>
-        </select>
+        <div class="">
+          <select class="form-select d-inline mx-1 w-auto" aria-label="Orden select" (change)="filterAndOrder()"
+                  [(ngModel)]="order_by">
+            <option selected value="-1">Ordenar por</option>
+            <option value="down">Mayor precio</option>
+            <option value="up">Menor precio</option>
+            <option value="asc">A...Z</option>
+            <option value="desc">Z...A</option>
+          </select>
+
+          <select class="form-select d-inline mx-1 w-auto" name="category_filter" aria-label="Filter select"
+                  (change)="filterAndOrder()" [(ngModel)]="category_filter">
+            <option selected value="-1">Filtrar por</option>
+            <option value="{{cat.id}}" *ngFor="let cat of listCategories">{{cat.name}}</option>
+          </select>
+        </div>
       </div>
     </div>
     <hr class="">
