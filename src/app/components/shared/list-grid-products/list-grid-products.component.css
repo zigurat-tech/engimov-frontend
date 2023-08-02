@@ -1,10 +1,10 @@
 .div-img-product {
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
-  /*background-clip: content-box;*/
-  background-size: contain;
-  /*height: 230px;*/
+  background-size: cover;
+  cursor: pointer;
 }
+
 
 @media (max-width: 576px) {
   .div-img-product {

@@ -11,6 +11,14 @@ export class Product {
   private _waiting: boolean
   private _quantity: number
 
+  get quantity(): number {
+    return this._quantity;
+  }
+
+  set quantity(value: number) {
+    this._quantity = value;
+  }
+
   constructor(image: string, name: string, description: string, price: number,
               sku: string, visible: boolean, category: Category, quantity: number = 0) {
     this._image = image;

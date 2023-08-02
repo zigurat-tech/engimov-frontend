@@ -19,6 +19,7 @@ export class SaleService {
           <strong class="mx-1">Carrito de compras!</strong>`,
         `${prod.name} fue añadido al carrito!`))
       prod.waiting = false
+      prod.quantity += Number(span.innerText)
     }, 1000)
   }
 

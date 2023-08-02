@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, Output, TemplateRef} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {HeroService} from "@app/services/hero.service";
 import {Category} from "@app/models/category";
 import {Product} from "@app/models/product";
+import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-manage-sale-products',
@@ -10,7 +11,10 @@ import {Product} from "@app/models/product";
   styleUrls: ['./manage-sale-products.component.css']
 })
 export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
-  constructor(private utilsService: UtilsService, public heroService: HeroService) {
+  constructor(private utilsService: UtilsService, public heroService: HeroService, config: NgbModalConfig,
+              private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   listCategories: Category[] = []
@@ -21,6 +25,8 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       ' asequibles. ¡Encuentra lo que necesitas hoy!"'
   }
   loading = true
+  objectModal: Product = new Product('', '', '', 0,
+    '', false, new Category(1, ''))
 
   set_hero_data = () => {
     this.heroService.set_loading(false)
@@ -31,6 +37,11 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       this.heroService.set_loading(true)
       this.heroService.title = response[0].title
     })
+  }
+
+  openModal(prod: Product, content: TemplateRef<any>) {
+    this.objectModal = prod
+    this.modalService.open(content,);
   }
 
   ngOnInit(): void {

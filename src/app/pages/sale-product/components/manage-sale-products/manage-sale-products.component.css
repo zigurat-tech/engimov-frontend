@@ -1,0 +1,14 @@
+.imgProdDetails {
+  width: 100%;
+  height: 350px;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 576px) {
+  .imgProdDetails {
+    height: 450px;
+  }
+}
