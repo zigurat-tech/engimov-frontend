@@ -7,6 +7,7 @@ import {ManageSaleProductsComponent} from './components/manage-sale-products/man
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ListGridProductsModule} from "@app/components/shared/list-grid-products/list-grid-products.module";
 import {ListTableProductsModule} from "@app/components/shared/list-table-products/list-table-products.module";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,13 +15,14 @@ import {ListTableProductsModule} from "@app/components/shared/list-table-product
     SaleProductComponent,
     ManageSaleProductsComponent
   ],
-  imports: [
-    CommonModule,
-    SaleProductRoutingModule,
-    LoaderModule,
-    ListGridProductsModule,
-    ListTableProductsModule
-  ]
+    imports: [
+        CommonModule,
+        SaleProductRoutingModule,
+        LoaderModule,
+        ListGridProductsModule,
+        ListTableProductsModule,
+        FormsModule
+    ]
 })
 export class SaleProductModule {
 }

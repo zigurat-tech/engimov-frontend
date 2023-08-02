@@ -280,3 +280,7 @@ body {
   --bs-btn-disabled-bg: var(--bs-orange);
   --bs-btn-disabled-border-color: var(--bs-orange);
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}

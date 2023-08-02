@@ -1,2 +1,48 @@
-<p>list-table-products works!</p>
-<p *ngFor="let prod of listProducts">{{prod.name}}</p>
+<app-toast></app-toast>
+<div class="container">
+  <div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
+    <table class="table table-hover">
+      <thead>
+      <tr>
+        <th scope="col" class="text-center d-none d-sm-table-cell">Imagen</th>
+        <th scope="col">Nombre</th>
+        <th scope="col" class="d-none d-md-table-cell">Categoría</th>
+        <th scope="col" class="d-none d-lg-table-cell">Descripción</th>
+        <th scope="col">Precio($)</th>
+        <th scope="col" class="text-">Opciones</th>
+      </tr>
+      </thead>
+      <tbody class="table-group-divider">
+      <tr *ngFor="let prod of listProducts" class="cursor-pointer align-middle" (click)="openModal(prod)">
+        <td class="text-center d-none d-sm-table-cell">
+          <img src="{{prod.image}}" height="65" alt="{{prod.name}}">
+        </td>
+        <td>{{prod.name}}</td>
+        <td class="d-none d-md-table-cell">{{prod.category.name}}</td>
+        <td class="d-none d-lg-table-cell">{{prod.description.length <= 100 ?
+          prod.description : prod.description.slice(0, 100) + ' ...'}}</td>
+        <td>{{prod.price.toFixed(2)}}</td>
+        <td (click)="stopEvent($event)">
+          <div class="d-flex justify-content-start align-items-center">
+
+            <div class="input-group input-group-sm" style="width: 100px">
+              <button type="button" (click)="this.saleService.decrease(span)"
+                      class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
+              </button>
+              <span class="form-control form-control-sm border-secondary border-end-0 border-start-0 text-center"
+                    style="font-size: .8rem" #span>1</span>
+              <button type="button" (click)="this.saleService.increase(span)"
+                      class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
+              </button>
+            </div>
+            <button class="btn btn-orange btn-sm mx-1 rounded-circle" (click)="this.saleService.addCart(prod,span)">
+                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

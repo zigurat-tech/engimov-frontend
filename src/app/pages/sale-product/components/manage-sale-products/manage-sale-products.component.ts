@@ -27,6 +27,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
+  viewMode = 'cards'
 
   set_hero_data = () => {
     this.heroService.set_loading(false)
@@ -44,8 +45,15 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.modalService.open(content,);
   }
 
+  changeViewMode() {
+    localStorage.setItem('view_mode', JSON.stringify(this.viewMode))
+  }
+
   ngOnInit(): void {
     this.set_hero_data()
+    if (localStorage.getItem('view_mode'))
+      this.viewMode = JSON.parse(localStorage.getItem('view_mode')!)
+
     this.utilsService.get_products_sale().subscribe((res: any) => {
       res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
@@ -59,4 +67,5 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.loading = false
   }
+
 }
