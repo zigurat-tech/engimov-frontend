@@ -7,21 +7,20 @@
       <p *ngIf="headerProducts.subtitle">{{headerProducts.subtitle}}</p>
     </div>
     <div class="card">
-      <div class="card-body rounded-0 d-flex justify-content-between align-items-center">
-        <div class="view-mode d-flex justify-content-between align-items-center">
+      <div class="card-body rounded-0 g-1 row">
+        <div class="view-mode col-12 col-md-6 d-flex align-items-center">
           <input type="radio" class="btn-check" name="view_mode" id="option2" value="cards" autocomplete="off"
                  [checked]="viewMode=='cards'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option2"><i class="bi text-black-50 bi-grid-3x3-gap"></i> <span
-            class="d-none d-md-inline"> Tarjetas</span></label>
-
+            class=""> Tarjetas</span></label>
+<!--          <hr class="vr mx-1 align-middle">-->
           <input type="radio" class="btn-check" name="view_mode" value="table" id="option1" autocomplete="off"
                  [checked]="viewMode=='table'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option1"><i class="bx bi-list"></i>
-            <span class="d-none d-md-inline"> Tabla</span></label>
-          <hr class="vr mx-1">
+            <span class=""> Tabla</span></label>
         </div>
-        <div class="">
-          <select class="form-select d-inline mx-1 w-auto" aria-label="Orden select" (change)="filterAndOrder()"
+        <div class="text-start text-md-end col-12 col-md-6">
+          <select class="form-select mx-1 d-inline w-auto" aria-label="Orden select" (change)="filterAndOrder()"
                   [(ngModel)]="order_by">
             <option selected value="-1">Ordenar por</option>
             <option value="down">Mayor precio</option>
@@ -29,8 +28,8 @@
             <option value="asc">A...Z</option>
             <option value="desc">Z...A</option>
           </select>
-
-          <select class="form-select d-inline mx-1 w-auto" name="category_filter" aria-label="Filter select"
+          <hr class="vr align-middle">
+          <select class="form-select mx-1 d-inline w-auto" name="category_filter" aria-label="Filter select"
                   (change)="filterAndOrder()" [(ngModel)]="category_filter">
             <option selected value="-1">Filtrar por</option>
             <option value="{{cat.id}}" *ngFor="let cat of listCategories">{{cat.name}}</option>

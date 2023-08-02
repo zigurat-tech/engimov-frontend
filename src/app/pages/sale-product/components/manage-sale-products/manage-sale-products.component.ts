@@ -71,15 +71,16 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
 
   filterAndOrder() {
     this.loading = true
-    console.log(this.category_filter)
     let query_params = []
     this.listProducts = []
+
     if (this.category_filter > 0)
       query_params.push(`category=${this.category_filter}`)
     if (this.order_by == 'down' || this.order_by == 'up')
       query_params.push(`price=${this.order_by}`)
     if (this.order_by == 'desc' || this.order_by == 'asc')
       query_params.push(`order=${this.order_by}`)
+
     this.utilsService.get_products_sale(query_params).subscribe(res => {
       res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))

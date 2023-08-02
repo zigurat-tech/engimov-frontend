@@ -1,7 +1,7 @@
 <app-toast></app-toast>
 <div class="container">
   <div class="row grid-products d-flex g-3 justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3
-    row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="150">
+    row-cols-lg-4 row-cols-xl-5" data-aos="fade-up" data-aos-delay="100">
     <div class="col" *ngFor="let prod of listProducts">
       <div class="card h-100 rounded-0">
         <div class="row g-0 h-100">
@@ -24,7 +24,7 @@
                           class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
                   </button>
                   <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
-                        style="font-size: .8rem" #span>1</span>
+                        style="font-size: .8rem" #span>{{prod.quantity ? prod.quantity : 1}}</span>
                   <button type="button" (click)="this.saleService.increase(span)"
                           class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
                   </button>

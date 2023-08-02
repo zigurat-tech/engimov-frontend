@@ -1,6 +1,6 @@
 <app-toast></app-toast>
 <div class="container">
-  <div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
+  <div class="table-responsive" data-aos="fade-up" data-aos-delay="100">
     <table class="table table-hover">
       <thead>
       <tr>
@@ -30,7 +30,7 @@
                       class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
               </button>
               <span class="form-control form-control-sm border-secondary border-end-0 border-start-0 text-center"
-                    style="font-size: .8rem" #span>1</span>
+                    style="font-size: .8rem" #span>{{prod.quantity ? prod.quantity : 1}}</span>
               <button type="button" (click)="this.saleService.increase(span)"
                       class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
               </button>
