@@ -31,6 +31,12 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   category_filter = -1
   order_by = '-1'
 
+  collectionSize = 0
+  page = 1
+  total_of_pages = 1
+  pagesX10: number[] | undefined = []
+  page_size = 10
+
   set_hero_data = () => {
     this.heroService.set_loading(false)
     this.utilsService.section_sale().subscribe(response => {
@@ -51,22 +57,35 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     localStorage.setItem('view_mode', JSON.stringify(this.viewMode))
   }
 
+
   ngOnInit(): void {
     this.set_hero_data()
     if (localStorage.getItem('view_mode'))
       this.viewMode = JSON.parse(localStorage.getItem('view_mode')!)
 
-    this.utilsService.get_products_sale().subscribe((res: any) => {
-      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
-      this.loading = false
-    })
     this.utilsService.get_products_sale_categories().subscribe(res => {
       res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
     })
+    this.loadData()
+
   }
 
   ngAfterViewInit(): void {
+  }
+
+  loadData(query_params: string[] = []) {
+    this.loading = true
+    this.listProducts = []
+    this.utilsService.get_products_sale(query_params).subscribe((res: any) => {
+      console.log(res)
+      this.collectionSize = res.count
+      this.total_of_pages = Math.ceil(this.collectionSize / this.page_size)
+      console.log(this.total_of_pages)
+      this.pagesX10 = this.getPagesX10()
+      res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
+        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
+      this.loading = false
+    })
   }
 
   filterAndOrder() {
@@ -81,11 +100,72 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     if (this.order_by == 'desc' || this.order_by == 'asc')
       query_params.push(`order=${this.order_by}`)
 
-    this.utilsService.get_products_sale(query_params).subscribe(res => {
-      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
-      this.loading = false
-      console.log(this.listProducts)
-    })
+    this.loadData(query_params)
   }
+
+  getPagesX10(): number[] | undefined {
+    let pages10: number[] | undefined = []
+    for (let i of this.getPages10in10().keys()) {
+      if (this.page <= i && this.getPages10in10().has(i)) {
+        pages10 = this.getPages10in10().get(i)
+        break
+      }
+    }
+    return pages10
+  }
+
+  getPages10in10() {
+    let mapa: Map<number, number[]> = new Map<number, number[]>()
+    let cont = 0,
+      key = 10,
+      arr: number[] = [],
+      aux = this.total_of_pages,
+      stop = 10
+
+    for (let i = 1; i <= this.total_of_pages; i++) {
+      cont++
+      arr.push(i)
+      if (aux < 10)
+        stop = aux
+      if (cont === stop) {
+        mapa.set(key, arr)
+        key += 10
+        arr = []
+        cont = 0
+        aux -= 10
+      }
+    }
+    return mapa
+  }
+
+  nextPage() {
+    this.page++
+    this.loading = true
+    this.listProducts = []
+    this.loadData([`page=${this.page}`,])
+  }
+
+  previousPage() {
+    this.page--
+    this.loading = true
+    this.listProducts = []
+    this.loadData([`page=${this.page}`,])
+  }
+
+  previousPageClass() {
+    return this.page !== 1
+  }
+
+  nextPageClass() {
+    return this.page !== this.total_of_pages
+  }
+
+  selectedPage(numPgae: number) {
+    this.page = numPgae
+    this.loading = true
+    this.listProducts = []
+    this.loadData([`page=${this.page}`])
+  }
+
+  protected readonly Array = Array;
 }

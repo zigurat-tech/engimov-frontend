@@ -13,7 +13,7 @@
                  [checked]="viewMode=='cards'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option2"><i class="bi text-black-50 bi-grid-3x3-gap"></i> <span
             class=""> Tarjetas</span></label>
-<!--          <hr class="vr mx-1 align-middle">-->
+          <!--          <hr class="vr mx-1 align-middle">-->
           <input type="radio" class="btn-check" name="view_mode" value="table" id="option1" autocomplete="off"
                  [checked]="viewMode=='table'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option1"><i class="bx bi-list"></i>
@@ -44,6 +44,52 @@
                           [listProducts]="listProducts"></app-list-grid-products>
   <app-list-table-products (eventModal)="openModal($event, content)" *ngIf="!loading && viewMode=='table'"
                            [listProducts]="listProducts"></app-list-table-products>
+
+  <!--  <ngb-pagination-->
+  <!--    class="d-flex justify-content-center"-->
+  <!--    (pageChange)="getPageFromService()"-->
+  <!--    [pageSize]="10"-->
+  <!--    [collectionSize]="collectionSize"-->
+  <!--    [(page)]="page"-->
+  <!--    (click)="changePage($event.target)"-->
+  <!--    [boundaryLinks]="true">-->
+  <!--  </ngb-pagination>-->
+  <br>
+  <div *ngIf="listProducts.length" class="d-flex justify-content-center">
+    <ul class="pagination">
+      <li class="page-item" *ngIf="previousPageClass()">
+        <a class="page-link" (click)="previousPage()">&laquo;Anterior</a>
+      </li>
+
+      <li class="page-item"
+          *ngIf="!getPages10in10().get(10)?.includes(page)">
+        <a class="page-link"
+           (click)="selectedPage(total_of_pages-(total_of_pages-1))">
+          {{total_of_pages - (total_of_pages - 1)}}</a>
+      </li>
+      <span class="mx-2 fs-3"
+            *ngIf="!getPages10in10().get(10)?.includes(page)">
+      ...</span>
+
+      <li class="page-item" *ngFor="let numPgae of pagesX10">
+        <a class="page-link" [ngClass]="page===numPgae?'active':''"
+           (click)="selectedPage(numPgae)">{{numPgae}}</a>
+      </li>
+
+      <span class="mx-2 fs-3"
+            *ngIf="!getPages10in10().get(Array.from(getPages10in10().keys()).length*10)?.includes(page)">
+      ...</span>
+      <li class="page-item"
+          *ngIf="!getPages10in10().get(Array.from(getPages10in10().keys()).length*10)?.includes(page)">
+        <a class="page-link" (click)="selectedPage(total_of_pages)">{{total_of_pages}}</a>
+      </li>
+
+      <li class="page-item " *ngIf="nextPageClass()">
+        <a class="page-link" (click)="nextPage()">Siguiente&raquo;</a>
+      </li>
+    </ul>
+  </div>
+
 
 </section>
 

@@ -12,3 +12,7 @@
     height: 450px;
   }
 }
+
+.page-link {
+  cursor: pointer;
+}

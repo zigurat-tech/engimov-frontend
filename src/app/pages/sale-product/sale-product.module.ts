@@ -8,6 +8,7 @@ import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ListGridProductsModule} from "@app/components/shared/list-grid-products/list-grid-products.module";
 import {ListTableProductsModule} from "@app/components/shared/list-table-products/list-table-products.module";
 import {FormsModule} from "@angular/forms";
+import {NgbPagination} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
         LoaderModule,
         ListGridProductsModule,
         ListTableProductsModule,
-        FormsModule
+        FormsModule,
+        NgbPagination
     ]
 })
 export class SaleProductModule {
