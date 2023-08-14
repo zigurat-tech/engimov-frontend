@@ -31,7 +31,6 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   category_filter = -1
   order_by = '-1'
 
-  collectionSize = 0
   page = 1
   total_of_pages = 1
   pages_per_size: number[] | undefined = []
@@ -78,10 +77,9 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.listProducts = []
     this.utilsService.get_products_sale(query_params).subscribe((res: any) => {
       console.log(res)
-      this.collectionSize = res.count
-      this.total_of_pages = Math.ceil(this.collectionSize / this.page_size)
+      this.total_of_pages = Math.ceil(res.count / this.page_size)
       console.log(this.total_of_pages)
-      this.pages_per_size = this.getPagesPerSize()
+      this.pages_per_size = this.getPagesX10()
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
       this.loading = false
@@ -103,18 +101,18 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.loadData(query_params)
   }
 
-  getPagesPerSize(): number[] | undefined {
-    let pagesSize: number[] | undefined = []
-    for (let i of this.getPagesSizeInSize().keys()) {
-      if (this.page <= i && this.getPagesSizeInSize().has(i)) {
-        pagesSize = this.getPagesSizeInSize().get(i)
+  getPagesX10(): number[] | undefined {
+    let pages10: number[] | undefined = []
+    for (let i of this.getPages10in10().keys()) {
+      if (this.page <= i && this.getPages10in10().has(i)) {
+        pages10 = this.getPages10in10().get(i)
         break
       }
     }
-    return pagesSize
+    return pages10
   }
 
-  getPagesSizeInSize() {
+  getPages10in10() {
     let mapa: Map<number, number[]> = new Map<number, number[]>()
     let cont = 0,
       key = 10,
@@ -168,4 +166,5 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   }
 
   protected readonly Array = Array;
+
 }
