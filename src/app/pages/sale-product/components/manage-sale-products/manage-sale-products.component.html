@@ -45,17 +45,17 @@
   <app-list-table-products (eventModal)="openModal($event, content)" *ngIf="!loading && viewMode=='table'"
                            [listProducts]="listProducts"></app-list-table-products>
 
-  <!--  <ngb-pagination-->
-  <!--    class="d-flex justify-content-center"-->
-  <!--    (pageChange)="getPageFromService()"-->
-  <!--    [pageSize]="10"-->
-  <!--    [collectionSize]="collectionSize"-->
-  <!--    [(page)]="page"-->
-  <!--    (click)="changePage($event.target)"-->
-  <!--    [boundaryLinks]="true">-->
-  <!--  </ngb-pagination>-->
+<!--    <ngb-pagination
+      class="d-flex justify-content-center"
+      (pageChange)="getPageFromService()"
+      [pageSize]="10"
+      [collectionSize]="collectionSize"
+      [(page)]="page"
+      (click)="changePage($event.target)"
+      [boundaryLinks]="true">
+    </ngb-pagination>-->
   <br>
-  <div *ngIf="listProducts.length" class="d-flex justify-content-center">
+  <div *ngIf="!loading" class="d-flex justify-content-center">
     <ul class="pagination mb-0">
       <li class="page-item">
         <a class="page-link" [class.disabled]="!previousPageClass()" (click)="selectedPage(1)">&laquo;</a>

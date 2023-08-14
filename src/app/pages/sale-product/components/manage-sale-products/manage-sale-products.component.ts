@@ -66,7 +66,6 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
     })
     this.loadData([`page_size=${this.page_size}`])
-
   }
 
   ngAfterViewInit(): void {
@@ -78,7 +77,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.utilsService.get_products_sale(query_params).subscribe((res: any) => {
       console.log(res)
       this.total_of_pages = Math.ceil(res.count / this.page_size)
-      console.log(this.total_of_pages)
+      console.log('total of pages ', this.total_of_pages)
       this.pages_per_size = this.getPagesX10()
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
@@ -86,9 +85,13 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     })
   }
 
-  filterAndOrder() {
+  filterAndOrder(send_page = false) {
     this.loading = true
-    let query_params = [`page_size=${this.page_size}`]
+    let query_params = [`page_size=${this.page_size}`,]
+    if (send_page)
+      query_params.push(`page=${this.page}`)
+    else this.page = 1
+
     this.listProducts = []
 
     if (this.category_filter > 0)
@@ -138,31 +141,21 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
 
   nextPage() {
     this.page++
-    this.loading = true
-    this.listProducts = []
-    this.loadData([`page=${this.page}`,])
+    this.filterAndOrder(true)
   }
 
   previousPage() {
     this.page--
-    this.loading = true
-    this.listProducts = []
-    this.loadData([`page=${this.page}`,])
+    this.filterAndOrder(true)
   }
 
-  previousPageClass() {
-    return this.page !== 1
-  }
+  previousPageClass = () => this.page !== 1
 
-  nextPageClass() {
-    return this.page !== this.total_of_pages
-  }
+  nextPageClass = () => this.page !== this.total_of_pages
 
   selectedPage(numPgae: number) {
     this.page = numPgae
-    this.loading = true
-    this.listProducts = []
-    this.loadData([`page=${this.page}`, `page_size=${this.page_size}`])
+    this.filterAndOrder(true)
   }
 
   protected readonly Array = Array;
