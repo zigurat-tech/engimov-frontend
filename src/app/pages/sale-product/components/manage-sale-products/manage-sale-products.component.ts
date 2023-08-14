@@ -34,7 +34,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   collectionSize = 0
   page = 1
   total_of_pages = 1
-  pagesX10: number[] | undefined = []
+  pages_per_size: number[] | undefined = []
   page_size = 10
 
   set_hero_data = () => {
@@ -66,7 +66,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.utilsService.get_products_sale_categories().subscribe(res => {
       res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
     })
-    this.loadData()
+    this.loadData([`page_size=${this.page_size}`])
 
   }
 
@@ -81,7 +81,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       this.collectionSize = res.count
       this.total_of_pages = Math.ceil(this.collectionSize / this.page_size)
       console.log(this.total_of_pages)
-      this.pagesX10 = this.getPagesX10()
+      this.pages_per_size = this.getPagesPerSize()
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
       this.loading = false
@@ -90,7 +90,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
 
   filterAndOrder() {
     this.loading = true
-    let query_params = []
+    let query_params = [`page_size=${this.page_size}`]
     this.listProducts = []
 
     if (this.category_filter > 0)
@@ -103,18 +103,18 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.loadData(query_params)
   }
 
-  getPagesX10(): number[] | undefined {
-    let pages10: number[] | undefined = []
-    for (let i of this.getPages10in10().keys()) {
-      if (this.page <= i && this.getPages10in10().has(i)) {
-        pages10 = this.getPages10in10().get(i)
+  getPagesPerSize(): number[] | undefined {
+    let pagesSize: number[] | undefined = []
+    for (let i of this.getPagesSizeInSize().keys()) {
+      if (this.page <= i && this.getPagesSizeInSize().has(i)) {
+        pagesSize = this.getPagesSizeInSize().get(i)
         break
       }
     }
-    return pages10
+    return pagesSize
   }
 
-  getPages10in10() {
+  getPagesSizeInSize() {
     let mapa: Map<number, number[]> = new Map<number, number[]>()
     let cont = 0,
       key = 10,
@@ -164,7 +164,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.page = numPgae
     this.loading = true
     this.listProducts = []
-    this.loadData([`page=${this.page}`])
+    this.loadData([`page=${this.page}`, `page_size=${this.page_size}`])
   }
 
   protected readonly Array = Array;
