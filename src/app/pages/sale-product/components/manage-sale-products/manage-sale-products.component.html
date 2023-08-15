@@ -55,8 +55,8 @@
       [boundaryLinks]="true">
     </ngb-pagination>-->
   <br>
-  <div *ngIf="!loading" class="d-flex justify-content-center">
-    <ul class="pagination mb-0">
+  <div *ngIf="!loading" class="">
+    <ul class="pagination mb-0 flex-wrap g-2 justify-content-center">
       <li class="page-item">
         <a class="page-link" [class.disabled]="!previousPageClass()" (click)="selectedPage(1)">&laquo;</a>
       </li>
@@ -91,16 +91,17 @@
         <a class="page-link" [class.disabled]="!nextPageClass()" (click)="nextPage()">&rsaquo;</a>
       </li>
       <li class="page-item">
-        <a class="page-link" [class.disabled]="!nextPageClass()" (click)="selectedPage(total_of_pages)">&raquo;</a>
+        <a class="page-link rounded-end" [class.disabled]="!nextPageClass()" (click)="selectedPage(total_of_pages)">&raquo;</a>
       </li>
+      <select class="form-select mx-1 d-inline w-auto" aria-label="Page Size" (change)="filterAndOrder()"
+              [(ngModel)]="page_size">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="100">100</option>
+      </select>
     </ul>
-    <select class="form-select mx-1 d-inline w-auto" aria-label="Page Size" (change)="filterAndOrder()"
-            [(ngModel)]="page_size">
-      <option value="5">5</option>
-      <option value="10">10</option>
-      <option value="20">20</option>
-      <option value="100">100</option>
-    </select>
+
 
   </div>
 

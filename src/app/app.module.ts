@@ -16,6 +16,7 @@ import {IndexModule} from "@app/pages/index/index.module";
 import {PortfolioProductModule} from "@app/pages/portfolio-product/portfolio-product.module";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ToastModule} from "@app/components/shared/toast/toast.module";
+import {WorkWithUsModule} from "@app/pages/work-with-us/work-with-us.module";
 
 export function initApp() {
   return () => {
@@ -50,6 +51,7 @@ export function initApp() {
     IndexModule,
     PortfolioProductModule,
     ToastModule,
+    WorkWithUsModule,
   ],
   providers: [],
   exports: [],

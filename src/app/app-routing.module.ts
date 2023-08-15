@@ -15,6 +15,7 @@ const routes: Routes = [
   {
     path: '', loadChildren: () => import('@app/pages/sale-product/sale-product.module').then(m => m.SaleProductModule)
   },
+  {path: '', loadChildren: () => import('@app/pages/work-with-us/work-with-us.module').then(m => m.WorkWithUsModule)},
   {path: '**', pathMatch: "full", redirectTo: '404'}
 ];
 

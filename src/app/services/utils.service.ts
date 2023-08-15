@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {environment} from "@src/environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import {Observable} from "rxjs";
 export class UtilsService {
   url = environment.url
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
   }
 
   section_index(): Observable<any> {
@@ -30,6 +31,8 @@ export class UtilsService {
 
   section_sale = (): Observable<any> => this.http.get(this.url + '/sections/sell/')
 
+  section_work_with_us = (): Observable<any> => this.http.get(this.url + '/sections/work_with_us/')
+
 
   enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')
@@ -48,6 +51,7 @@ export class UtilsService {
       query_params.forEach(e => url += (e + '&'))
     }
     console.log(url)
+    // this.router.navigateByUrl('/product_sale')
     return this.http.get(url)
   }
 
@@ -63,4 +67,7 @@ export class UtilsService {
   create_contact(formData: any): Observable<any> {
     return this.http.post(this.url + '/core/contacts/', formData)
   }
+
+  get_works = (id = ''): Observable<any> => this.http.get(this.url + '/core/works/' + id)
+  get_works_categories = (id = ''): Observable<any> => this.http.get(this.url + '/core/workcategories/' + id)
 }
