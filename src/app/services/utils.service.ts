@@ -68,6 +68,12 @@ export class UtilsService {
     return this.http.post(this.url + '/core/contacts/', formData)
   }
 
-  get_works = (id = ''): Observable<any> => this.http.get(this.url + '/core/works/' + id)
+  get_works = (query_params: string[]): Observable<any> => {
+    let url = this.url + '/core/works/?'
+    if (query_params) {
+      query_params.forEach(e => url += (e + '&'))
+    }
+    return this.http.get(url)
+  }
   get_works_categories = (id = ''): Observable<any> => this.http.get(this.url + '/core/workcategories/' + id)
 }
