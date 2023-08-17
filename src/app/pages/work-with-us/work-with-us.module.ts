@@ -6,13 +6,17 @@ import {WorkWithUsComponent} from './work-with-us.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import { WorkComponent } from './work/work.component';
+import {WorkComponent} from '@app/pages/work-with-us/components/work/work.component';
+import { CanteraDeEmpleoComponent } from './components/work/components/cantera-de-empleo/cantera-de-empleo.component';
+import { ContactoComercialComponent } from './components/work/components/contacto-comercial/contacto-comercial.component';
 
 
 @NgModule({
   declarations: [
     WorkWithUsComponent,
-    WorkComponent
+    WorkComponent,
+    CanteraDeEmpleoComponent,
+    ContactoComercialComponent,
   ],
   imports: [
     CommonModule,
