@@ -6,11 +6,13 @@ import {WorkWithUsComponent} from './work-with-us.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { WorkComponent } from './work/work.component';
 
 
 @NgModule({
   declarations: [
-    WorkWithUsComponent
+    WorkWithUsComponent,
+    WorkComponent
   ],
   imports: [
     CommonModule,
