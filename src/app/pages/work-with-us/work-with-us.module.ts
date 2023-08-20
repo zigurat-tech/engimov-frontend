@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {WorkComponent} from '@app/pages/work-with-us/components/work/work.component';
 import { CanteraDeEmpleoComponent } from './components/work/components/cantera-de-empleo/cantera-de-empleo.component';
 import { ContactoComercialComponent } from './components/work/components/contacto-comercial/contacto-comercial.component';
+import {ToastModule} from "@app/components/shared/toast/toast.module";
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ContactoComercialComponent } from './components/work/components/contact
     LoaderModule,
     ReactiveFormsModule,
     FormsModule,
+    ToastModule,
   ]
 })
 export class WorkWithUsModule {
