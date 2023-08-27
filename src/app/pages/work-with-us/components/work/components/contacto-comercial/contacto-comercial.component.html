@@ -1,1 +1,46 @@
-<p>contacto-comercial works!</p>
+<app-toast></app-toast>
+<div class="card">
+  <div class="card-body p-2">
+    <form method="post" role="form" (ngSubmit)="onSubmit($event)" class="php-email-form" [formGroup]="form">
+      <div class="row g-2">
+        <div class="col-12 col-lg-12 col-md-6 form-group">
+          <input type="text" formControlName="name" name="name" class="form-control" id="name{{work.id}}"
+                 placeholder="Nombre" required>
+        </div>
+        <div class="col-12 col-lg-12 col-md-6 form-group ">
+          <input type="email" formControlName="email" class="form-control" name="email" id="email{{work.id}}"
+                 placeholder="Correo" required>
+        </div>
+        <div class="col-12 col-lg-12 col-md-6 form-group ">
+          <input type="text" formControlName="tel" class="form-control" name="email" id="tel{{work.id}}"
+                 placeholder="Teléfono">
+        </div>
+        <div class="col-12 col-lg-12 col-md-6 form-group ">
+          <input type="text" formControlName="education" class="form-control" name="education" id="education{{work.id}}"
+                 placeholder="Educación">
+        </div>
+        <div class="col-12 form-group ">
+          <input type="text" formControlName="skills" class="form-control" name="skills" id="skills{{work.id}}"
+                 placeholder="Habilidades">
+        </div>
+        <div class="form-group col-12">
+            <textarea class="form-control" formControlName="experience" name="experience" rows="3"
+                      placeholder="Experiencia laboral"></textarea>
+        </div>
+        <div class="col-12 mb-2 form-group text-center">
+          <label for="cv{{work.id}}" class="form-label small">Adjunte su CV</label>
+          <input type="file" formControlName="cv" class="form-control" name="cv" id="cv{{work.id}}"
+                 placeholder="CV" required>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+          Enviar <i *ngIf="!loading" class="bx bi-send-fill"></i>
+          <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"
+                aria-hidden="true"></span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

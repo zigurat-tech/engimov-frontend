@@ -16,7 +16,7 @@
                  placeholder="Teléfono">
         </div>
         <div class="col-12 col-lg-12 col-md-6 form-group ">
-          <input type="text" formControlName="education" class="form-control" name="education" id="education{{work.id}}"
+          <input type="text" formControlName="formation" class="form-control" name="formation" id="formation{{work.id}}"
                  placeholder="Educación">
         </div>
         <div class="col-12 form-group ">
@@ -33,10 +33,9 @@
                  placeholder="CV" required>
         </div>
       </div>
-
       <div class="text-center">
         <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-              Enviar <i *ngIf="!loading" class="bx bi-send-fill"></i>
+          Enviar <i *ngIf="!loading" class="bx bi-send-fill"></i>
           <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"
                 aria-hidden="true"></span>
         </button>

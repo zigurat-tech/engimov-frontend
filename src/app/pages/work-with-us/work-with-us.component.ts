@@ -49,7 +49,7 @@ export class WorkWithUsComponent implements OnInit {
   load_works(query_params: string[] = []) {
     this.loadingWorks = true
     this.list_works = []
-    this.utilsService.get_works(query_params).subscribe(resp => {
+    this.utilsService.get_job_offers(query_params).subscribe(resp => {
       this.total_of_pages = Math.ceil(resp.count / this.page_size)
       this.pages_per_size = this.getPagesX10()
 

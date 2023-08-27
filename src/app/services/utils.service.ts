@@ -64,12 +64,20 @@ export class UtilsService {
   }
   get_products_sale_categories = (): Observable<any> => this.http.get(this.url + '/core/productcategories_sale/')
 
-  create_contact(formData: any): Observable<any> {
-    return this.http.post(this.url + '/core/contacts/', formData)
-  }
+  create_contact = (formData: any): Observable<any> => this.http.post(this.url + '/core/contacts/', formData)
+
+  create_job_offer_pool = (formData: any): Observable<any> => this.http.post(this.url + '/core/job_offers_pool/', formData)
 
   get_works = (query_params: string[]): Observable<any> => {
     let url = this.url + '/core/works/?'
+    if (query_params) {
+      query_params.forEach(e => url += (e + '&'))
+    }
+    return this.http.get(url)
+  }
+
+  get_job_offers = (query_params: string[]): Observable<any> => {
+    let url = this.url + '/core/job_offers/?'
     if (query_params) {
       query_params.forEach(e => url += (e + '&'))
     }
