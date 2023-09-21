@@ -66,7 +66,8 @@ export class UtilsService {
 
   create_contact = (formData: any): Observable<any> => this.http.post(this.url + '/core/contacts/', formData)
 
-  create_job_offer_pool = (formData: any): Observable<any> => this.http.post(this.url + '/core/job_offers_pool/', formData)
+  create_job_offer_pool = (formData: any): Observable<any> =>
+    this.http.post(this.url + '/core/job_offers_pool/', formData)
 
   get_works = (query_params: string[]): Observable<any> => {
     let url = this.url + '/core/works/?'
