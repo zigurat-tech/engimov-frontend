@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {LoadScriptService} from "@app/services/load-script.service";
+import {JsService} from "@app/services/js.service";
 
 @Component({
   selector: 'app-navbar',
@@ -11,7 +12,8 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   collapsed = true;
   current_url = ''
 
-  constructor(private elementRef: ElementRef, private router: Router, private loadScriptService: LoadScriptService) {
+  constructor(private elementRef: ElementRef, public router: Router, private loadScriptService: LoadScriptService,
+              public jsService: JsService) {
     this.current_url = router.url
     console.log(this.current_url)
   }
@@ -180,4 +182,13 @@ export class NavbarComponent implements AfterViewInit, OnInit {
     //   console.log('External script failed to load');
     // });
   }
+
+  navigate(url: string, hash = '') {
+    this.router.navigate([url]).then(value => {
+      if (hash)
+        this.jsService.scrollto(hash)
+    })
+  }
+
+  protected readonly window = window;
 }
