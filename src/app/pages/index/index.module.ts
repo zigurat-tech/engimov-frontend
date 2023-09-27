@@ -10,6 +10,8 @@ import {NgxCaptchaModule} from "ngx-captcha";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {PortfolioModule} from "@app/components/shared/portfolio/portfolio.module";
 import {ToastModule} from "@app/components/shared/toast/toast.module";
+import {CarouselComponent} from './components/carousel/carousel.component';
+import {NgbCarousel, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import {ToastModule} from "@app/components/shared/toast/toast.module";
     IndexComponent,
     AboutComponent,
     ContactComponent,
+    CarouselComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,9 @@ import {ToastModule} from "@app/components/shared/toast/toast.module";
     FormsModule,
     LoaderModule,
     PortfolioModule,
-    ToastModule
+    ToastModule,
+    NgbCarousel,
+    NgbSlide
   ],
   exports: [
     AboutComponent,

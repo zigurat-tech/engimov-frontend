@@ -1,0 +1,17 @@
+<section id="carousel" class="carousel py-0">
+  <div class="container">
+    <app-loader *ngIf="!loading"></app-loader>
+
+    <ngb-carousel *ngIf="loading">
+      <ng-template ngbSlide *ngFor="let work of list_works;let i = index;">
+        <div class="picsum-img-wrapper">
+          <img src="{{work.image}}" class="img-carousel w-100" alt="{{work.name}}"/>
+        </div>
+<!--        <div class="carousel-caption">-->
+<!--          <h4><span>{{work.name}}</span></h4>-->
+<!--          <p><span>{{work.description}}</span></p>-->
+<!--        </div>-->
+      </ng-template>
+    </ngb-carousel>
+  </div>
+</section>

@@ -6,7 +6,8 @@
 }
 
 .cube1, .cube2 {
-  background-color: #333;
+  /*background-color: #333;*/
+  background-color: var(--engimov-blue-dark);
   width: 15px;
   height: 15px;
   position: absolute;

@@ -4,21 +4,21 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" *ngIf="loading">
+      <div class="col-lg-5 order-1 order-lg-2" data-aos="fade-left" *ngIf="loading">
         <img src="{{image}}" class="img-fluid" alt="">
       </div>
-      <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center align-items-center"
+      <div class="col-lg-5 order-1 order-lg-2 d-flex justify-content-center align-items-center"
            style="position: relative" *ngIf="!loading">
         <app-loader style="position: absolute;z-index: 1;"></app-loader>
         <img src="../../../../../assets/img/placeholder.png" class="img-fluid d-block" alt="">
       </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" *ngIf="loading">
+      <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" *ngIf="loading">
         <h3>{{title}}</h3>
         <p>
           {{subtitle}}
         </p>
       </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" *ngIf="!loading">
+      <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-1 content" *ngIf="!loading">
         <h3 class="placeholder-glow placeholder-lg">
           <span class="placeholder w-50 bg-black"></span>
         </h3>
