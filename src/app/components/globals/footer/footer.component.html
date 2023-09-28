@@ -5,13 +5,13 @@
 
         <div class="col-lg-4 col-md-6">
           <div class="footer-info pt-0">
-            <!--            <h3>{{enterprise_data[0].enterprise_name}}</h3>-->
             <h3><img src="../../../../assets/img/engi_logo.png" class="img-fluid w-75"></h3>
             <p>
-              <span *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</span> <br>
-              {{enterprise_data[0].address}}<br><br>
+<!--              <span *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</span> <br>-->
+<!--              {{enterprise_data[0].address}}<br><br>-->
               <strong>Phone:</strong> {{enterprise_data[0].tel}}<br>
-              <strong>Email:</strong> {{enterprise_data[0].email}}<br>
+              <strong>Email:</strong> <a class="text-white" href="mailto:{{enterprise_data[0].email}}">
+              {{enterprise_data[0].email}}</a><br>
             </p>
             <div class="social-links mt-3">
               <a *ngIf="enterprise_data[0].twitter" href="{{enterprise_data[0].twitter}}" class="twitter"><i
@@ -22,42 +22,49 @@
                 class="bx bxl-instagram"></i></a>
               <a *ngIf="enterprise_data[0].youtube" href="{{enterprise_data[0].youtube}}" class="google-plus"><i
                 class="bx bxl-youtube"></i></a>
-<!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+              <!--              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
             </div>
           </div>
         </div>
 
-        <div class="col-lg-2 col-md-6 footer-links">
+        <div class="col-lg-3 col-md-6 footer-links">
           <h4>Enlaces útiles</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Inicio</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Quiénes somos</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a role="button" (click)="navigate('/', '#topbar')">Inicio</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="#">Trabajos</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Productos</a></li>
+            <li><i class="bx bx-chevron-right"></i>
+              <a role="button" (click)="navigate('/sale_products', '#portfolio')">Productos</a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Informaciones</h4>
+          <ul>
+            <li><i class="bx bx-chevron-right"></i>
+              <a role="button" (click)="navigate('/', '#about')">Quiénes somos</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="#">Términos de servicio</a></li>
             <li><i class="bx bx-chevron-right"></i> <a href="#">Política de privacidad</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Our Services</h4>
+          <h4>Documentos</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            <li><i class="bx bxs-download"></i> <a href="#">Folleto digital</a></li>
+            <li><i class="bx bxs-download"></i> <a href="#">Carta de presentación</a></li>
           </ul>
         </div>
 
-        <div class="col-lg-4 col-md-6 footer-newsletter">
-          <h4>Our Newsletter</h4>
-          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-          <form action="" method="post">
-            <input type="email" name="email"><input type="submit" value="Subscribe">
-          </form>
+        <!--        <div class="col-lg-4 col-md-6 footer-newsletter">-->
+        <!--          <h4>Our Newsletter</h4>-->
+        <!--          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>-->
+        <!--          <form action="" method="post">-->
+        <!--            <input type="email" name="email"><input type="submit" value="Subscribe">-->
+        <!--          </form>-->
 
-        </div>
+        <!--        </div>-->
 
       </div>
     </div>

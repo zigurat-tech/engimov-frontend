@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
 import {EnterpriseService} from "@app/services/enterprise.service";
+import {NavigationService} from "@app/services/navigation.service";
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import {EnterpriseService} from "@app/services/enterprise.service";
 export class FooterComponent implements OnInit {
   enterprise_data: any[] = [];
 
-  constructor(private utilsService: UtilsService, private enterpriseService: EnterpriseService) {
+  constructor(private enterpriseService: EnterpriseService, private navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
@@ -18,4 +19,7 @@ export class FooterComponent implements OnInit {
       this.enterprise_data = data
     });
   }
+
+  navigate = (url: string, hash = '') => this.navigationService.navigate(url, hash)
+
 }

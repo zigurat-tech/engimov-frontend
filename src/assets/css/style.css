@@ -15,7 +15,7 @@
   --engimov-red-default: #cc1616;
   --engimov-blue: #193369;
   --engimov-blue-dark: #0F214BFF;
-  --engimov-blue-rgba: rgba(25, 51, 105, 0.95);
+  --engimov-blue-rgba: rgba(25, 51, 105, 0.9);
 }
 
 body {
@@ -169,7 +169,7 @@ h6 {
 --------------------------------------------------------------*/
 #header {
   /*background: rgba(25, 25, 25, 0.95);*/
-  background: var(--engimov-blue-rgba);
+  background: var(--engimov-blue);
   transition: all 0.5s;
   z-index: 997;
   height: 70px;
@@ -177,7 +177,7 @@ h6 {
 
 #header.fixed-top {
   /*background: #191919;*/
-  background: var(--engimov-blue);
+  background: var(--engimov-blue-rgba);
 }
 
 #header .logo {
@@ -1310,7 +1310,7 @@ section {
   color: #fff;
   border-top: 4px solid var(--engimov-red-default);
   text-align: center;
-  padding: 30px 20px;
+  padding: 15px 20px;
 }
 
 #footer .footer-top .footer-info h3 {
