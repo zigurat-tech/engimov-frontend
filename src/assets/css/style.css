@@ -18,6 +18,22 @@
   --engimov-blue-rgba: rgba(25, 51, 105, 0.9);
 }
 
+.text-engimov-red-default {
+  color: var(--engimov-red-default)
+}
+
+.text-engimov-red {
+  color: var(--engimov-red)
+}
+
+.text-engimov-blue {
+  color: var(--engimov-blue)
+}
+
+.text-engimov-blue-dark {
+  color: var(--engimov-blue-dark)
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -1449,5 +1465,11 @@ section {
 @media (max-width: 575px) {
   #footer .footer-top .footer-info {
     margin: -20px 0 30px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title span {
+    display: none;
   }
 }

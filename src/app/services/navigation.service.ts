@@ -11,9 +11,14 @@ export class NavigationService {
   }
 
   navigate(url: string, hash = '') {
-    this.router.navigate([url]).then(value => {
-      if (hash)
-        this.jsService.scrollto(hash)
-    })
+    this.router.navigate([url])
+      .then(value => {
+        document.querySelectorAll('.scrollto')
+          .forEach(e => e.classList.remove('active'))
+      })
+      .then(value => {
+        if (hash)
+          this.jsService.scrollto(hash)
+      })
   }
 }
