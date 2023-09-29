@@ -32,9 +32,9 @@ export class CanteraDeEmpleoComponent {
   onSubmit($event: any) {
     this.loading = true
     this.form.patchValue({job_offer: this.work.id})
-    const formData = this.form.value;
-    console.log(formData)
-    console.log(this.work.id)
+    // const formData = this.form.value;
+    const formData = new FormData($event.target)
+    formData.append('job_offer', this.work.id)
     this.utilsService.create_job_offer_pool(formData).subscribe({
       next: (v) => {
         this.loading = false
@@ -43,7 +43,6 @@ export class CanteraDeEmpleoComponent {
           `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
               <strong class="mx-1">Solicitud enviada!</strong>`,
           'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'))
-        console.log(v)
       },
       error: (err) => {
         this.loading = false
