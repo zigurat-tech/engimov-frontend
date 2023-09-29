@@ -6,8 +6,8 @@
       <h2>{{header.title}}</h2>
       <p *ngIf="header.subtitle">{{header.subtitle}}</p>
     </div>
-    <h2 *ngIf="!loadingWorks && !list_works.length" class="text-engimov-blue text-center">No hay ofertas de trabajo disponibles por
-      ahora.</h2>
+    <h2 *ngIf="!loadingWorks && !list_works.length" class="text-engimov-blue text-center">
+      No hay ofertas de trabajo disponibles por ahora.</h2>
     <app-loader *ngIf="loadingWorks"></app-loader>
     <div class="row gy-5 portfolio-container" *ngIf="!loadingWorks" data-aos="fade-up" data-aos-delay="150">
       <div class="col-12 col-lg-6" *ngFor="let work of list_works">
@@ -16,7 +16,7 @@
     </div>
     <br>
     <!--    paginator-->
-    <div *ngIf="!loadingWorks && list_works.length" class="">
+<!--    <div *ngIf="!loadingWorks && list_works.length" class="">
       <ul class="pagination mb-0 flex-wrap g-2 justify-content-center">
         <li class="page-item">
           <a class="page-link" [class.disabled]="!previousPageClass()" (click)="selectedPage(1)">&laquo;</a>
@@ -62,7 +62,7 @@
           <option value="100">100</option>
         </select>
       </ul>
-    </div>
+    </div>-->
   </div>
 
 </section>

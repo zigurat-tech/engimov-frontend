@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-work',
@@ -8,6 +9,10 @@ import {Component, Input} from '@angular/core';
 export class WorkComponent {
   @Input() work: any
 
-  constructor() {
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  get safeHtmlContent(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.work.description);
   }
 }

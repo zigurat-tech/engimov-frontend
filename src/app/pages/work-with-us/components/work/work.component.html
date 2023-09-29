@@ -4,15 +4,16 @@
     <ng-template ngbNavContent>
       <div class="card">
         <div class="row g-0">
-          <div class="col-4">
-            <div class="square-container text-center div-img-product rounded-start"
-                 style="background-image: url({{work.image}});">
-            </div>
-          </div>
-          <div class="col-8">
+          <!--          <div class="col-4">
+                      <div class="square-container text-center div-img-product rounded-start"
+                           style="background-image: url({{work.image}});">
+                      </div>
+                    </div>-->
+          <div class="col-12">
             <div class="card-body">
-              <h5 class="card-title">{{work.name}}</h5>
-              <p class="card-text">{{work.description}}</p>
+              <h5 class="card-title text-center">{{work.name}}</h5>
+              <!--              <p class="card-text">{{work.description}}</p>-->
+                <div [innerHTML]="safeHtmlContent"></div>
             </div>
           </div>
         </div>

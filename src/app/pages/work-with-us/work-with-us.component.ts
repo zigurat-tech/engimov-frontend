@@ -51,17 +51,19 @@ export class WorkWithUsComponent implements OnInit {
     this.list_works = []
     this.utilsService.get_job_offers(query_params).subscribe(resp => {
       console.log(resp)
-      if (!resp.results) {
+      this.loadingWorks = false
+      if (!resp.length) {
         console.log('No hay ofertas de trabajo')
-        this.loadingWorks = false
         return
       }
-      this.total_of_pages = Math.ceil(resp.count / this.page_size)
+      this.list_works = resp
+      this.list_works.forEach(e => e.active = 1)
+      /*this.total_of_pages = Math.ceil(resp.count / this.page_size)
       this.pages_per_size = this.getPagesX10()
 
       this.list_works = resp.results
       this.list_works.forEach(e => e.active = 1)
-      this.loadingWorks = false
+      this.loadingWorks = false*/
       console.log(this.list_works)
     })
   }
