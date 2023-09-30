@@ -4,6 +4,7 @@ import {EnterpriseService} from "@app/services/enterprise.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastService} from "@app/components/shared/toast/toast.service";
 import {Toast} from "@app/components/shared/toast/toast";
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-contact',
@@ -13,7 +14,8 @@ import {Toast} from "@app/components/shared/toast/toast";
 export class ContactComponent implements OnInit {
   constructor(private utilsService: UtilsService,
               private enterpriseService: EnterpriseService,
-              public toastService: ToastService) {
+              public toastService: ToastService,
+              private sanitizer: DomSanitizer) {
   }
 
   title: string = ''
@@ -73,5 +75,9 @@ export class ContactComponent implements OnInit {
       this.enterprise_data = data
     });
     this.contactForm.enable()
+  }
+
+  get safeHtmlContent(): SafeHtml {
+    return this.sanitizer.bypassSecurityTrustHtml(this.enterprise_data[0].location);
   }
 }

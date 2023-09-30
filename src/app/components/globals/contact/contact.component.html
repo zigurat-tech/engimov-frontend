@@ -35,44 +35,38 @@
 
     <div class="row" data-aos="fade-up">
       <div class="col-lg-6">
-        <div class="info-box mb-4">
-          <i class="bx bx-map"></i>
-          <h3 *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</h3>
-          <p>{{enterprise_data[0].address}}</p>
+        <div class="row">
+          <div class="col-12">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3 *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</h3>
+              <p><a href="{{enterprise_data[0].location}}" target="_blank">{{enterprise_data[0].address}}</a></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Correo</h3>
+              <p><a style="color:inherit" href="{{enterprise_data[0].email}}">{{enterprise_data[0].email}}</a></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-phone-call"></i>
+              <h3>Teléfono</h3>
+              <p>{{enterprise_data[0].tel}}</p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="info-box  mb-4">
-          <i class="bx bx-envelope"></i>
-          <h3>Correo</h3>
-          <p><a style="color:inherit" href="{{enterprise_data[0].email}}">{{enterprise_data[0].email}}</a></p>
-        </div>
-      </div>
-
-      <div class="col-lg-3 col-md-6">
-        <div class="info-box  mb-4">
-          <i class="bx bx-phone-call"></i>
-          <h3>Teléfono</h3>
-          <p>{{enterprise_data[0].tel}}</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="row" data-aos="fade-up">
       <app-loader *ngIf="!loading"></app-loader>
-      <div *ngIf="loading" class="col-lg-6 ">
-        <iframe class="mb-4 mb-lg-0"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
-      </div>
-
       <div *ngIf="loading" class="col-lg-6">
-        <form method="post" role="form" (ngSubmit)="onSubmit($event)" [formGroup]="contactForm" class="php-email-form">
+        <form method="post" role="form" (ngSubmit)="onSubmit($event)" [formGroup]="contactForm"
+              class="php-email-form">
           <div class="row">
             <div class="col-md-6 form-group">
-              <input type="text" formControlName="name" name="name" class="form-control" id="name" placeholder="Nombre"
+              <input type="text" formControlName="name" name="name" class="form-control" id="name"
+                     placeholder="Nombre"
                      required>
             </div>
             <div class="col-md-6 form-group mt-3 mt-md-0">
@@ -102,6 +96,20 @@
           </div>
         </form>
       </div>
+    </div>
+
+    <div class="row" data-aos="fade-up">
+      <!--      <div *ngIf="loading" class="col-lg-6 ">
+              &lt;!&ndash;        <iframe class="mb-4 mb-lg-0"
+                              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                              frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>&ndash;&gt;
+              &lt;!&ndash;        <div [innerHTML]="safeHtmlContent"></div>&ndash;&gt;
+              <iframe class="mb-4 mb-lg-0"
+                      src="{{enterprise_data[0].location}}"
+                      frameborder="0" style="border:0; width: 100%; height: 384px;" allowfullscreen></iframe>
+              <a href="{{enterprise_data[0].location}}">click aki chama</a>
+            </div>-->
+
 
     </div>
 
