@@ -46,10 +46,23 @@ export class CanteraDeEmpleoComponent {
       },
       error: (err) => {
         this.loading = false
-        this.toastService.openToast(new Toast('bg-danger',
-          `<i class="bx bxs-message-error fs-6 text-danger"></i>
-              <strong class="mx-1">Error!</strong>`,
-          err.message))
+        console.log(err)
+        const attrs = Object.keys(err.error);
+        let message_alert = ''
+
+        if (err.status === 0)
+          this.showAlertError('Hay un problema de conexión.')
+        if (err.status >= 400 && err.status < 500) {
+          for (let i = 0; i < attrs.length; i++) {
+            const key = attrs[i];
+            const value = err.error[key];
+            console.log("Clave: " + key + ", Valor: " + value);
+            message_alert += value + '\n'
+          }
+          this.showAlertError(message_alert)
+        }
+        if (err.status >= 500)
+          this.showAlertError('Hay un error en el servidor. Por favor intente de nuevo más tarde.')
       },
       complete: () => {
         this.loading = false
@@ -64,5 +77,12 @@ export class CanteraDeEmpleoComponent {
     //       <strong class="mx-1">Solicitud enviada!</strong>`,
     //     'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'))
     // }, 1500)
+  }
+
+  showAlertError(message: string) {
+    this.toastService.openToast(new Toast('bg-danger',
+      `<i class="bx bxs-message-error fs-6 text-danger"></i>
+              <strong class="mx-1">Error!</strong>`,
+      message))
   }
 }
