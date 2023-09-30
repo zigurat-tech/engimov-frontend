@@ -69,14 +69,6 @@ export class CanteraDeEmpleoComponent {
         this.form.reset()
       }
     })
-    // setTimeout(() => {
-    //   this.loading = false
-    //   this.form.reset()
-    //   this.toastService.openToast(new Toast('bg-primary',
-    //     `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
-    //       <strong class="mx-1">Solicitud enviada!</strong>`,
-    //     'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'))
-    // }, 1500)
   }
 
   showAlertError(message: string) {

@@ -1,39 +1,58 @@
 <app-toast></app-toast>
 <div class="card">
   <div class="card-body p-2">
-    <form method="post" role="form" (ngSubmit)="onSubmit($event)" class="php-email-form" [formGroup]="form">
+    <form method="post" role="form" enctype="multipart/form-data" (ngSubmit)="onSubmit($event)" class="php-email-form"
+          [formGroup]="form">
       <div class="row g-2">
+
         <div class="col-12 col-lg-12 col-md-6 form-group">
           <input type="text" formControlName="name" name="name" class="form-control" id="name{{work.id}}"
-                 placeholder="Nombre" required>
+                 placeholder="Nombre*" required [attr.aria-describedby]="'v-name' + work.id"
+                 [class.is-invalid]="form.get('name')?.hasError('required') && form.get('name')?.touched">
+          <div id="v-name{{work.id}}" class="invalid-feedback">
+            <p class="mb-0" [class.d-none]="!form.get('name')?.hasError('required') && form.get('name')?.touched">
+              Este campo es requerido.</p>
+          </div>
         </div>
+
         <div class="col-12 col-lg-12 col-md-6 form-group ">
           <input type="email" formControlName="email" class="form-control" name="email" id="email{{work.id}}"
-                 placeholder="Correo" required>
+                 placeholder="Correo*" required [attr.aria-describedby]="'v-email' + work.id"
+                 [class.is-invalid]="(form.get('email')?.hasError('required') ||
+                 form.get('email')?.hasError('email')) && form.get('email')?.touched">
+          <div id="v-email{{work.id}}" class="invalid-feedback">
+            <p class="mb-0" [class.d-none]="!form.get('email')?.hasError('required') && form.get('email')?.touched">
+              Este campo es requerido.</p>
+            <p class="mb-0" [class.d-none]="!form.get('email')?.hasError('email') && form.get('email')?.touched">
+              Ingrese un correo válido</p>
+          </div>
         </div>
+
         <div class="col-12 col-lg-12 col-md-6 form-group ">
-          <input type="text" formControlName="tel" class="form-control" name="email" id="tel{{work.id}}"
+          <input type="text" formControlName="tel" maxlength="15" class="form-control" name="tel" id="tel{{work.id}}"
                  placeholder="Teléfono">
         </div>
         <div class="col-12 col-lg-12 col-md-6 form-group ">
-          <input type="text" formControlName="education" class="form-control" name="education" id="education{{work.id}}"
-                 placeholder="Educación">
+          <input type="text" formControlName="sector" class="form-control" name="sector" id="sector{{work.id}}"
+                 placeholder="Sector comercial">
         </div>
-        <div class="col-12 form-group ">
-          <input type="text" formControlName="skills" class="form-control" name="skills" id="skills{{work.id}}"
-                 placeholder="Habilidades">
-        </div>
+
         <div class="form-group col-12">
-            <textarea class="form-control" formControlName="experience" name="experience" rows="3"
-                      placeholder="Experiencia laboral"></textarea>
+            <textarea class="form-control" formControlName="business_offer" name="business_offer" rows="3"
+                      placeholder="Oferta de negocio*" required [attr.aria-describedby]="'v-business_offer' + work.id"
+                      [class.is-invalid]="form.get('business_offer')?.hasError('required') && form.get('business_offer')?.touched">
+            </textarea>
+          <div id="v-business_offer{{work.id}}" class="invalid-feedback">
+            <p class="mb-0" [class.d-none]="!form.get('business_offer')?.hasError('required')
+            && form.get('business_offer')?.touched">Este campo es requerido.</p>
+          </div>
         </div>
-        <div class="col-12 mb-2 form-group text-center">
-          <label for="cv{{work.id}}" class="form-label small">Adjunte su CV</label>
-          <input type="file" formControlName="cv" class="form-control" name="cv" id="cv{{work.id}}"
-                 placeholder="CV" required>
+
+        <div class="form-group col-12 mb-2">
+            <textarea class="form-control" formControlName="others" name="others" rows="3"
+                      placeholder="Otros datos"></textarea>
         </div>
       </div>
-
       <div class="text-center">
         <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
           Enviar <i *ngIf="!loading" class="bx bi-send-fill"></i>

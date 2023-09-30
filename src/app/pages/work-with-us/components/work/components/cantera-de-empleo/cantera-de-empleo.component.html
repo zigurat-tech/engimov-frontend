@@ -45,7 +45,7 @@
         </div>
 
         <div class="col-12 mb-2 form-group text-center">
-          <label for="cv{{work.id}}" class="form-label small">Adjunte su CV</label>
+          <label for="cv{{work.id}}" class="form-label small">Adjunte su CV*</label>
           <input type="file" formControlName="cv" class="form-control is-invalid" name="cv" id="cv{{work.id}}"
                  placeholder="CV*" required [attr.aria-describedby]="'v-cv' + work.id"
                  [class.is-invalid]="form.get('cv')?.hasError('required') && form.get('cv')?.touched">
