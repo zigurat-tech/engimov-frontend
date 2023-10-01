@@ -3,7 +3,8 @@
   <div class="container d-flex justify-content-center justify-content-md-between">
     <div class="contact-info d-flex align-items-center">
       <i class="bi bi-envelope-fill"></i><a href="mailto:{{enterprise_data[0].email}}">{{enterprise_data[0].email}}</a>
-      <i class="bi bi-phone-fill phone-icon"></i> {{enterprise_data[0].tel}}
+      <i class="bi bi-phone-fill phone-icon" *ngIf="enterprise_data[0].tel"></i>
+      <a *ngIf="enterprise_data[0].tel" href="tel:{{enterprise_data[0].tel}}">{{enterprise_data[0].tel}}</a>
     </div>
     <div class="social-links d-none d-md-block">
       <a *ngIf="enterprise_data[0].twitter" href="{{enterprise_data[0].twitter}}" class="twitter"><i
