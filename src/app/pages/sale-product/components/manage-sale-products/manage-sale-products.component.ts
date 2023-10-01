@@ -19,11 +19,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
 
   listCategories: Category[] = []
   listProducts: Product[] = []
-  headerProducts = {
-    title: 'Productos en venta',
-    subtitle: 'Explora nuestra variedad de productos en venta, desde artículos de alta calidad hasta opciones' +
-      ' asequibles. ¡Encuentra lo que necesitas hoy!'
-  }
+  header = {title: '', subtitle: ''};
   loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''))
@@ -44,6 +40,9 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       this.heroService.set_image(response[0].image)
       this.heroService.set_loading(true)
       this.heroService.title = response[0].title
+
+      this.header.title = response[0].title
+      this.header.subtitle = response[0].subtitle
     })
   }
 

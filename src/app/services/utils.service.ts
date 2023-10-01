@@ -33,6 +33,8 @@ export class UtilsService {
 
   section_work_with_us = (): Observable<any> => this.http.get(this.url + '/sections/work_with_us/')
 
+  section_work_portfolio = (): Observable<any> => this.http.get(this.url + '/sections/works_portfolio/')
+
 
   enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')

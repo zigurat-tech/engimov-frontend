@@ -1,14 +1,25 @@
 export class WorkTestimonial {
   private _id: number
-  private _work: string
+  private _work: number
+  private _name: string
   private _link: string | null
   private _testimonial: string
 
-  constructor(id: number, work: string, link: string | null, testimonial: string) {
+
+  constructor(id: number, work: number, name: string, link: string | null, testimonial: string) {
     this._id = id;
     this._work = work;
+    this._name = name;
     this._link = link;
     this._testimonial = testimonial;
+  }
+
+  get name(): string {
+    return this._name;
+  }
+
+  set name(value: string) {
+    this._name = value;
   }
 
   get id(): number {
@@ -19,11 +30,11 @@ export class WorkTestimonial {
     this._id = value;
   }
 
-  get work(): string {
+  get work(): number {
     return this._work;
   }
 
-  set work(value: string) {
+  set work(value: number) {
     this._work = value;
   }
 
