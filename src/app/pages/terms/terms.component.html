@@ -1,0 +1,27 @@
+<!-- ======= Terms and Privacy Police Section ======= -->
+<section id="terms" class="terms pb-0">
+  <div class="container-xl">
+    <div class="section-title">
+      <span>Términos y Condiciones de uso</span>
+      <h2>Términos y Condiciones de uso</h2>
+      <p *ngIf="!loadingTerms">Válido desde el día {{get_day(dataTerms.effective_date)}} del
+        mes {{get_month(dataTerms.effective_date)}} del año {{get_year(dataTerms.effective_date)}}</p>
+    </div>
+    <div *ngIf="!loadingTerms" [innerHTML]="safeHtmlService.getSafeHtml(dataTerms.content)"></div>
+  </div>
+  <app-loader *ngIf="loadingTerms"></app-loader>
+</section>
+
+<!-- ======= Terms and Privacy Police Section ======= -->
+<section id="privacy" class="privacy">
+  <div class="container-xl">
+    <div class="section-title">
+      <span>Política de Privacidad</span>
+      <h2>Política de Privacidad</h2>
+      <p *ngIf="!loadingPolice">Válido desde el día {{get_day(dataPrivacy.effective_date)}} del
+        mes {{get_month(dataPrivacy.effective_date)}} del año {{get_year(dataPrivacy.effective_date)}}</p>
+    </div>
+    <div *ngIf="!loadingPolice" [innerHTML]="safeHtmlService.getSafeHtml(dataPrivacy.content)"></div>
+  </div>
+  <app-loader *ngIf="loadingPolice"></app-loader>
+</section>

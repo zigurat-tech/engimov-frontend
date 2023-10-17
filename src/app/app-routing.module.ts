@@ -20,6 +20,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('@app/pages/work-portfolio/work-portfolio.module').then(m => m.WorkPortfolioModule)
   },
+  {path: '', loadChildren: () => import('@app/pages/terms/terms.module').then(m => m.TermsModule)},
   {path: '**', pathMatch: "full", redirectTo: '404'}
 ];
 

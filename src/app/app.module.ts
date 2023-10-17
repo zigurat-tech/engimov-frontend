@@ -18,6 +18,7 @@ import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ToastModule} from "@app/components/shared/toast/toast.module";
 import {WorkWithUsModule} from "@app/pages/work-with-us/work-with-us.module";
 import {WorkPortfolioModule} from "@app/pages/work-portfolio/work-portfolio.module";
+import {TermsModule} from "@app/pages/terms/terms.module";
 
 export function initApp() {
   return () => {
@@ -54,6 +55,7 @@ export function initApp() {
     ToastModule,
     WorkWithUsModule,
     WorkPortfolioModule,
+    TermsModule,
   ],
   providers: [],
   exports: [],

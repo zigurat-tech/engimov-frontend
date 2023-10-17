@@ -35,6 +35,7 @@ export class UtilsService {
 
   section_work_portfolio = (): Observable<any> => this.http.get(this.url + '/sections/works_portfolio/')
 
+  section_terms = (): Observable<any> => this.http.get(this.url + '/sections/terms_privacy-police/')
 
   enterprise_data(): Observable<any> {
     return this.http.get(this.url + '/core/enterprise_data/')
@@ -65,6 +66,10 @@ export class UtilsService {
     return this.http.get(url)
   }
   get_products_sale_categories = (): Observable<any> => this.http.get(this.url + '/core/productcategories_sale/')
+
+  get_terms = (): Observable<any> => this.http.get(this.url + '/core/terms/')
+
+  get_privacy_police = (): Observable<any> => this.http.get(this.url + '/core/privacy/')
 
   create_contact = (formData: any): Observable<any> => this.http.post(this.url + '/core/contacts/', formData)
 
