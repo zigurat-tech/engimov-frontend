@@ -13,7 +13,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   constructor(private utilsService: UtilsService, public heroService: HeroService) {
   }
 
-  listCategories: Category[] = []
+  // listCategories: Category[] = []
   listProducts: Product[] = []
   headerProducts = {title: 'Últimos Productos', subtitle: ''}
   loading = true
@@ -31,13 +31,13 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.set_hero_data()
-    this.utilsService.get_products(['index=1']).subscribe((res: any) => {
-      res.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name))))
+    this.utilsService.get_products_sale(['index=1']).subscribe((res: any) => {
+      res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
+        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description)))
     })
-    this.utilsService.get_products_categories(['index=1']).subscribe(res => {
-      res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
-    })
+    // this.utilsService.get_products_categories(['index=1']).subscribe(res => {
+    //   res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
+    // })
   }
 
   ngAfterViewInit(): void {

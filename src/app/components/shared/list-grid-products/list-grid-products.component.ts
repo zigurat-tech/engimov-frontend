@@ -11,7 +11,7 @@ import {Category} from "@app/models/category";
 export class ListGridProductsComponent {
   @Input() listProducts: Product[] = []
   objectModal: Product = new Product('', '', '', 0,
-    '', false, new Category(1, ''))
+    '', false, new Category(1, ''), '')
 
   @Output() eventModal = new EventEmitter<Product>();
 

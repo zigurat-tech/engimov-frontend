@@ -284,3 +284,17 @@ body {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.truncate-1, .truncate-2, .truncate-4 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.truncate-1 {
+  -webkit-line-clamp: 1;
+}
+
+.truncate-4 {
+  -webkit-line-clamp: 4;
+}

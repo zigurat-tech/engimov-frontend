@@ -13,7 +13,6 @@ import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
 import {ReactiveFormsModule} from "@angular/forms";
 import {IndexModule} from "@app/pages/index/index.module";
-import {PortfolioProductModule} from "@app/pages/portfolio-product/portfolio-product.module";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ToastModule} from "@app/components/shared/toast/toast.module";
 import {WorkWithUsModule} from "@app/pages/work-with-us/work-with-us.module";
@@ -51,7 +50,6 @@ export function initApp() {
     ReactiveFormsModule,
     LoaderModule,
     IndexModule,
-    PortfolioProductModule,
     ToastModule,
     WorkWithUsModule,
     WorkPortfolioModule,

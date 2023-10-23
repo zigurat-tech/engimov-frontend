@@ -23,7 +23,7 @@ export class PortfolioComponent {
   @Input() headerProducts = {title: '', subtitle: ''}
   // loading = true
   objectModal: Product = new Product('', '', '', 0,
-    '', false, new Category(1, ''))
+    '', false, new Category(1, ''),'')
 
 
   filterProducts(s: string, i: number) {

@@ -10,6 +10,7 @@ export class Product {
   private _category: Category
   private _waiting: boolean
   private _quantity: number
+  private _short_description: string
 
   get quantity(): number {
     return this._quantity;
@@ -20,7 +21,7 @@ export class Product {
   }
 
   constructor(image: string, name: string, description: string, price: number,
-              sku: string, visible: boolean, category: Category, quantity: number = 0) {
+              sku: string, visible: boolean, category: Category, short_description: string, quantity: number = 0) {
     this._image = image;
     this._name = name;
     this._description = description;
@@ -30,6 +31,15 @@ export class Product {
     this._category = category;
     this._waiting = false
     this._quantity = quantity
+    this._short_description = short_description
+  }
+
+  get short_description(): string {
+    return this._short_description;
+  }
+
+  set short_description(value: string) {
+    this._short_description = value;
   }
 
   get waiting(): boolean {
