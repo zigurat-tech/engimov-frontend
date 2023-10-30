@@ -28,7 +28,7 @@
                   </button>
                   <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
                         style="font-size: .8rem" #span>{{prod.quantity ? prod.quantity : 1}}</span>
-                  <button type="button" (click)="this.saleService.increase(span)"
+                  <button type="button" (click)="this.saleService.increase(span, prod.stock)"
                           class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
                   </button>
                 </div>

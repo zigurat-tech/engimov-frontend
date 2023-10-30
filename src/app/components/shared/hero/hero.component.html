@@ -1,5 +1,5 @@
 <!-- ======= Hero Section ======= -->
-<section id="hero" [style.background-image]="!this.loading? 'none': 'url('+image+')'">
+<section id="hero" [style.background-image]="!this.loading? 'none': 'url('+image+')'" *ngIf="show_hero">
   <!--<section id="hero" style="background: url({{image}})">-->
   <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
     <div *ngIf="!this.loading">

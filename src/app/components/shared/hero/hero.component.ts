@@ -13,6 +13,7 @@ export class HeroComponent implements OnInit, AfterViewInit {
   subtitle: string = ''
   image: string = ''
   loading: boolean = false
+  show_hero = true
 
   constructor(private utilsService: UtilsService, public heroService: HeroService) {
   }
@@ -28,6 +29,13 @@ export class HeroComponent implements OnInit, AfterViewInit {
   })
 
   ngOnInit(): void {
+    console.log(document.location.href)
+    // this.show_hero = !document.location.href.includes('cart');
+
+    this.heroService.get_show_hero().subscribe(value => {
+      this.show_hero = value
+    })
+
     this.loading = false
     this.heroService.get_image().subscribe(value => {
       this.image = value
@@ -40,8 +48,8 @@ export class HeroComponent implements OnInit, AfterViewInit {
     })
     this.heroService.get_loading().subscribe(value => {
       this.loading = value
-      console.log(new Date().getMinutes(),new Date().getSeconds())
-      console.log('on init',this.loading)
+      console.log(new Date().getMinutes(), new Date().getSeconds())
+      console.log('on init', this.loading)
     })
   }
 

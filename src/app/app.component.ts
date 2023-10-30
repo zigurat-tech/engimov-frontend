@@ -1,5 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {LoadScriptService} from "@app/services/load-script.service";
+import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {HeroService} from "@app/services/hero.service";
 
 @Component({
@@ -11,7 +10,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   title = 'engimov';
   loader = false
 
-  constructor(private loadScriptService: LoadScriptService, private heroService: HeroService) {
+  constructor(private heroService: HeroService) {
   }
 
   onscroll = (el: any, listener: any) => {
@@ -25,10 +24,5 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit(): void {
-    // this.loadScriptService.loadScript('../assets/js/pastilla.js').then(() => {
-    //   console.log('External script loaded');
-    // }).catch(() => {
-    //   console.log('External script failed to load');
-    // });
   }
 }

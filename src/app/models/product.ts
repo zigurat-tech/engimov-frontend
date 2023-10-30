@@ -11,17 +11,10 @@ export class Product {
   private _waiting: boolean
   private _quantity: number
   private _short_description: string
+  private _stock: number
 
-  get quantity(): number {
-    return this._quantity;
-  }
-
-  set quantity(value: number) {
-    this._quantity = value;
-  }
-
-  constructor(image: string, name: string, description: string, price: number,
-              sku: string, visible: boolean, category: Category, short_description: string, quantity: number = 0) {
+  constructor(image: string, name: string, description: string, price: number, sku: string, visible: boolean,
+              category: Category, short_description: string, stock: number, quantity: number = 0,) {
     this._image = image;
     this._name = name;
     this._description = description;
@@ -32,6 +25,23 @@ export class Product {
     this._waiting = false
     this._quantity = quantity
     this._short_description = short_description
+    this._stock = stock
+  }
+
+  get stock(): number {
+    return this._stock;
+  }
+
+  set stock(value: number) {
+    this._stock = value;
+  }
+
+  get quantity(): number {
+    return this._quantity;
+  }
+
+  set quantity(value: number) {
+    this._quantity = value;
   }
 
   get short_description(): string {

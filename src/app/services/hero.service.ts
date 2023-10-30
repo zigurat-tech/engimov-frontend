@@ -13,13 +13,23 @@ export class HeroService {
   private _title = new BehaviorSubject<string>('');
   private _subtitle = new BehaviorSubject<string>('');
   private _loading = new BehaviorSubject<boolean>(false);
+  public _show_hero = new BehaviorSubject<boolean>(true);
   public title = ''
+
+  get_show_hero(): Observable<any> {
+    return this._show_hero.asObservable()
+  }
+
+  set_show_hero(value: boolean) {
+    this._show_hero.next(value)
+  }
 
   get_image(): Observable<any> {
     return this._image.asObservable();
   }
 
   set_image(value: string) {
+    this._show_hero.next(true)
     this._image.next(value)
   }
 
