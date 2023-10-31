@@ -19,23 +19,23 @@ export class CartService {
   private getHeaders() {
     console.log(document.cookie)
     let asd = new HttpHeaders({
-      // 'Content-Type': 'text/plain',
       'X-Session-ID': '123',
-      'Cookie': `${document.cookie}`
+      // 'Cookie': `${document.cookie}`
     });
-    asd.set('algo', 'sessionid=123')
+    // let sessionId = localStorage.getItem('sessionId')!;
+    // if (!sessionId) {
+    //   sessionId = uuidv4();
+    //   localStorage.setItem('sessionId', sessionId);
+    // }
+    // asd.set('algo', 'sessionid=123')
     return asd
   }
 
   add = (pk: string, quantity = 1): Observable<any> => {
     const headers = this.getHeaders();
-    const options = {headers, withCredentials: true};
+    const options = {headers,observe: 'response' as 'response' ,withCredentials: true, };
     return this.http.post(this.url + `add/${pk}/${quantity}/`, {}, options)
   }
-
-  // addJS = (pk: string, quantity = 1) => {
-  //   return fetch(this.url + `add/${pk}/${quantity}/`, 'post',)
-  // }
 
   decrement = (pk: string, quantity = 1): Observable<any> =>
     this.http.post(this.url + `decrement/${pk}/${quantity}/`, {})
@@ -51,7 +51,7 @@ export class CartService {
 
   details = (): Observable<any> => {
     const headers = this.getHeaders();
-    const options = {headers, withCredentials: true};
+    const options = {headers, withCredentials: true,observe: 'response' as 'response'};
     return this.http.post(this.url + 'details/', {}, options)
   }
 
