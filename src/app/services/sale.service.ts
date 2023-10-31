@@ -15,7 +15,7 @@ export class SaleService {
   addCart(prod: Product, span: HTMLSpanElement) {
     prod.waiting = true
 
-    this.cartService.update(prod.sku, Number(span.innerText)).subscribe({
+    this.cartService.add(prod.sku, Number(span.innerText)).subscribe({
       next: (v) => {
         console.log(v)
         this.toastService.openToast(new Toast('bg-success',
