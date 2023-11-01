@@ -18,6 +18,7 @@ import {ToastModule} from "@app/components/shared/toast/toast.module";
 import {WorkWithUsModule} from "@app/pages/work-with-us/work-with-us.module";
 import {WorkPortfolioModule} from "@app/pages/work-portfolio/work-portfolio.module";
 import {TermsModule} from "@app/pages/terms/terms.module";
+import {httpInterceptorProviders} from "@app/helpers/http.interceptor";
 
 export function initApp() {
   return () => {
@@ -55,7 +56,7 @@ export function initApp() {
     WorkPortfolioModule,
     TermsModule,
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   exports: [],
   bootstrap: [AppComponent]
 })
