@@ -19,6 +19,7 @@ import {WorkWithUsModule} from "@app/pages/work-with-us/work-with-us.module";
 import {WorkPortfolioModule} from "@app/pages/work-portfolio/work-portfolio.module";
 import {TermsModule} from "@app/pages/terms/terms.module";
 import {httpInterceptorProviders} from "@app/helpers/http.interceptor";
+import {CookieService} from 'ngx-cookie-service';
 
 export function initApp() {
   return () => {
@@ -56,7 +57,7 @@ export function initApp() {
     WorkPortfolioModule,
     TermsModule,
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders, CookieService],
   exports: [],
   bootstrap: [AppComponent]
 })
