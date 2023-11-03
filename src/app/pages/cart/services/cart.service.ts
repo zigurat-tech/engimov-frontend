@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "@src/environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, tap} from "rxjs";
+import {catchError, Observable, tap, throwError} from "rxjs";
 import {UUID} from "angular2-uuid";
 import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
 
@@ -56,7 +56,11 @@ export class CartService {
     return this.http.post(this.url + 'details/', {}, {headers}).pipe(
       tap((response: any) => {
         this.cartLengthService.setCartLength(response.result.product_list.length)
-      })
+      }),
+      // catchError((error: any) => {
+      //   console.error('Error en la petición:', error);
+      //   return throwError(error);
+      // })
     )
   }
 }
