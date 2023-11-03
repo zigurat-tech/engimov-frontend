@@ -30,7 +30,7 @@
         <li><a class="nav-link" routerLink="/cart">
           <i class="bi bi-cart-plus fs-4"></i>
           <span class="position-absolute z-3 top-25 start-100 translate-middle badge rounded-pill bg-primary">
-                <span>99</span>
+                <span [(ngModel)]="cart_length">{{cart_length}}</span>
               </span>
         </a>
         </li>

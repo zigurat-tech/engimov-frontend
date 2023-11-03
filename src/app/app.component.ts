@@ -1,5 +1,6 @@
 import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
 import {HeroService} from "@app/services/hero.service";
+import {CartService} from "@app/pages/cart/services/cart.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ export class AppComponent implements AfterViewInit, OnInit {
   title = 'engimov';
   loader = false
 
-  constructor(private heroService: HeroService) {
+  constructor(private heroService: HeroService, private cartService: CartService) {
   }
 
   onscroll = (el: any, listener: any) => {
@@ -21,6 +22,7 @@ export class AppComponent implements AfterViewInit, OnInit {
     this.heroService.get_loading().subscribe(value => {
       this.loader = value
     })
+    this.cartService.details().subscribe()
   }
 
   ngAfterViewInit(): void {

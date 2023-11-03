@@ -50,7 +50,6 @@ export class WorkWithUsComponent implements OnInit {
     this.loadingWorks = true
     this.list_works = []
     this.utilsService.get_job_offers(query_params).subscribe(resp => {
-      console.log(resp)
       this.loadingWorks = false
       if (!resp.length) {
         console.log('No hay ofertas de trabajo')
@@ -64,7 +63,6 @@ export class WorkWithUsComponent implements OnInit {
       this.list_works = resp.results
       this.list_works.forEach(e => e.active = 1)
       this.loadingWorks = false*/
-      console.log(this.list_works)
     })
   }
 
@@ -74,7 +72,6 @@ export class WorkWithUsComponent implements OnInit {
     this.utilsService.get_works_categories().subscribe(resp => {
       this.list_categories = resp
       this.loadingCategories = false
-      console.log(this.list_categories)
     })
   }
 

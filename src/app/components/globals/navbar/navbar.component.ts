@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, ElementRef, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
-import {LoadScriptService} from "@app/services/load-script.service";
-import {JsService} from "@app/services/js.service";
 import {NavigationService} from "@app/services/navigation.service";
+import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,11 +11,14 @@ import {NavigationService} from "@app/services/navigation.service";
 export class NavbarComponent implements AfterViewInit, OnInit {
   collapsed = true;
   current_url = ''
+  cart_length = 0
 
-  constructor(public router: Router, private navigationService: NavigationService) {
+  constructor(public router: Router, private navigationService: NavigationService,
+              private cartLengthService: CartLengthService) {
     this.current_url = router.url
     console.log(this.current_url)
   }
+
 
   onscroll = (el: any, listener: any) => {
     el.addEventListener('scroll', listener)
@@ -176,11 +178,7 @@ export class NavbarComponent implements AfterViewInit, OnInit {
         this.current_url = event.url;
       }
     });
-    // this.loadScriptService.loadScript('../assets/js/main.js').then(() => {
-    //   console.log('External script loaded');
-    // }).catch(() => {
-    //   console.log('External script failed to load');
-    // });
+    this.cartLengthService.getCartLength().subscribe(v => this.cart_length = v)
   }
 
   navigate(url: string, hash = '') {

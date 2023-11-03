@@ -4,11 +4,13 @@ import {CartComponent} from './cart.component';
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {FormsModule} from "@angular/forms";
 import {CartRoutingModule} from "@app/pages/cart/cart-routing.module";
+import { CartViewComponent } from './components/cart-view/cart-view.component';
 
 
 @NgModule({
   declarations: [
-    CartComponent
+    CartComponent,
+    CartViewComponent
   ],
   imports: [
     CommonModule,

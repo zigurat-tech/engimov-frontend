@@ -11,7 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {IndexModule} from "@app/pages/index/index.module";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {ToastModule} from "@app/components/shared/toast/toast.module";
@@ -41,22 +41,23 @@ export function initApp() {
     TopBarComponent,
     HeroComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    NgbModule,
-    NgbDropdownModule,
-    NgOptimizedImage,
-    ReactiveFormsModule,
-    LoaderModule,
-    IndexModule,
-    ToastModule,
-    WorkWithUsModule,
-    WorkPortfolioModule,
-    TermsModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        NgbModule,
+        NgbDropdownModule,
+        NgOptimizedImage,
+        ReactiveFormsModule,
+        LoaderModule,
+        IndexModule,
+        ToastModule,
+        WorkWithUsModule,
+        WorkPortfolioModule,
+        TermsModule,
+        FormsModule,
+    ],
   providers: [httpInterceptorProviders, CookieService],
   exports: [],
   bootstrap: [AppComponent]

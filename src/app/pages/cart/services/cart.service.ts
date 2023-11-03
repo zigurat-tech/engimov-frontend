@@ -1,23 +1,20 @@
 import {Injectable} from '@angular/core';
 import {environment} from "@src/environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {UUID} from "angular2-uuid";
+import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   url = environment.url + '/cart/'
-  private uuidValue: string | undefined;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cartLengthService: CartLengthService) {
   }
 
-  generateUUID() {
-    this.uuidValue = UUID.UUID();
-    return this.uuidValue;
-  }
+  generateUUID = () => UUID.UUID();
 
   private getHeaders() {
     let cart_id = localStorage.getItem('cart_id')!;
@@ -32,18 +29,34 @@ export class CartService {
 
   update = (pk: string, quantity: number): Observable<any> => {
     const headers = this.getHeaders();
-    return this.http.post(this.url + `update/${pk}/${quantity}/`, {}, {headers})
+    return this.http.post(this.url + `update/${pk}/${quantity}/`, {}, {headers}).pipe(
+      tap((response: any) => {
+        this.cartLengthService.setCartLength(response.result.product_list.length)
+      })
+    )
   }
   clear = (): Observable<any> => {
     const headers = this.getHeaders();
-    return this.http.post(this.url + 'clear/', {}, {headers})
+    return this.http.post(this.url + 'clear/', {}, {headers}).pipe(
+      tap((response: any) => {
+        this.cartLengthService.setCartLength(response.result.product_list.length)
+      })
+    )
   }
   product_details = (pk: string): Observable<any> => {
     const headers = this.getHeaders();
-    return this.http.post(this.url + `details/${pk}/`, {}, {headers})
+    return this.http.post(this.url + `details/${pk}/`, {}, {headers}).pipe(
+      tap((response: any) => {
+        this.cartLengthService.setCartLength(response.result.product_list.length)
+      })
+    )
   }
   details = (): Observable<any> => {
     const headers = this.getHeaders();
-    return this.http.post(this.url + 'details/', {}, {headers})
+    return this.http.post(this.url + 'details/', {}, {headers}).pipe(
+      tap((response: any) => {
+        this.cartLengthService.setCartLength(response.result.product_list.length)
+      })
+    )
   }
 }

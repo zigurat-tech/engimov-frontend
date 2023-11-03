@@ -27,15 +27,8 @@ export class SaleService {
       },
       error: err => {
         console.log(err)
-      },
-      complete: () => {
-        console.log('complete')
       }
     })
-
-    // setTimeout(() => {
-    //
-    // }, 1000)
   }
 
   decrease(span: HTMLSpanElement) {
