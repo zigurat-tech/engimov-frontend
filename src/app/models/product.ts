@@ -12,9 +12,10 @@ export class Product {
   private _quantity: number
   private _short_description: string
   private _stock: number
+  private _in_cart: boolean
 
   constructor(image: string, name: string, description: string, price: number, sku: string, visible: boolean,
-              category: Category, short_description: string, stock: number, quantity: number = 0,) {
+              category: Category, short_description: string, stock: number, in_cart: boolean, quantity: number = 0,) {
     this._image = image;
     this._name = name;
     this._description = description;
@@ -26,6 +27,15 @@ export class Product {
     this._quantity = quantity
     this._short_description = short_description
     this._stock = stock
+    this._in_cart = in_cart
+  }
+
+  get in_cart(): boolean {
+    return this._in_cart;
+  }
+
+  set in_cart(value: boolean) {
+    this._in_cart = value;
   }
 
   get stock(): number {

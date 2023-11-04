@@ -12,7 +12,7 @@ export class ListTableProductsComponent {
   @Input() listProducts: Product[] = []
   @Output() eventModal = new EventEmitter<Product>();
   objectModal: Product = new Product('', '', '', 0,
-    '', false, new Category(1, ''), '', 1)
+    '', false, new Category(1, ''), '', 1, false)
 
   constructor(public saleService: SaleService) {
   }

@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {environment} from "@src/environments/environment";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {catchError, Observable, tap, throwError} from "rxjs";
+import {Observable, tap} from "rxjs";
 import {UUID} from "angular2-uuid";
 import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
+import {CartStorageService} from "@app/pages/cart/services/cart-storage.service";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
 export class CartService {
   url = environment.url + '/cart/'
 
-  constructor(private http: HttpClient, private cartLengthService: CartLengthService) {
+  constructor(private http: HttpClient, private cartLengthService: CartLengthService,
+              private cartStorageService: CartStorageService) {
   }
 
   generateUUID = () => UUID.UUID();
@@ -31,7 +33,9 @@ export class CartService {
     const headers = this.getHeaders();
     return this.http.post(this.url + `update/${pk}/${quantity}/`, {}, {headers}).pipe(
       tap((response: any) => {
+        console.log(response)
         this.cartLengthService.setCartLength(response.result.product_list.length)
+        this.cartStorageService.total = response.result.total
       })
     )
   }

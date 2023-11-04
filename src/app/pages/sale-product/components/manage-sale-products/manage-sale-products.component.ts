@@ -22,7 +22,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   header = {title: '', subtitle: ''};
   loading = true
   objectModal: Product = new Product('', '', '', 0,
-    '', false, new Category(1, ''), '', 1)
+    '', false, new Category(1, ''), '', 1, false)
   viewMode = 'cards'
   category_filter = -1
   order_by = '-1'
@@ -79,7 +79,8 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       console.log('total of pages ', this.total_of_pages)
       this.pages_per_size = this.getPagesX10()
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
-        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description, p.stock)))
+        p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description,
+        p.stock, p.in_cart)))
       this.loading = false
     })
   }
