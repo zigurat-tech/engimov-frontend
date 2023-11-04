@@ -59,12 +59,10 @@ export class CartService {
     const headers = this.getHeaders();
     return this.http.post(this.url + 'details/', {}, {headers}).pipe(
       tap((response: any) => {
+        console.log(response)
         this.cartLengthService.setCartLength(response.result.product_list.length)
-      }),
-      // catchError((error: any) => {
-      //   console.error('Error en la petición:', error);
-      //   return throwError(error);
-      // })
+        this.cartStorageService.total = response.result.total
+      })
     )
   }
 }

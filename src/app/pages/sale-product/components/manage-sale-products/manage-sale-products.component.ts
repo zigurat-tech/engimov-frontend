@@ -4,6 +4,7 @@ import {HeroService} from "@app/services/hero.service";
 import {Category} from "@app/models/category";
 import {Product} from "@app/models/product";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
+import {CartStorageService} from "@app/pages/cart/services/cart-storage.service";
 
 @Component({
   selector: 'app-manage-sale-products',
@@ -12,7 +13,7 @@ import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 })
 export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   constructor(private utilsService: UtilsService, public heroService: HeroService, config: NgbModalConfig,
-              private modalService: NgbModal) {
+              private modalService: NgbModal, private cartStorageService: CartStorageService) {
     config.backdrop = 'static';
     config.keyboard = false;
   }
@@ -78,9 +79,15 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       this.total_of_pages = Math.ceil(res.count / this.page_size)
       console.log('total of pages ', this.total_of_pages)
       this.pages_per_size = this.getPagesX10()
+      //LLeno mi lista
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
         p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description,
         p.stock, p.in_cart)))
+      //actualizo mi lista
+      this.listProducts.forEach(p => {
+        if (this.cartStorageService.exists(p.sku))
+          this.listProducts[this.listProducts.indexOf(p)] = this.cartStorageService.getProduct(p.sku)
+      })
       this.loading = false
     })
   }

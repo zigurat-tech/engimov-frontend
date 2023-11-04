@@ -36,7 +36,10 @@ export class CartStorageService {
     this._productList = value;
   }
 
-  add = (prod: Product) => this._productList.push(prod)
+  add = (prod: Product) => {
+    // prod.image = this.basicUrl + prod.image
+    this._productList.push(prod)
+  }
 
   update = (prod: Product) => this._productList[this.getIndex(prod.sku)].quantity = prod.quantity
 
@@ -46,5 +49,5 @@ export class CartStorageService {
   getProduct = (sku: string) => this._productList[this.getIndex(sku)]
   // remove = (prod: Product) => this._productList.splice(this._productList.indexOf(prod), 1)
   remove = (sku: string) => this._productList.splice(this.getIndex(sku), 1)
-  exists = (sku: string) => this._productList.every(prod => prod.sku === sku)
+  exists = (sku: string) => this._productList.some(prod => prod.sku === sku)
 }
