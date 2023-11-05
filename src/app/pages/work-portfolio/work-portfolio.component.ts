@@ -92,13 +92,6 @@ export class WorkPortfolioComponent implements OnInit, AfterViewInit {
 
     this.listWorks = []
 
-    if (this.category_filter > 0)
-      query_params.push(`category=${this.category_filter}`)
-    if (this.order_by == 'down' || this.order_by == 'up')
-      query_params.push(`price=${this.order_by}`)
-    if (this.order_by == 'desc' || this.order_by == 'asc')
-      query_params.push(`order=${this.order_by}`)
-
     this.loadData(query_params)
   }
 

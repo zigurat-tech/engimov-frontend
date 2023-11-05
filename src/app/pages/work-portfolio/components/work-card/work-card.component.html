@@ -1,1 +1,30 @@
-<p>work-card works!</p>
+<ul ngbNav #nav="ngbNav" [(activeId)]="work.active" class="nav-tabs">
+  <li [ngbNavItem]="1">
+    <button ngbNavLink>Imagen</button>
+    <ng-template ngbNavContent>
+      <div class="card h-100">
+        <img src="{{work.image}}" style="aspect-ratio: 16/9;" alt="{{work.name}}" class="card-img card-img-top">
+      </div>
+    </ng-template>
+  </li>
+  <li [ngbNavItem]="2">
+    <button ngbNavLink>Descripción</button>
+    <ng-template ngbNavContent>
+      <div class="card">
+        <div class="card-body">
+          <h5>{{work.name}}</h5>
+          <p><b>Categoría:</b> {{work.category.name}}</p>
+          <p class="card-text">{{work.description}}</p>
+        </div>
+      </div>
+    </ng-template>
+  </li>
+<!--  <li [ngbNavItem]="3">-->
+<!--    <button ngbNavLink>Testimonios</button>-->
+<!--    <ng-template ngbNavContent>-->
+<!--    </ng-template>-->
+<!--  </li>-->
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
