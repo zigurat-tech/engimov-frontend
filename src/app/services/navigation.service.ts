@@ -18,7 +18,8 @@ export class NavigationService {
       })
       .then(value => {
         if (hash)
-          this.jsService.scrollto(hash)
+          // this.jsService.scrollto(hash)
+          this.jsService.scrollto('#topbar')
       })
   }
 }

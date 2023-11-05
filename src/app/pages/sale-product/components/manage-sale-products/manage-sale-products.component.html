@@ -1,3 +1,4 @@
+<div id="about"></div>
 <section id="portfolio" class="portfolio bg-light">
   <div class="container">
 
@@ -45,15 +46,15 @@
   <app-list-table-products (eventModal)="openModal($event, content)" *ngIf="!loading && viewMode=='table'"
                            [listProducts]="listProducts"></app-list-table-products>
 
-<!--    <ngb-pagination
-      class="d-flex justify-content-center"
-      (pageChange)="getPageFromService()"
-      [pageSize]="10"
-      [collectionSize]="collectionSize"
-      [(page)]="page"
-      (click)="changePage($event.target)"
-      [boundaryLinks]="true">
-    </ngb-pagination>-->
+  <!--    <ngb-pagination
+        class="d-flex justify-content-center"
+        (pageChange)="getPageFromService()"
+        [pageSize]="10"
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        (click)="changePage($event.target)"
+        [boundaryLinks]="true">
+      </ngb-pagination>-->
   <br>
   <div *ngIf="!loading" class="">
     <ul class="pagination mb-0 flex-wrap g-2 justify-content-center">
