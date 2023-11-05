@@ -11,38 +11,39 @@ import {Category} from "@app/models/category";
 })
 export class CartViewComponent implements OnInit {
 
-  constructor(private cartService: CartService, private cartStorageService: CartStorageService) {
+  constructor(private cartService: CartService, public cartStorageService: CartStorageService) {
   }
-
-  loadingCart = true
-  productList: Product[] = []
 
   loadCart(): void {
-    //Leer del localStorage
-    //if localStorage.get(product_list) -> renderizo el carrito
-    //else -> No hay items en el carrito
-    //cada vez q añada o haga algo en el carrito-> modificar el localstorage
-    this.productList = []
-    this.cartService.details().subscribe({
-      next: (v) => {
-        v.result.product_list.forEach((p: any) => {
-          console.log(p)
-          this.cartStorageService.productList.push(new Product(p.image, p.name,
-            p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description,
-            p.stock, p.in_cart))
-        })
-        this.productList = this.cartStorageService.productList
-        this.cartStorageService.loadingCart = false
-        this.loadingCart = this.cartStorageService.loadingCart
-        console.log(v)
-      },
-      error: err => {
-        console.log(err)
-      }
-    })
+
+    if (!this.cartStorageService.productList.length)
+      this.cartService.details().subscribe({
+        next: (v) => {
+          v.result.product_list.forEach((p: any) => {
+            console.log(p)
+            this.cartStorageService.add(new Product(p.image, p.name,
+              p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name),
+              p.short_description, p.stock, p.in_cart))
+          })
+          this.cartStorageService.loadingCart = false
+          console.log(v)
+        },
+        error: err => {
+          console.log(err)
+        }
+      })
+    else
+      this.cartStorageService.loadingCart = false
   }
 
-  emptyCart = () => this.cartService.clear().subscribe()
+  emptyCart = () => this.cartService.clear().subscribe({
+    next: value => {
+      this.cartStorageService.productList = []
+    },
+    error: err => {
+      console.log(err)
+    }
+  })
 
   ngOnInit(): void {
     this.loadCart()

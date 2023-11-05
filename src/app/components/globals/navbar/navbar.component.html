@@ -10,10 +10,11 @@
       <ul>
         <li><a class="nav-link scrollto active" (click)="navigate(router.url,'#hero')" href="#hero">Inicio</a></li>
         <li><a class="nav-link scrollto" href="#about" (click)="navigate('/', '#about')">Quiénes somos</a></li>
+        <li><a class="nav-link scrollto" href="#work_portfolio"
+               (click)="navigate('/work_portfolio', '#work_portfolio')">Portafolio</a></li>
         <li class="dropdown"><a class="scrollto" href="#works" role="button"><span>Trabajos</span> <i
           class="bi bi-chevron-down"></i></a>
           <ul>
-            <li><a routerLink="work_portfolio">Portafolio de trabajos</a></li>
             <li><a role="button" (click)="navigate('/work_with_us','#works')">
               Ofertas de trabajos</a></li>
           </ul>
@@ -27,9 +28,9 @@
         <!--            <li><a routerLink="/sale_products">Productos en venta</a></li>-->
         <!--          </ul>-->
         <!--        </li>-->
-        <li><a class="nav-link" routerLink="/cart">
+        <li><a class="nav-link scrollto" href="#cart" (click)="navigate('/cart', '#cart')">
           <i class="bi bi-cart-plus fs-4"></i>
-          <span class="position-absolute z-3 top-25 start-100 translate-middle badge rounded-pill bg-primary">
+          <span *ngIf="cart_length" class="position-absolute z-3 top-25 start-100 translate-middle badge rounded-pill bg-primary">
                 <span [(ngModel)]="cart_length">{{cart_length}}</span>
               </span>
         </a>

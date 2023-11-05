@@ -34,6 +34,16 @@
   color: var(--engimov-blue-dark)
 }
 
+.bg-engimov-blue {
+  background-color: var(--engimov-blue);
+  color: #FFFFFF;
+}
+
+.bg-engimov-red {
+  background-color: var(--engimov-red-default);
+  color: #FFFFFF;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;

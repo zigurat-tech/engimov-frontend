@@ -75,9 +75,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
     this.loading = true
     this.listProducts = []
     this.utilsService.get_products_sale(query_params).subscribe((res: any) => {
-      console.log(res)
       this.total_of_pages = Math.ceil(res.count / this.page_size)
-      console.log('total of pages ', this.total_of_pages)
       this.pages_per_size = this.getPagesX10()
       //LLeno mi lista
       res.results.forEach((p: any) => this.listProducts.push(new Product(p.image, p.name,
@@ -86,7 +84,7 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       //actualizo mi lista
       this.listProducts.forEach(p => {
         if (this.cartStorageService.exists(p.sku))
-          this.listProducts[this.listProducts.indexOf(p)] = this.cartStorageService.getProduct(p.sku)
+          this.listProducts[this.listProducts.indexOf(p)] = this.cartStorageService.get(p.sku)
       })
       this.loading = false
     })

@@ -30,13 +30,10 @@ export class AppComponent implements AfterViewInit, OnInit {
     })
     this.cartService.details().subscribe({
       next: (response) => {
-        console.log(response.result.product_list)
         response.result.product_list.forEach((p: any) => this.cartStorageService.add(new Product(
           this.basicUrl + p.image, p.name,
           p.description, p.price, p.sku, p.visible, new Category(p.category.id, p.category.name), p.short_description,
           p.stock, p.in_cart, p.quantity)))
-
-        console.log(this.cartStorageService.productList)
       },
       error: err => {
         console.log(err)

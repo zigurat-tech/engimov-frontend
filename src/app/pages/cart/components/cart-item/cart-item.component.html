@@ -1,0 +1,70 @@
+<div class="card w-100 shadow-none border-0 border-bottom rounded-0 mb-3">
+  <div class="row no-gutters">
+    <div class="col-2 my-auto pe-0 pe-sm-3">
+      <div class="square-container text-center div-img-product"
+           style="background-image: url({{prod.image}});">
+      </div>
+    </div>
+    <div class="col-8 ps-1 ps-sm-3">
+      <div class="card-body px-0 px-sm-3 pt-1 pt-sm-3">
+        <h6 class="truncate-1">{{prod.name}}</h6>
+        <br>
+        <!-- Controles del producto-->
+        <div class="d-none d-sm-flex justify-content-start align-items-center">
+          <div class="input-group " style="width: 120px">
+            <button type="button" (click)="this.saleService.decrease(span)"
+                    class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
+            </button>
+            <span class="form-control py-2 border-secondary border-end-0 border-start-0 text-center"
+                  style="font-size: .8rem" #span>{{prod.quantity ? prod.quantity : 1}}</span>
+            <button type="button" (click)="this.saleService.increase(span, prod.stock)"
+                    class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
+            </button>
+          </div>
+          <button class="btn btn-orange mx-1 rounded-circle" (click)="this.saleService.addCart(prod,span)">
+                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+          </button>
+          <button class="btn btn-outline-engimov-red text-nowrap mx-1 rounded-pill"
+                  (click)="this.saleService.removeCart(prod)">
+                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-trash"></i>
+            <span class="d-none d-sm-inline-block">Remover</span>
+          </button>
+        </div>
+        <!--Controles para vista movil-->
+        <div class="d-flex d-sm-none justify-content-start align-items-center">
+
+          <div class="input-group input-group-sm" style="width: 100px">
+            <button type="button" (click)="this.saleService.decrease(span2)"
+                    class="btn btn-light border-secondary border-end-0  fw-bold rounded-start-pill">-
+            </button>
+            <span class="form-control form-control-sm border-secondary border-end-0 border-start-0 text-center"
+                  style="font-size: .8rem" #span2>{{prod.quantity ? prod.quantity : 1}}</span>
+            <button type="button" (click)="this.saleService.increase(span2, prod.stock)"
+                    class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
+            </button>
+          </div>
+          <button class="btn btn-orange btn-sm mx-1 rounded-circle"
+                  (click)="this.saleService.addCart(prod,span2)">
+                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+          </button>
+          <button class="btn btn-outline-engimov-red btn-sm mx-1 rounded-circle"
+                  (click)="this.saleService.removeCart(prod)">
+                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-2 text-end ps-0">
+      <p class="pt-1 mb-1 pt-sm-3 text-nowrap">
+        {{prod.price.toFixed(2)}}
+      </p>
+      <p class="mb-0 pt-1 float-end pt-sm-3 text-nowrap">
+        <small>x({{prod.quantity}})</small>&nbsp;<b>{{(prod.price * prod.quantity).toFixed(2)}}</b>
+      </p>
+    </div>
+  </div>
+</div>

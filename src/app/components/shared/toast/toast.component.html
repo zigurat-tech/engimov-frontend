@@ -1,6 +1,6 @@
 <div aria-live="polite" aria-atomic="true" class="position-relative">
   <div class="toast-container top-0 end-0 p-3">
-    <ngb-toast class="text-light" [autohide]="false" [ngClass]="toast.classes"
+    <ngb-toast [autohide]="false" [ngClass]="toast.classes"
                *ngFor="let toast of this.toastService.listToast;  let i=index"
                (hidden)="this.toastService.closeToast(i)">
       <ng-template ngbToastHeader>

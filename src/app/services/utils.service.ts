@@ -53,8 +53,6 @@ export class UtilsService {
     if (query_params) {
       query_params.forEach(e => url += (e + '&'))
     }
-    console.log(url)
-    // this.router.navigateByUrl('/product_sale')
     return this.http.get(url)
   }
 

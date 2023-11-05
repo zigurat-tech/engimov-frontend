@@ -29,9 +29,6 @@ export class HeroComponent implements OnInit, AfterViewInit {
   })
 
   ngOnInit(): void {
-    console.log(document.location.href)
-    // this.show_hero = !document.location.href.includes('cart');
-
     this.heroService.get_show_hero().subscribe(value => {
       this.show_hero = value
     })
@@ -48,8 +45,6 @@ export class HeroComponent implements OnInit, AfterViewInit {
     })
     this.heroService.get_loading().subscribe(value => {
       this.loading = value
-      console.log(new Date().getMinutes(), new Date().getSeconds())
-      console.log('on init', this.loading)
     })
   }
 

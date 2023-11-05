@@ -16,7 +16,6 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   constructor(public router: Router, private navigationService: NavigationService,
               private cartLengthService: CartLengthService) {
     this.current_url = router.url
-    console.log(this.current_url)
   }
 
 

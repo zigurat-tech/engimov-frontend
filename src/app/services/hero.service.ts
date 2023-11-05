@@ -55,6 +55,5 @@ export class HeroService {
 
   set_loading(value: boolean) {
     this._loading.next(value)
-    console.log(this._loading.getValue())
   }
 }

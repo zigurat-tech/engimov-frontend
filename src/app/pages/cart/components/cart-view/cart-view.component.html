@@ -1,2 +1,36 @@
-<p>cart-view works!</p>
-<button (click)="emptyCart()"> asd</button>
+<app-toast></app-toast>
+<section id="cart" class="cart bg-white">
+  <div class="container-xl" *ngIf="cartStorageService.length()">
+    <div class="section-title">
+      <span>Carrito de compra</span>
+      <h2>Carrito de compra</h2>
+      <!--      <p *ngIf="header.subtitle">{{header.subtitle}}</p>-->
+    </div>
+    <h4 class="d-inline-block">Productos</h4>
+    <span class="d-inline-block float-end pe-2">Precio USD</span>
+    <hr class="mt-0">
+    <div class="cards-horizontal" id="cart-section-products" *ngIf="!cartStorageService.loadingCart">
+      <app-cart-item *ngFor="let prod of cartStorageService.productList" [prod]="prod"></app-cart-item>
+    </div>
+    <app-loader *ngIf="cartStorageService.loadingCart"></app-loader>
+    <div class="row">
+      <div class="col-12 col-md-4">
+        <button class="btn btn-engimov-red rounded-pill" (click)="emptyCart()">
+          <i class="bi bi-cart-x"></i> Limpiar carrito
+        </button>
+      </div>
+      <div class="col-12 col-md-8 text-end">
+        <span class="fs-5"><b>Total </b>({{cartStorageService.length()}}
+          {{"producto" + (cartStorageService.length() > 1 ? 's' : '')}}):
+          $ <b>{{cartStorageService.total.toFixed(2)}}</b> USD</span>
+      </div>
+    </div>
+    <h3 class="text-center">No está disponible la compra por el momento.</h3>
+  </div>
+  <div class="container-xl" *ngIf="!cartStorageService.productList.length">
+    <div class="section-title">
+      <span>No hay productos en el carrito</span>
+      <h2>No hay productos en el carrito</h2>
+    </div>
+  </div>
+</section>

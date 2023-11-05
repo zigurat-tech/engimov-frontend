@@ -25,21 +25,23 @@ export class SaleService {
         prod.quantity = Number(quantity)
         prod.waiting = false
         prod.in_cart = true
+        let messageToast = `${prod.name} fue añadido al carrito! x(${prod.quantity})`
 
-        if (this.cartStorageService.exists(prod.sku))
+        if (this.cartStorageService.exists(prod.sku)) {
           this.cartStorageService.update(prod)
-        else
+          messageToast = `${prod.name} fue actualizado en el carrito! x(${prod.quantity})`
+        } else
           this.cartStorageService.add(prod)
         this.cartStorageService.waiting(prod)
 
-        this.toastService.openToast(new Toast('bg-success',
-          `<i class="bi bi-cart-plus-fill fs-6 text-success"></i>
+        this.toastService.openToast(new Toast('bg-engimov-blue',
+          `<i class="bi bi-cart-plus-fill fs-6 text-engimov-blue-dark"></i>
           <strong class="mx-1">Carrito de compras!</strong>`,
-          `${prod.name} fue añadido al carrito!`))
-        // prod.quantity = Number(span.innerText)
+          messageToast))
       },
       error: err => {
         console.log(err)
+        prod.waiting = false
       }
     })
   }
@@ -48,17 +50,17 @@ export class SaleService {
     prod.waiting = true
     this.cartService.update(prod.sku, 0).subscribe({
       next: (response) => {
-        console.log(response)
         prod.waiting = false
         this.cartStorageService.remove(prod.sku)
         prod.in_cart = false
-        this.toastService.openToast(new Toast('bg-info',
-          `<i class="bi bi-cart-plus-fill fs-6 text-success"></i>
+        this.toastService.openToast(new Toast('bg-engimov-red',
+          `<i class="bi bi-trash fs-6 text-danger"></i>
           <strong class="mx-1">Carrito de compras!</strong>`,
           `${prod.name} fue removido del carrito!`))
       },
       error: err => {
         console.log(err)
+        prod.waiting = false
       }
     })
   }

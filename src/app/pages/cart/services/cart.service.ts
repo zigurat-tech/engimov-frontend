@@ -47,19 +47,10 @@ export class CartService {
       })
     )
   }
-  product_details = (pk: string): Observable<any> => {
-    const headers = this.getHeaders();
-    return this.http.post(this.url + `details/${pk}/`, {}, {headers}).pipe(
-      tap((response: any) => {
-        this.cartLengthService.setCartLength(response.result.product_list.length)
-      })
-    )
-  }
   details = (): Observable<any> => {
     const headers = this.getHeaders();
     return this.http.post(this.url + 'details/', {}, {headers}).pipe(
       tap((response: any) => {
-        console.log(response)
         this.cartLengthService.setCartLength(response.result.product_list.length)
         this.cartStorageService.total = response.result.total
       })

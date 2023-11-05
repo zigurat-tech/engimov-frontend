@@ -17,13 +17,10 @@ export class CarouselComponent implements OnInit {
     this.utilsService.get_works([]).subscribe(response => {
       this.list_works = response.results
       this.loading = true
-      console.log(this.list_works)
     })
   }
 
   ngOnInit(): void {
     this.get_works()
   }
-
-
 }
