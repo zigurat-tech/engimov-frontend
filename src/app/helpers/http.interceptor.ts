@@ -25,7 +25,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         console.log(error)
         if (error.status === 0) {
           console.log(error)
-          // this.alertService.errorNotification()
+          this.alertService.errorNotification()
         } else
           console.log(error)
         // this.alertService.errorNotification(error.message)
