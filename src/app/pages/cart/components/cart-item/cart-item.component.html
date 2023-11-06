@@ -23,7 +23,8 @@
           </div>
           <button class="btn btn-orange mx-1 rounded-circle" (click)="this.saleService.addCart(prod,span)">
                   <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
-                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi"
+                                                     [ngClass]="!prod.in_cart ? 'bi-cart3':'bi-cart-check-fill'"></i>
           </button>
           <button class="btn btn-outline-engimov-red text-nowrap mx-1 rounded-pill"
                   (click)="this.saleService.removeCart(prod)">
@@ -48,7 +49,8 @@
           <button class="btn btn-orange btn-sm mx-1 rounded-circle"
                   (click)="this.saleService.addCart(prod,span2)">
                   <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
-                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi"
+                                                     [ngClass]="!prod.in_cart ? 'bi-cart3':'bi-cart-check-fill'"></i>
           </button>
           <button class="btn btn-outline-engimov-red btn-sm mx-1 rounded-circle"
                   (click)="this.saleService.removeCart(prod)">

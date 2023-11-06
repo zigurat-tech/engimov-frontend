@@ -8,7 +8,8 @@ export const environment = {
     messagingSenderId: "593614495826",
     appId: "1:593614495826:web:058a430309e455bed4ff8b"
   },
-  // url: 'https://engimov.onrender.com/api'
-  url: 'https://my1.expresscuba.com:15051/api',
-  basic_url: 'https://my1.expresscuba.com:15051'
+  // url: 'https://my1.expresscuba.com:15051/api',
+  url: 'https://engimov.cloudfood.uk/api',
+  // basic_url: 'https://my1.expresscuba.com:15051',
+  basic_url: 'https://engimov.cloudfood.uk',
 };

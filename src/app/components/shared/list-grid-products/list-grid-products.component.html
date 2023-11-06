@@ -32,13 +32,13 @@
                           class="btn btn-light border-secondary border-start-0 fw-bold rounded-end-pill">+
                   </button>
                 </div>
-                <button class="btn btn-orange mx-1 rounded-circle" (click)="this.saleService.addCart(prod,span)">
-                  <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
-                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-cart3"></i>
+                <button class="btn mx-1 rounded-circle" [ngClass]="prod.in_cart ? 'btn-outline-orange':'btn-orange'"
+                        (click)="this.saleService.addCart(prod,span)">
+                  <span *ngIf="prod.waiting" class="spinner-border  spinner-border-sm" role="status"
+                        aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi"
+                                                     [ngClass]="!prod.in_cart ? 'bi-cart3':'bi-cart-check-fill'"></i>
                 </button>
               </div>
-              <!--          <input type="radio" class="btn-check" name="btnradio{{prod.sku}}" id="{{prod.sku}}" autocomplete="off">-->
-              <!--          <label class="btn btn-outline-primary" for="{{prod.sku}}">Radio 3</label>-->
             </div>
           </div>
         </div>
