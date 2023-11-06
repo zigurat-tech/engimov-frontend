@@ -24,10 +24,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.log(error)
         if (error.status === 0) {
-          this.alertService.errorNotification()
-        }else
-          this.alertService.errorNotification(error.message)
-        return throwError(()=>error)
+          console.log(error)
+          // this.alertService.errorNotification()
+        } else
+          console.log(error)
+        // this.alertService.errorNotification(error.message)
+        return throwError(() => error)
       })
     );
   }
