@@ -18,7 +18,7 @@
     <br>
   </div>
   <!--  paginator-->
-  <div *ngIf="!loading" class="">
+  <div *ngIf="!loading && listWorks.length" class="">
     <ul class="pagination mb-0 flex-wrap g-2 justify-content-center">
       <li class="page-item">
         <a class="page-link" [class.disabled]="!previousPageClass()" (click)="selectedPage(1)">&laquo;</a>
