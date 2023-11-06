@@ -9,15 +9,18 @@ export class AlertService {
   constructor() {
   }
 
+  messageUnknownError = 'Hay un problema de conexión con el servidor.' +
+    ' Por favor refresque la página y vuelva a intentarlo.'
+
   tinyAlert() {
     Swal.fire('Hey there!');
   }
 
-  successNotification() {
-    Swal.fire('Hi', 'We have been informed!', 'success');
+  errorNotification(message = this.messageUnknownError, title = 'Error!') {
+    Swal.fire(title, message, 'error');
   }
 
-  alertConfirmation() {
+  alertConfirmation(message: string) {
     Swal.fire({
       title: 'Are you sure?',
       text: 'This process is irreversible.',

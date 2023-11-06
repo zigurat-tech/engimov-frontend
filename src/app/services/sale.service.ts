@@ -40,7 +40,6 @@ export class SaleService {
           messageToast))
       },
       error: err => {
-        console.log(err)
         prod.waiting = false
       }
     })
