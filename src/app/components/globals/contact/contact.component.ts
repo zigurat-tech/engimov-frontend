@@ -5,6 +5,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ToastService} from "@app/components/shared/toast/toast.service";
 import {Toast} from "@app/components/shared/toast/toast";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
+import {AlertService} from "@app/services/alert.service";
 
 @Component({
   selector: 'app-contact',
@@ -15,7 +16,8 @@ export class ContactComponent implements OnInit {
   constructor(private utilsService: UtilsService,
               private enterpriseService: EnterpriseService,
               public toastService: ToastService,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private alertService: AlertService) {
   }
 
   title: string = ''
@@ -46,23 +48,21 @@ export class ContactComponent implements OnInit {
     const formData = this.contactForm.value;
     this.utilsService.create_contact(formData).subscribe({
       next: (v) => {
-        console.log(v)
-      },
-      error: (e) => {
-        console.error(e)
-        this.toastService.openToast(new Toast('bg-danger',
-          `<i class="bx bxs-message-error fs-6 text-danger"></i>
-          <strong class="mx-1">Error!</strong>`,
-          'Ha ocurrido un error en el servidor. Por favor intente de nuevo o corrija sus datos.',
-        ))
-        this.loadingForm = false
-      },
-      complete: () => {
-        this.toastService.openToast(new Toast('bg-primary',
-          `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
+        this.toastService.openToast(new Toast('bg-engimov-blue',
+          `<i class="bx bxs-message-rounded-check fs-6 text-engimov-blue-dark"></i>
           <strong class="mx-1">Mensaje enviado!</strong>`,
           'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'))
         this.contactForm.reset()
+        this.loadingForm = false
+      },
+      error: (e) => {
+        console.error(e)
+        if (e.status !== 0) {
+          let message = ''
+          if (e.status === 400)
+            message = 'Por favor verifique sus datos e intente de nuevo.'
+          this.alertService.errorNotification(message)
+        }
         this.loadingForm = false
       }
     })
