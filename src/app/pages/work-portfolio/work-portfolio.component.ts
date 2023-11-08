@@ -4,8 +4,6 @@ import {HeroService} from "@app/services/hero.service";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {Work} from "@app/models/work";
 import {WorkCategory} from "@app/models/work_category";
-import {Category} from "@app/models/category";
-import {Product} from "@app/models/product";
 import {WorkTestimonial} from "@app/models/work_testimonial";
 
 @Component({

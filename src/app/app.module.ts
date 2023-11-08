@@ -7,7 +7,7 @@ import {NavbarComponent} from "@app/components/globals/navbar/navbar.component";
 import {FooterComponent} from "@app/components/globals/footer/footer.component";
 import {TopBarComponent} from "@app/components/globals/top-bar/top-bar.component";
 import {HeroComponent} from "@app/components/shared/hero/hero.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgbDropdownModule} from "@ng-bootstrap/ng-bootstrap";
 import {NgOptimizedImage} from "@angular/common";
@@ -20,6 +20,8 @@ import {WorkPortfolioModule} from "@app/pages/work-portfolio/work-portfolio.modu
 import {TermsModule} from "@app/pages/terms/terms.module";
 import {httpInterceptorProviders} from "@app/helpers/http.interceptor";
 import {CookieService} from 'ngx-cookie-service';
+import {TranslateModule, TranslateLoader} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 
 export function initApp() {
   return () => {
@@ -33,6 +35,10 @@ export function initApp() {
   };
 }
 
+export function httpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http)
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,23 +47,30 @@ export function initApp() {
     TopBarComponent,
     HeroComponent,
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        HttpClientModule,
-        NgbModule,
-        NgbDropdownModule,
-        NgOptimizedImage,
-        ReactiveFormsModule,
-        LoaderModule,
-        IndexModule,
-        ToastModule,
-        WorkWithUsModule,
-        WorkPortfolioModule,
-        TermsModule,
-        FormsModule,
-    ],
+  imports: [
+    BrowserModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: TranslateHttpLoader,
+        deps: [HttpClient]
+      }
+    }),
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    NgbModule,
+    NgbDropdownModule,
+    NgOptimizedImage,
+    ReactiveFormsModule,
+    LoaderModule,
+    IndexModule,
+    ToastModule,
+    WorkWithUsModule,
+    WorkPortfolioModule,
+    TermsModule,
+    FormsModule,
+  ],
   providers: [httpInterceptorProviders, CookieService],
   exports: [],
   bootstrap: [AppComponent]
