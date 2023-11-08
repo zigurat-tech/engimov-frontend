@@ -8,19 +8,21 @@
                                                                           alt="Logo" class="img-fluid"></a>
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" (click)="navigate(router.url,'#hero')" href="#hero">Inicio</a></li>
-        <li><a class="nav-link scrollto" href="#about" (click)="navigate('/', '#about')">Quiénes somos</a></li>
+        <li><a class="nav-link scrollto active" (click)="navigate(router.url,'#hero')"
+               href="#hero">{{'navbar.start'|translate}}</a></li>
+        <li><a class="nav-link scrollto" href="#about"
+               (click)="navigate('/', '#about')">{{'navbar.whyus'|translate}}</a></li>
         <li><a class="nav-link scrollto" href="#work_portfolio"
-               (click)="navigate('/work_portfolio', '#work_portfolio')">Portafolio</a></li>
-        <li class="dropdown"><a role="button"><span>Trabajos</span> <i
+               (click)="navigate('/work_portfolio', '#work_portfolio')">{{'navbar.portfolio'|translate}}</a></li>
+        <li class="dropdown"><a role="button"><span>{{'navbar.work'|translate}}</span> <i
           class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a role="button" (click)="navigate('/work_with_us','#works')">
-              Ofertas de trabajos</a></li>
+              {{'navbar.offer'|translate}}</a></li>
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#portfolio"
-               (click)="navigate('/sale_products', '#portfolio')">Productos</a>
+               (click)="navigate('/sale_products', '#portfolio')">{{'navbar.product'|translate}}</a>
         </li>
         <li style="width: fit-content"><a class="nav-link scrollto" href="#cart" (click)="navigate('/cart', '#cart')">
           <i class="bi bi-cart-plus fs-4"></i>
@@ -30,8 +32,9 @@
               </span>
         </a>
         </li>
-        <li><a class="nav-link scrollto" href="#contact" (click)="navigate('/', '#contact')">Contacto</a></li>
-<!--        <li><a class="nav-link" role="button"><i class="bi bi-search fs-4"></i></a></li>-->
+        <li><a class="nav-link scrollto" href="#contact"
+               (click)="navigate('/', '#contact')">{{'navbar.contact'|translate}}</a></li>
+        <!--        <li><a class="nav-link" role="button"><i class="bi bi-search fs-4"></i></a></li>-->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>

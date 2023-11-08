@@ -52,7 +52,7 @@ export function httpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: TranslateHttpLoader,
+        useFactory: httpLoaderFactory,
         deps: [HttpClient]
       }
     }),

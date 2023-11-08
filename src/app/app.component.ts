@@ -1,10 +1,11 @@
-import {AfterViewInit, Component, Inject, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {HeroService} from "@app/services/hero.service";
 import {CartService} from "@app/pages/cart/services/cart.service";
 import {CartStorageService} from "@app/pages/cart/services/cart-storage.service";
 import {Product} from "@app/models/product";
 import {Category} from "@app/models/category";
 import {environment} from "@src/environments/environment";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,10 @@ export class AppComponent implements AfterViewInit, OnInit {
   basicUrl = environment.basic_url
 
   constructor(private heroService: HeroService, private cartService: CartService,
-              private cartStorageService: CartStorageService) {
+              private cartStorageService: CartStorageService, translateService: TranslateService) {
+    translateService.addLangs(['es', 'pt','en'])
+    translateService.setDefaultLang('es')
+    translateService.use('en')
   }
 
   onscroll = (el: any, listener: any) => {
