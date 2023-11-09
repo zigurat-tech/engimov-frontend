@@ -24,6 +24,20 @@
         <li><a class="nav-link scrollto" href="#portfolio"
                (click)="navigate('/sale_products', '#portfolio')">{{'navbar.product'|translate}}</a>
         </li>
+        <li class="dropdown" id="lang-navbar"><a role="button">
+          <span>{{'navbar\.lang'|translate}}</span>
+          <i class="bi bi-chevron-down"></i></a>
+          <ul class="text-start">
+            <li><a role="button"><img src="./assets/img/flags/es.png" height="35"
+                                                                           alt="ES"> {{'lang\.es'|translate}}</a></li>
+            <li><a role="button"><img src="./assets/img/flags/pt.png" height="35"
+                                                                           alt="PT"> {{'lang\.pt'|translate}}</a></li>
+            <li><a role="button"><img src="./assets/img/flags/uk.png" height="35"
+                                                                           alt="EN"> {{'lang\.en'|translate}}</a></li>
+          </ul>
+        </li>
+        <li><a class="nav-link scrollto" href="#contact"
+               (click)="navigate('/', '#contact')">{{'navbar.contact'|translate}}</a></li>
         <li style="width: fit-content"><a class="nav-link scrollto" href="#cart" (click)="navigate('/cart', '#cart')">
           <i class="bi bi-cart-plus fs-4"></i>
           <span *ngIf="cart_length"
@@ -32,8 +46,6 @@
               </span>
         </a>
         </li>
-        <li><a class="nav-link scrollto" href="#contact"
-               (click)="navigate('/', '#contact')">{{'navbar.contact'|translate}}</a></li>
         <!--        <li><a class="nav-link" role="button"><i class="bi bi-search fs-4"></i></a></li>-->
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>

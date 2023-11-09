@@ -1,6 +1,10 @@
 {
 	"btnStart": "Começar",
+	"lang.en": "Inglês",
+	"lang.es": "Espanhol",
+	"lang.pt": "Português",
 	"navbar.contact": "Contato",
+	"navbar.lang": "Idioma",
 	"navbar.offer": "Ofertas de emprego",
 	"navbar.portfolio": "Portfólio",
 	"navbar.product": "Produtos",
