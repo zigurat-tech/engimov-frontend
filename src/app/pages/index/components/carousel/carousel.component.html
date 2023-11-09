@@ -2,8 +2,8 @@
   <div class="container-xl">
     <app-loader *ngIf="!loading"></app-loader>
     <div class="section-title">
-      <span>Trabajos realizados</span>
-      <h2>Trabajos realizados</h2>
+      <span>{{'section\.jobs'|translate}}</span>
+      <h2>{{'section\.jobs'|translate}}</h2>
     </div>
     <ngb-carousel *ngIf="loading">
       <ng-template ngbSlide *ngFor="let work of list_works;let i = index;">

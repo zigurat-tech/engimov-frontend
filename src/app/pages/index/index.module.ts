@@ -12,6 +12,7 @@ import {PortfolioModule} from "@app/components/shared/portfolio/portfolio.module
 import {ToastModule} from "@app/components/shared/toast/toast.module";
 import {CarouselComponent} from './components/carousel/carousel.component';
 import {NgbCarousel, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -21,18 +22,19 @@ import {NgbCarousel, NgbSlide} from "@ng-bootstrap/ng-bootstrap";
     ContactComponent,
     CarouselComponent,
   ],
-  imports: [
-    CommonModule,
-    IndexRoutingModule,
-    ReactiveFormsModule,
-    NgxCaptchaModule,
-    FormsModule,
-    LoaderModule,
-    PortfolioModule,
-    ToastModule,
-    NgbCarousel,
-    NgbSlide
-  ],
+    imports: [
+        CommonModule,
+        IndexRoutingModule,
+        ReactiveFormsModule,
+        NgxCaptchaModule,
+        FormsModule,
+        LoaderModule,
+        PortfolioModule,
+        ToastModule,
+        NgbCarousel,
+        NgbSlide,
+        TranslateModule
+    ],
   exports: [
     AboutComponent,
     ContactComponent,

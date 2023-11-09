@@ -1,5 +1,9 @@
 {
 	"btnStart": "Comenzar",
+	"footer.info": "Informaciones",
+	"footer.links": "Enlaces útiles",
+	"footer.privacy": "Política de privacidad",
+	"footer.servicio": "Términos de servicio",
 	"lang.en": "Inglés",
 	"lang.es": "Español",
 	"lang.pt": "Portugués",
@@ -10,5 +14,17 @@
 	"navbar.product": "Productos",
 	"navbar.start": "Inicio",
 	"navbar.whyus": "Quiénes somos",
-	"navbar.work": "Trabajos"
+	"navbar.work": "Trabajos",
+	"section.contact.asunto": "Asunto",
+	"section.contact.correo": "Correo",
+	"section.contact.enviar": "Enviar",
+	"section.contact.message": "Mensaje",
+	"section.contact.name": "Nombre",
+	"section.contact.tel": "Teléfono",
+	"section.jobs": "Trabajos realizados",
+	"section.last_products": "Últimos Productos",
+	"section.resources.documento": "Documento de presentación",
+	"section.resources.folleto": "Folleto digital",
+	"section.resources.text": "Descarga nuestro folleto digital informativo y nuestra carta de presentación corporativa para obtener más información sobre nuestros servicios y conocer mejor nuestra empresa.",
+	"section.resources.title": "Documentos"
 }

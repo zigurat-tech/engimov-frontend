@@ -15,7 +15,6 @@ export class IndexComponent implements OnInit, AfterViewInit {
 
   // listCategories: Category[] = []
   listProducts: Product[] = []
-  headerProducts = {title: 'Últimos Productos', subtitle: ''}
   loading = true
 
   set_hero_data = () => {

@@ -2,6 +2,8 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {NavigationService} from "@app/services/navigation.service";
 import {CartLengthService} from "@app/pages/cart/services/cart-length.service";
+import {TranslateService} from "@ngx-translate/core";
+import {LangService} from "@app/services/lang.service";
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +14,15 @@ export class NavbarComponent implements AfterViewInit, OnInit {
   collapsed = true;
   current_url = ''
   cart_length = 0
+  flags = new Map([
+    ['es', './assets/img/flags/es.png'],
+    ['pt', './assets/img/flags/pt.png'],
+    ['en', './assets/img/flags/uk.png']
+  ])
 
   constructor(public router: Router, private navigationService: NavigationService,
-              private cartLengthService: CartLengthService) {
+              private cartLengthService: CartLengthService, public translateService: TranslateService,
+              private langService: LangService) {
     this.current_url = router.url
   }
 
@@ -182,6 +190,16 @@ export class NavbarComponent implements AfterViewInit, OnInit {
 
   navigate(url: string, hash = '') {
     this.navigationService.navigate(url, hash)
+  }
+
+  getFlag = () => ({
+    url: this.flags.get(this.translateService.currentLang),
+    key: this.translateService.currentLang.toUpperCase()
+  })
+
+
+  changeLang(lang: string) {
+    this.langService.changeLang(lang)
   }
 
   protected readonly window = window;

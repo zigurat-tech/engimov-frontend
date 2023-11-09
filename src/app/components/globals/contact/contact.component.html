@@ -3,20 +3,18 @@
   <div class="container-xl" data-aos="zoom-in">
 
     <div class="text-center">
-      <h3>Recursos Descargables</h3>
-      <p> Descarga nuestro folleto digital informativo y nuestra carta de presentación corporativa para obtener más
-        información sobre nuestros servicios y conocer mejor nuestra empresa. Simplemente haz clic en los botones a
-        continuación para acceder a los documentos.</p>
+      <h3>{{'section\.resources\.title'|translate}}</h3>
+      <p>{{'section\.resources\.text'|translate}}</p>
       <div class="row">
         <div class="col-12 col-md-6">
           <!--          <h6>Folleto Digital</h6>-->
           <a class="cta-btn" href="{{enterprise_data[0].doc_folleto_digital}}" download>
-            <i class="bx bxs-download"></i> Folleto Digital</a>
+            <i class="bx bxs-download"></i> {{'section\.resources\.folleto'|translate}}</a>
         </div>
         <div class="col-12 col-md-6">
           <!--          <h6>Documento de Presentación</h6>-->
           <a class="cta-btn" href="{{enterprise_data[0].doc_presentation}}" download>
-            <i class="bx bxs-download"></i> Documento de Presentación</a>
+            <i class="bx bxs-download"></i> {{'section\.resources\.documento'|translate}}</a>
         </div>
       </div>
     </div>
@@ -49,7 +47,7 @@
             <div class="info-box  mb-4">
               <a href="mailto:{{enterprise_data[0].email}}" style="color:inherit">
                 <i class="bx bx-envelope"></i>
-                <h3>Correo</h3>
+                <h3>{{'section\.contact\.correo'|translate}}</h3>
                 <p>{{enterprise_data[0].email}}</p>
               </a>
             </div>
@@ -58,7 +56,7 @@
             <div class="info-box  mb-4">
               <a href="tel:{{enterprise_data[0].tel}}" style="color:inherit">
                 <i class="bx bx-phone-call"></i>
-                <h3>Teléfono</h3>
+                <h3>{{'section\.contact\.tel'|translate}}</h3>
                 <p>{{enterprise_data[0].tel}}</p>
               </a>
             </div>
@@ -72,21 +70,21 @@
           <div class="row">
             <div class="col-md-6 form-group">
               <input type="text" formControlName="name" name="name" class="form-control" id="name"
-                     placeholder="Nombre"
+                     placeholder="{{'section\.contact\.name'|translate}}"
                      required>
             </div>
             <div class="col-md-6 form-group mt-3 mt-md-0">
               <input type="email" formControlName="email" class="form-control" name="email" id="email"
-                     placeholder="Correo" required>
+                     placeholder="{{'section\.contact\.correo'|translate}}" required>
             </div>
           </div>
           <div class="form-group mt-3">
             <input type="text" class="form-control" formControlName="subject" name="subject" id="subject"
-                   placeholder="Asunto" required>
+                   placeholder="{{'section\.contact\.asunto'|translate}}" required>
           </div>
           <div class="form-group mt-3">
-            <textarea class="form-control" formControlName="text" name="text" rows="5" placeholder="Mensaje"
-                      required></textarea>
+            <textarea class="form-control" formControlName="text" name="text" rows="5"
+                      placeholder="{{'section\.contact\.message'|translate}}" required></textarea>
           </div>
           <div class="my-3">
             <div class="loading">Loading</div>
@@ -97,7 +95,7 @@
             <button type="submit" [style.background]="!contactForm.invalid ? '#cc1616': '#444444'"
                     [disabled]="contactForm.invalid">
               <span *ngIf="loadingForm" class="spinner-border spinner-border-sm" role="status"
-                    aria-hidden="true"></span> Enviar
+                    aria-hidden="true"></span> {{'section\.contact\.enviar'|translate}}
             </button>
           </div>
         </form>

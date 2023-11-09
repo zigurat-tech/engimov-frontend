@@ -3,9 +3,9 @@
   <div class="container-xl">
 
     <div class="section-title">
-      <span>{{headerProducts.title}}</span>
-      <h2>{{headerProducts.title}}</h2>
-      <p *ngIf="headerProducts.subtitle">{{headerProducts.subtitle}}</p>
+      <span>{{'section\.last_products'|translate}}</span>
+      <h2>{{'section\.last_products'|translate}}</h2>
+      <!--      <p *ngIf="headerProducts.subtitle">{{headerProducts.subtitle}}</p>-->
     </div>
     <div class="row" data-aos="fade-up" *ngIf="listCategories.length">
       <div class="col-lg-12 d-flex justify-content-center">
@@ -17,7 +17,7 @@
       </div>
     </div>
 
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150" >
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150">
 
       <div class="col-lg-4 col-md-6 portfolio-item background-image text-center {{prod.category.id}}"
            *ngFor="let prod of listProducts">

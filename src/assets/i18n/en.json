@@ -1,5 +1,9 @@
 {
 	"btnStart": "Start",
+	"footer.info": "Information",
+	"footer.links": "Useful links",
+	"footer.privacy": "Privacy policy",
+	"footer.servicio": "Terms of Service",
 	"lang.en": "English",
 	"lang.es": "Spanish",
 	"lang.pt": "Portuguese",
@@ -10,5 +14,17 @@
 	"navbar.product": "Products",
 	"navbar.start": "Home",
 	"navbar.whyus": "Who we are",
-	"navbar.work": "Jobs"
+	"navbar.work": "Jobs",
+	"section.contact.asunto": "Subject",
+	"section.contact.correo": "E-mail",
+	"section.contact.enviar": "Submit",
+	"section.contact.message": "Message",
+	"section.contact.name": "Name",
+	"section.contact.tel": "Phone",
+	"section.jobs": "Jobs",
+	"section.last_products": "Latest Products",
+	"section.resources.documento": "Presentation document",
+	"section.resources.folleto": "Digital brochure",
+	"section.resources.text": "Download our informative digital brochure and our corporate presentation letter to learn more about our services and get to know our company better.",
+	"section.resources.title": "Documents"
 }

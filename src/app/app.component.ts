@@ -6,6 +6,7 @@ import {Product} from "@app/models/product";
 import {Category} from "@app/models/category";
 import {environment} from "@src/environments/environment";
 import {TranslateService} from "@ngx-translate/core";
+import {LangService} from "@app/services/lang.service";
 
 @Component({
   selector: 'app-root',
@@ -18,10 +19,16 @@ export class AppComponent implements AfterViewInit, OnInit {
   basicUrl = environment.basic_url
 
   constructor(private heroService: HeroService, private cartService: CartService,
-              private cartStorageService: CartStorageService, translateService: TranslateService) {
-    translateService.addLangs(['es', 'pt','en'])
+              private cartStorageService: CartStorageService, translateService: TranslateService,
+              private langService: LangService) {
+    translateService.addLangs(['es', 'pt', 'en'])
     translateService.setDefaultLang('es')
-    translateService.use('en')
+    // translateService.use(this.langService.getStoreLang()!)
+    this.langService.changeLang(this.langService.getStoreLang()!)
+  }
+
+  setLanguage() {
+
   }
 
   onscroll = (el: any, listener: any) => {

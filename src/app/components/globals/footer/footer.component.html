@@ -10,8 +10,10 @@
               <!--              <span *ngIf="enterprise_data[0].city">{{enterprise_data[0].city}}</span> <br>-->
               <!--              {{enterprise_data[0].address}}<br><br>-->
               <a href="tel:{{enterprise_data[0].tel}}" style="color:inherit"
-                 *ngIf="enterprise_data[0].tel"><strong>Phone:</strong> {{enterprise_data[0].tel}}<br></a>
-              <strong>Email:</strong> <a class="text-white" href="mailto:{{enterprise_data[0].email}}">
+                 *ngIf="enterprise_data[0].tel"><strong>{{'section\.contact\.tel'|translate}}
+                :</strong> {{enterprise_data[0].tel}}<br></a>
+              <strong>{{'section\.contact\.correo'|translate}}:</strong> <a class="text-white"
+                                                                            href="mailto:{{enterprise_data[0].email}}">
               {{enterprise_data[0].email}}</a><br>
             </p>
             <div class="social-links mt-3">
@@ -29,36 +31,40 @@
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Enlaces útiles</h4>
+          <h4>{{'footer\.links'|translate}}</h4>
           <ul>
-            <li><i class="bx bx-chevron-right"></i> <a role="button" (click)="navigate('/', '#topbar')">Inicio</a></li>
-            <li><i class="bx bx-chevron-right"></i> <a href="#">Trabajos</a></li>
             <li><i class="bx bx-chevron-right"></i>
-              <a role="button" (click)="navigate('/sale_products', '#portfolio')">Productos</a>
+              <a role="button" (click)="navigate('/', '#topbar')">{{'navbar\.start'|translate}}</a></li>
+            <li><i class="bx bx-chevron-right"></i> <a href="#">{{'section\.jobs'|translate}}</a></li>
+            <li><i class="bx bx-chevron-right"></i>
+              <a role="button" (click)="navigate('/sale_products', '#portfolio')">{{'navbar\.product'|translate}}</a>
             </li>
 
           </ul>
         </div>
 
         <div class="col-lg-3 col-md-6 footer-links">
-          <h4>Informaciones</h4>
+          <h4>{{'footer\.info'|translate}}</h4>
           <ul>
             <li><i class="bx bx-chevron-right"></i>
-              <a role="button" (click)="navigate('/', '#about')">Quiénes somos</a></li>
+              <a role="button" (click)="navigate('/', '#about')">{{'navbar\.whyus'|translate}}</a></li>
             <li><i class="bx bx-chevron-right"></i>
-              <a role="button" (click)="navigate('terms_privacy_police', '#terms')">Términos de servicio</a></li>
+              <a role="button" (click)="navigate('terms_privacy_police', '#terms')">{{'footer\.servicio'|translate}}</a>
+            </li>
             <li><i class="bx bx-chevron-right"></i>
-              <a role="button" (click)="navigate('terms_privacy_police', '#privacy')">Política de privacidad</a></li>
+              <a role="button"
+                 (click)="navigate('terms_privacy_police', '#privacy')">{{'footer\.privacy'|translate}}</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-6 footer-links">
-          <h4>Documentos</h4>
+          <h4>{{'section\.resources\.title'|translate}}</h4>
           <ul>
-            <li><i class="bx bxs-download"></i> <a href="{{enterprise_data[0].doc_folleto_digital}}">Folleto digital</a>
+            <li><i class="bx bxs-download"></i> <a
+              href="{{enterprise_data[0].doc_folleto_digital}}">{{'section\.resources\.folleto'|translate}}</a>
             </li>
-            <li><i class="bx bxs-download"></i> <a href="{{enterprise_data[0].doc_presentation}}">Carta de
-              presentación</a></li>
+            <li><i class="bx bxs-download"></i> <a
+              href="{{enterprise_data[0].doc_presentation}}">{{'section\.resources\.documento'|translate}}</a></li>
           </ul>
         </div>
 

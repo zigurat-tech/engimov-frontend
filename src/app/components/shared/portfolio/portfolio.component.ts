@@ -20,7 +20,6 @@ export class PortfolioComponent {
 
   @Input() listCategories: Category[] = []
   @Input() listProducts: Product[] = []
-  @Input() headerProducts = {title: '', subtitle: ''}
   // loading = true
   objectModal: Product = new Product('', '', '', 0,
     '', false, new Category(1, ''),'',1, false)
