@@ -238,6 +238,11 @@
 }
 
 /*Extra styles*/
+#lang-navbar > a {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
 #lang-navbar ul li {
   min-width: auto;
 }

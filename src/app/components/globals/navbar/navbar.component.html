@@ -25,15 +25,21 @@
                (click)="navigate('/sale_products', '#portfolio')">{{'navbar.product'|translate}}</a>
         </li>
         <li class="dropdown" id="lang-navbar"><a role="button">
-          <span>{{'navbar\.lang'|translate}}</span>
+          <div>
+            <span>{{'navbar\.lang'|translate}}</span>
+            <div>
+              <img src="assets/img/flags/es.png" alt="ES" height="35">
+              <span> ES</span>
+            </div>
+          </div>
           <i class="bi bi-chevron-down"></i></a>
           <ul class="text-start">
             <li><a role="button"><img src="./assets/img/flags/es.png" height="35"
-                                                                           alt="ES"> {{'lang\.es'|translate}}</a></li>
+                                      alt="ES"> {{'lang\.es'|translate}}</a></li>
             <li><a role="button"><img src="./assets/img/flags/pt.png" height="35"
-                                                                           alt="PT"> {{'lang\.pt'|translate}}</a></li>
+                                      alt="PT"> {{'lang\.pt'|translate}}</a></li>
             <li><a role="button"><img src="./assets/img/flags/uk.png" height="35"
-                                                                           alt="EN"> {{'lang\.en'|translate}}</a></li>
+                                      alt="EN"> {{'lang\.en'|translate}}</a></li>
           </ul>
         </li>
         <li><a class="nav-link scrollto" href="#contact"
