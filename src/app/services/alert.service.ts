@@ -1,22 +1,26 @@
 import {Injectable} from '@angular/core';
 import Swal from 'sweetalert2';
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlertService {
 
-  constructor() {
-  }
+  messageUnknownError = ''
+  titleError = 'Error!'
 
-  messageUnknownError = 'Hay un problema de conexión con el servidor.' +
-    ' Por favor refresque la página y vuelva a intentarlo.'
+  constructor(translateService: TranslateService) {
+    translateService.get('conexion_error')
+      .subscribe(v => this.messageUnknownError = v)
+    translateService.get('error').subscribe(v => this.titleError = v)
+  }
 
   tinyAlert() {
     Swal.fire('Hey there!');
   }
 
-  errorNotification(message = this.messageUnknownError, title = 'Error!') {
+  errorNotification(message = this.messageUnknownError, title = this.titleError) {
     Swal.fire(title, message, 'error');
   }
 

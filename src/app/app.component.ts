@@ -23,7 +23,6 @@ export class AppComponent implements AfterViewInit, OnInit {
               private langService: LangService) {
     translateService.addLangs(['es', 'pt', 'en'])
     translateService.setDefaultLang('es')
-    // translateService.use(this.langService.getStoreLang()!)
     this.langService.changeLang(this.langService.getStoreLang()!)
   }
 

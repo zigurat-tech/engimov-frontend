@@ -11,6 +11,8 @@
 	"cart.remove_item": "Remover",
 	"cart.title": "Carrinho de compras",
 	"cart.total": "Total",
+	"conexion_error": "Há um problema na ligação ao servidor. Actualize a página e tente novamente.",
+	"error": "Erro",
 	"footer.info": "Informações",
 	"footer.links": "Links úteis",
 	"footer.privacy": "Política de Privacidade",

@@ -7,12 +7,20 @@ import {
   HTTP_INTERCEPTORS,
   HttpErrorResponse
 } from '@angular/common/http';
-import {catchError, EMPTY, Observable, throwError} from 'rxjs';
+import {catchError, Observable, throwError} from 'rxjs';
 import {AlertService} from "@app/services/alert.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
-  constructor(private alertService: AlertService) {
+
+  messageUnknownError = ''
+  titleError = 'Error!'
+
+  constructor(private alertService: AlertService, translateService: TranslateService) {
+    translateService.get('conexion_error')
+      .subscribe(v => alertService.messageUnknownError = v)
+    translateService.get('error').subscribe(v => alertService.titleError = v)
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

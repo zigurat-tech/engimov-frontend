@@ -11,6 +11,8 @@
 	"cart.remove_item": "Remove",
 	"cart.title": "Shopping cart",
 	"cart.total": "Total",
+	"conexion_error": "There is a connection problem with the server. Please refresh the page and try again.",
+	"error": "Error",
 	"footer.info": "Information",
 	"footer.links": "Useful links",
 	"footer.privacy": "Privacy policy",
