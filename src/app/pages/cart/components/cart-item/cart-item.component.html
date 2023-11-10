@@ -30,7 +30,7 @@
                   (click)="this.saleService.removeCart(prod)">
                   <span *ngIf="prod.waiting" class="spinner-border spinner-border-sm" role="status"
                         aria-hidden="true"></span><i *ngIf="!prod.waiting" class="bi bi-trash"></i>
-            <span class="d-none d-sm-inline-block">Remover</span>
+            <span class="d-none d-sm-inline-block">{{'cart\.remove_item'|translate}}</span>
           </button>
         </div>
         <!--Controles para vista movil-->

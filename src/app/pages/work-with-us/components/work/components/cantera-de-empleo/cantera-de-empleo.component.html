@@ -6,58 +6,60 @@
       <div class="row g-2">
         <div class="col-12 col-lg-12 col-md-6 form-group">
           <input type="text" formControlName="name" name="name" class="form-control" id="name{{work.id}}"
-                 placeholder="Nombre*" required [attr.aria-describedby]="'v-name' + work.id"
+                 placeholder="{{'section\.contact\.name'|translate}}*" required
+                 [attr.aria-describedby]="'v-name' + work.id"
                  [class.is-invalid]="form.get('name')?.hasError('required') && form.get('name')?.touched">
           <div id="v-name{{work.id}}" class="invalid-feedback">
             <p class="mb-0" [class.d-none]="!form.get('name')?.hasError('required') && form.get('name')?.touched">
-              Este campo es requerido.</p>
+              {{'work_with_us\.form\.required_message'|translate}}</p>
           </div>
         </div>
 
         <div class="col-12 col-lg-12 col-md-6 form-group ">
           <input type="email" formControlName="email" class="form-control" name="email" id="email{{work.id}}"
-                 placeholder="Correo*" required [attr.aria-describedby]="'v-email' + work.id"
+                 placeholder="{{'section\.contact\.correo'|translate}}*" required
+                 [attr.aria-describedby]="'v-email' + work.id"
                  [class.is-invalid]="(form.get('email')?.hasError('required') ||
                  form.get('email')?.hasError('email')) && form.get('email')?.touched">
           <div id="v-email{{work.id}}" class="invalid-feedback">
             <p class="mb-0" [class.d-none]="!form.get('email')?.hasError('required') && form.get('email')?.touched">
-              Este campo es requerido.</p>
+              {{'work_with_us\.form\.required_message'|translate}}</p>
             <p class="mb-0" [class.d-none]="!form.get('email')?.hasError('email') && form.get('email')?.touched">
-              Ingrese un correo válido</p>
+              {{'work_with_us\.form\.invalid_message'|translate}}</p>
           </div>
         </div>
 
         <div class="col-12 col-lg-12 col-md-6 form-group ">
           <input type="text" formControlName="tel" maxlength="15" class="form-control" name="tel" id="tel{{work.id}}"
-                 placeholder="Teléfono">
+                 placeholder="{{'section\.contact\.tel'|translate}}">
         </div>
         <div class="col-12 col-lg-12 col-md-6 form-group ">
           <input type="text" formControlName="formation" class="form-control" name="formation" id="formation{{work.id}}"
-                 placeholder="Educación">
+                 placeholder="{{'work_with_us\.form\.education'|translate}}">
         </div>
         <div class="col-12 form-group ">
           <input type="text" formControlName="skills" class="form-control" name="skills" id="skills{{work.id}}"
-                 placeholder="Habilidades">
+                 placeholder="{{'work_with_us\.form\.skill'|translate}}">
         </div>
         <div class="form-group col-12">
             <textarea class="form-control" formControlName="experience" name="experience" rows="3"
-                      placeholder="Experiencia laboral"></textarea>
+                      placeholder="{{'work_with_us\.form\.xp'|translate}}"></textarea>
         </div>
 
         <div class="col-12 mb-2 form-group text-center">
-          <label for="cv{{work.id}}" class="form-label small">Adjunte su CV*</label>
+          <label for="cv{{work.id}}" class="form-label small">{{'work_with_us\.form\.cv'|translate}}</label>
           <input type="file" formControlName="cv" class="form-control is-invalid" name="cv" id="cv{{work.id}}"
                  placeholder="CV*" required [attr.aria-describedby]="'v-cv' + work.id"
                  [class.is-invalid]="form.get('cv')?.hasError('required') && form.get('cv')?.touched">
           <div id="v-cv{{work.id}}" class="invalid-feedback">
             <p class="mb-0" [class.d-none]="!form.get('cv')?.hasError('required') && form.get('cv')?.touched">
-              Este campo es requerido.</p>
+              {{'work_with_us\.form\.required_message'|translate}}</p>
           </div>
         </div>
       </div>
       <div class="text-center">
         <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
-          Enviar <i *ngIf="!loading" class="bx bi-send-fill"></i>
+          {{'btnEnviar'|translate}} <i *ngIf="!loading" class="bx bi-send-fill"></i>
           <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"
                 aria-hidden="true"></span>
         </button>

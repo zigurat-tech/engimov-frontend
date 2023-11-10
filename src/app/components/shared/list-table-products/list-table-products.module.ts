@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListTableProductsComponent } from './list-table-products.component';
 import {ToastModule} from "@app/components/shared/toast/toast.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 
@@ -14,7 +15,8 @@ import {ToastModule} from "@app/components/shared/toast/toast.module";
     ],
     imports: [
         CommonModule,
-        ToastModule
+        ToastModule,
+        TranslateModule
     ]
 })
 export class ListTableProductsModule { }

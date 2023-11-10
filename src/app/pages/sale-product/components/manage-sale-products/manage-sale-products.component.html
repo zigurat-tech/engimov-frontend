@@ -13,26 +13,26 @@
           <input type="radio" class="btn-check" name="view_mode" id="option2" value="cards" autocomplete="off"
                  [checked]="viewMode=='cards'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option2"><i class="bi text-black-50 bi-grid-3x3-gap"></i> <span
-            class=""> Tarjetas</span></label>
+            class=""> {{'products\.tarjetas'|translate}}</span></label>
           <!--          <hr class="vr mx-1 align-middle">-->
           <input type="radio" class="btn-check" name="view_mode" value="table" id="option1" autocomplete="off"
                  [checked]="viewMode=='table'" (change)="changeViewMode()" [(ngModel)]="viewMode">
           <label class="btn mx-1" for="option1"><i class="bx bi-list"></i>
-            <span class=""> Tabla</span></label>
+            <span class=""> {{'products\.tablas'|translate}}</span></label>
         </div>
         <div class="text-start text-md-end col-12 col-md-6">
           <select class="form-select mx-1 d-inline w-auto" aria-label="Orden select" (change)="filterAndOrder()"
                   [(ngModel)]="order_by">
-            <option selected value="-1">Ordenar por</option>
-            <option value="down">Mayor precio</option>
-            <option value="up">Menor precio</option>
+            <option selected value="-1">{{'products\.order'|translate}}</option>
+            <option value="down">{{'products\.order_high_price'|translate}}</option>
+            <option value="up">{{'products\.order_low_price'|translate}}</option>
             <option value="asc">A...Z</option>
             <option value="desc">Z...A</option>
           </select>
           <hr class="vr align-middle">
           <select class="form-select mx-1 d-inline w-auto" name="category_filter" aria-label="Filter select"
                   (change)="filterAndOrder()" [(ngModel)]="category_filter">
-            <option selected value="-1">Filtrar por</option>
+            <option selected value="-1">{{'products\.filter_by'|translate}}</option>
             <option value="{{cat.id}}" *ngFor="let cat of listCategories">{{cat.name}}</option>
           </select>
         </div>
@@ -102,8 +102,6 @@
         <option value="100">100</option>
       </select>
     </ul>
-
-
   </div>
 
 
@@ -128,7 +126,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <a role="button" class="btn-engimov" (click)="c('Save click')">Cerrar</a>
+    <a role="button" class="btn-engimov" (click)="c('Save click')">{{'btnCerrar'|translate}}</a>
   </div>
 </ng-template>
 

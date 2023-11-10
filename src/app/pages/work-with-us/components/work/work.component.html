@@ -1,6 +1,6 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="work.active" class="nav-tabs">
   <li [ngbNavItem]="1">
-    <button ngbNavLink>Descripción</button>
+    <button ngbNavLink>{{'section\.card\.desc'|translate}}</button>
     <ng-template ngbNavContent>
       <div class="card">
         <div class="row g-0">
@@ -21,13 +21,13 @@
     </ng-template>
   </li>
   <li [ngbNavItem]="2">
-    <button ngbNavLink>Cantera de Empleo</button>
+    <button ngbNavLink>{{'work_with_us\.cantera'|translate}}</button>
     <ng-template ngbNavContent>
       <app-cantera-de-empleo [work]="work"></app-cantera-de-empleo>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
-    <button ngbNavLink>Contacto comercial</button>
+    <button ngbNavLink>{{'work_with_us\.comercial'|translate}}</button>
     <ng-template ngbNavContent>
       <app-contacto-comercial [work]="work"></app-contacto-comercial>
     </ng-template>

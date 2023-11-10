@@ -2,12 +2,12 @@
 <section id="cart" class="cart bg-white">
   <div class="container-xl" *ngIf="cartStorageService.length()">
     <div class="section-title">
-      <span>Carrito de compra</span>
-      <h2>Carrito de compra</h2>
+      <span>{{'cart\.title'|translate}}</span>
+      <h2>{{'cart\.title'|translate}}</h2>
       <!--      <p *ngIf="header.subtitle">{{header.subtitle}}</p>-->
     </div>
-    <h4 class="d-inline-block">Productos</h4>
-    <span class="d-inline-block float-end pe-2">Precio USD</span>
+    <h4 class="d-inline-block">{{'navbar\.product'|translate}}</h4>
+    <span class="d-inline-block float-end pe-2">{{'products\.price'|translate}} USD</span>
     <hr class="mt-0">
     <div class="cards-horizontal" id="cart-section-products" *ngIf="!cartStorageService.loadingCart">
       <app-cart-item *ngFor="let prod of cartStorageService.productList" [prod]="prod"></app-cart-item>
@@ -16,21 +16,21 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <button class="btn btn-engimov-red rounded-pill" (click)="emptyCart()">
-          <i class="bi bi-cart-x"></i> Limpiar carrito
+          <i class="bi bi-cart-x"></i> {{'cart\.clean_cart'|translate}}
         </button>
       </div>
       <div class="col-12 col-md-8 text-end">
-        <span class="fs-5"><b>Total </b>({{cartStorageService.length()}}
-          {{"producto" + (cartStorageService.length() > 1 ? 's' : '')}}):
+        <span class="fs-5"><b>{{'cart\.total'|translate}} </b>({{cartStorageService.length()}}
+          {{("product"|translate) + (cartStorageService.length() > 1 ? 's' : '')}}):
           $ <b>{{cartStorageService.total.toFixed(2)}}</b> USD</span>
       </div>
     </div>
-    <h3 class="text-center">No está disponible la compra por el momento.</h3>
+    <h3 class="text-center">{{'cart\.no_disponible'|translate}}</h3>
   </div>
   <div class="container-xl" *ngIf="!cartStorageService.productList.length">
     <div class="section-title">
-      <span>No hay productos en el carrito</span>
-      <h2>No hay productos en el carrito</h2>
+      <span>{{'cart\.empty_cart_message'|translate}}</span>
+      <h2>{{'cart\.empty_cart_message'|translate}}</h2>
     </div>
   </div>
 </section>

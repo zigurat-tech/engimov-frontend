@@ -10,6 +10,7 @@ import {WorkComponent} from '@app/pages/work-with-us/components/work/work.compon
 import {CanteraDeEmpleoComponent} from './components/work/components/cantera-de-empleo/cantera-de-empleo.component';
 import {ContactoComercialComponent} from './components/work/components/contacto-comercial/contacto-comercial.component';
 import {ToastModule} from "@app/components/shared/toast/toast.module";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -19,15 +20,16 @@ import {ToastModule} from "@app/components/shared/toast/toast.module";
     CanteraDeEmpleoComponent,
     ContactoComercialComponent,
   ],
-  imports: [
-    CommonModule,
-    WorkWithUsRoutingModule,
-    NgbNavModule,
-    LoaderModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ToastModule,
-  ]
+    imports: [
+        CommonModule,
+        WorkWithUsRoutingModule,
+        NgbNavModule,
+        LoaderModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ToastModule,
+        TranslateModule,
+    ]
 })
 export class WorkWithUsModule {
 }

@@ -6,6 +6,7 @@ import {WorkCardComponent} from './components/work-card/work-card.component';
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
 import {FormsModule} from "@angular/forms";
 import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -13,13 +14,14 @@ import {NgbNavModule} from "@ng-bootstrap/ng-bootstrap";
     WorkPortfolioComponent,
     WorkCardComponent
   ],
-  imports: [
-    CommonModule,
-    WorkPortfolioRoutingModule,
-    LoaderModule,
-    FormsModule,
-    NgbNavModule
-  ]
+    imports: [
+        CommonModule,
+        WorkPortfolioRoutingModule,
+        LoaderModule,
+        FormsModule,
+        NgbNavModule,
+        TranslateModule
+    ]
 })
 export class WorkPortfolioModule {
 }

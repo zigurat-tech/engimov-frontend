@@ -7,7 +7,7 @@
       <p *ngIf="header.subtitle">{{header.subtitle}}</p>
     </div>
     <h2 *ngIf="!loadingWorks && !list_works.length" class="text-engimov-blue text-center">
-      No hay ofertas de trabajo disponibles por ahora.</h2>
+      {{'work_with_us\.message_empty'|translate}}</h2>
     <app-loader *ngIf="loadingWorks"></app-loader>
     <div class="row gy-5 portfolio-container" *ngIf="!loadingWorks" data-aos="fade-up" data-aos-delay="150">
       <div class="col-12 col-lg-6" *ngFor="let work of list_works">

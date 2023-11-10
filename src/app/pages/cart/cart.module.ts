@@ -7,6 +7,7 @@ import {CartRoutingModule} from "@app/pages/cart/cart-routing.module";
 import {CartViewComponent} from './components/cart-view/cart-view.component';
 import {ToastModule} from "@app/components/shared/toast/toast.module";
 import {CartItemComponent} from './components/cart-item/cart-item.component';
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -15,13 +16,14 @@ import {CartItemComponent} from './components/cart-item/cart-item.component';
     CartViewComponent,
     CartItemComponent
   ],
-  imports: [
-    CommonModule,
-    CartRoutingModule,
-    LoaderModule,
-    FormsModule,
-    ToastModule
-  ]
+    imports: [
+        CommonModule,
+        CartRoutingModule,
+        LoaderModule,
+        FormsModule,
+        ToastModule,
+        TranslateModule
+    ]
 })
 export class CartModule {
 }
