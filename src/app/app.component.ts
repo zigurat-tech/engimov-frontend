@@ -7,6 +7,7 @@ import {Category} from "@app/models/category";
 import {environment} from "@src/environments/environment";
 import {TranslateService} from "@ngx-translate/core";
 import {LangService} from "@app/services/lang.service";
+import {AlertService} from "@app/services/alert.service";
 
 @Component({
   selector: 'app-root',
@@ -19,15 +20,18 @@ export class AppComponent implements AfterViewInit, OnInit {
   basicUrl = environment.basic_url
 
   constructor(private heroService: HeroService, private cartService: CartService,
-              private cartStorageService: CartStorageService, translateService: TranslateService,
-              private langService: LangService) {
+              private cartStorageService: CartStorageService, private translateService: TranslateService,
+              private langService: LangService, private alertService: AlertService) {
     translateService.addLangs(['es', 'pt', 'en'])
     translateService.setDefaultLang('es')
     this.langService.changeLang(this.langService.getStoreLang()!)
   }
 
-  setLanguage() {
-
+  updateTranslations() {
+    this.translateService.get('conexion_error')
+      .subscribe(v => this.alertService.messageUnknownError = v)
+    this.translateService.get('error')
+      .subscribe(v => this.alertService.titleError = v)
   }
 
   onscroll = (el: any, listener: any) => {
@@ -35,9 +39,12 @@ export class AppComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
+    this.translateService.onLangChange.subscribe(v => this.updateTranslations())
+
     this.heroService.get_loading().subscribe(value => {
       this.loader = value
     })
+
     this.cartService.details().subscribe({
       next: (response) => {
         response.result.product_list.forEach((p: any) => this.cartStorageService.add(new Product(

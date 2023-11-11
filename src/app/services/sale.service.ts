@@ -17,11 +17,8 @@ export class SaleService {
   shopping_cart = ''
 
   constructor(private toastService: ToastService, private cartService: CartService,
-              private cartStorageService: CartStorageService, translateService: TranslateService) {
-    translateService.get('cart.item_added').subscribe(v => this.item_added = v)
-    translateService.get('cart\.item_updated').subscribe(v => this.item_updated = v)
-    translateService.get('cart\.item_removed').subscribe(v => this.item_removed = v)
-    translateService.get('cart\.title').subscribe(v => this.shopping_cart = v)
+              private cartStorageService: CartStorageService, private translateService: TranslateService) {
+    this.updateTranslations()
   }
 
   addCart(prod: Product, span: HTMLSpanElement) {
@@ -85,5 +82,12 @@ export class SaleService {
     if (parseInt(span.innerText) === stock)
       return
     span.innerText = String(parseInt(span.innerText) + 1)
+  }
+
+  updateTranslations() {
+    this.translateService.get('cart.item_added').subscribe(v => this.item_added = v)
+    this.translateService.get('cart\.item_updated').subscribe(v => this.item_updated = v)
+    this.translateService.get('cart\.item_removed').subscribe(v => this.item_removed = v)
+    this.translateService.get('cart\.title').subscribe(v => this.shopping_cart = v)
   }
 }

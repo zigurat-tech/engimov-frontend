@@ -1,7 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SaleService} from "@app/services/sale.service";
 import {Product} from "@app/models/product";
 import {Category} from "@app/models/category";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-cart-item',

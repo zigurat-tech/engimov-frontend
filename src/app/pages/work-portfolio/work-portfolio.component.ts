@@ -31,7 +31,7 @@ export class WorkPortfolioComponent implements OnInit, AfterViewInit {
   page = 1
   total_of_pages = 1
   pages_per_size: number[] | undefined = []
-  page_size = 10
+  page_size = 6
 
   set_hero_data = () => {
     this.heroService.set_loading(false)
