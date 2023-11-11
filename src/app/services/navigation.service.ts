@@ -17,9 +17,19 @@ export class NavigationService {
           .forEach(e => e.classList.remove('active'))
       })
       .then(value => {
+        this.jsService.scrollto('#topbar')
+      })
+  }
+
+  navigateToHash(url: string, hash:string) {
+    this.router.navigate([url])
+      .then(value => {
+        document.querySelectorAll('.scrollto')
+          .forEach(e => e.classList.remove('active'))
+      })
+      .then(value => {
         if (hash)
-          // this.jsService.scrollto(hash)
-          this.jsService.scrollto('#topbar')
+          this.jsService.scrollto(hash)
       })
   }
 }

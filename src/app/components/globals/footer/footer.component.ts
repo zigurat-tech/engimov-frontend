@@ -11,7 +11,7 @@ import {NavigationService} from "@app/services/navigation.service";
 export class FooterComponent implements OnInit {
   enterprise_data: any[] = [];
 
-  constructor(private enterpriseService: EnterpriseService, private navigationService: NavigationService) {
+  constructor(private enterpriseService: EnterpriseService, public navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
@@ -21,5 +21,4 @@ export class FooterComponent implements OnInit {
   }
 
   navigate = (url: string, hash = '') => this.navigationService.navigate(url, hash)
-
 }
