@@ -6,6 +6,7 @@ import {ToastService} from "@app/components/shared/toast/toast.service";
 import {Toast} from "@app/components/shared/toast/toast";
 import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {AlertService} from "@app/services/alert.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-contact',
@@ -17,7 +18,9 @@ export class ContactComponent implements OnInit {
               private enterpriseService: EnterpriseService,
               public toastService: ToastService,
               private sanitizer: DomSanitizer,
-              private alertService: AlertService) {
+              private alertService: AlertService,
+              private translateService: TranslateService) {
+    this.updateTranslations()
   }
 
   title: string = ''
@@ -35,6 +38,10 @@ export class ContactComponent implements OnInit {
   })
   loadingForm = false
 
+  titleAlert = 'Mensaje enviado!'
+  successMessageAlert = 'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'
+  errorMessageAlert = 'Por favor verifique sus datos e intente de nuevo.'
+
   contact = () => this.utilsService.section_contact().subscribe(response => {
     const data = response[0]
     this.title = data.title
@@ -50,8 +57,8 @@ export class ContactComponent implements OnInit {
       next: (v) => {
         this.toastService.openToast(new Toast('bg-engimov-blue',
           `<i class="bx bxs-message-rounded-check fs-6 text-engimov-blue-dark"></i>
-          <strong class="mx-1">Mensaje enviado!</strong>`,
-          'Su mensaje ha sido enviado, por favor espere por nuestra respuesta.'))
+          <strong class="mx-1">${this.titleAlert}</strong>`,
+          this.successMessageAlert))
         this.contactForm.reset()
         this.loadingForm = false
       },
@@ -60,7 +67,7 @@ export class ContactComponent implements OnInit {
         if (e.status !== 0) {
           let message = ''
           if (e.status === 400)
-            message = 'Por favor verifique sus datos e intente de nuevo.'
+            message = this.errorMessageAlert
           this.alertService.errorNotification(message)
         }
         this.loadingForm = false
@@ -75,9 +82,19 @@ export class ContactComponent implements OnInit {
       this.enterprise_data = data
     });
     this.contactForm.enable()
+    this.translateService.onLangChange.subscribe(v => this.updateTranslations())
   }
 
   get safeHtmlContent(): SafeHtml {
     return this.sanitizer.bypassSecurityTrustHtml(this.enterprise_data[0].location);
+  }
+
+  updateTranslations() {
+    this.translateService.get('section\.contact\.title_alert')
+      .subscribe(v => this.titleAlert = v)
+    this.translateService.get('section\.contact\.success_message')
+      .subscribe(v => this.successMessageAlert = v)
+    this.translateService.get('section\.contact\.error_message')
+      .subscribe(v => this.errorMessageAlert = v)
   }
 }

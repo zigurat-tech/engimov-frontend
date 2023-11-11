@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Toast} from "@app/components/shared/toast/toast";
 import {ToastService} from "@app/components/shared/toast/toast.service";
 import {UtilsService} from "@app/services/utils.service";
-import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-cantera-de-empleo',
@@ -12,11 +11,16 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class CanteraDeEmpleoComponent {
   @Input() work: any
+  @Input() messagesAlert: any
   form: FormGroup
   loading = false
 
-  constructor(private fb: FormBuilder, private toastService: ToastService, private utilsService: UtilsService,
-              translateService: TranslateService) {
+  successMessageAlert = 'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'
+  succesTitleAlert = 'Solicitud enviada!'
+  error = 'Error'
+  errorMessage500 = 'Hay un error en el servidor. Por favor intente de nuevo más tarde o contacte un admin.'
+
+  constructor(private fb: FormBuilder, private toastService: ToastService, private utilsService: UtilsService,) {
     this.form = this.fb.group({
       job_offer: [''],
       name: ['', [Validators.required, Validators.maxLength(120)]],
@@ -43,8 +47,8 @@ export class CanteraDeEmpleoComponent {
         this.form.reset()
         this.toastService.openToast(new Toast('bg-engimov-blue',
           `<i class="bx bxs-message-rounded-check fs-6 text-engimov-blue-dark"></i>
-              <strong class="mx-1">Solicitud enviada!</strong>`,
-          'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'))
+              <strong class="mx-1">${this.messagesAlert.succesTitleAlert}</strong>`,
+          this.messagesAlert.successMessageAlert))
       },
       error: (err) => {
         this.loading = false
@@ -59,10 +63,10 @@ export class CanteraDeEmpleoComponent {
             console.log("Clave: " + key + ", Valor: " + value);
             message_alert += value + '\n'
           }
-          // this.showAlertError(message_alert)
+          this.showAlertError(message_alert)
         }
-        // if (err.status >= 500)
-        //   this.showAlertError('Hay un error en el servidor. Por favor intente de nuevo más tarde.')
+        if (err.status >= 500)
+          this.showAlertError(this.messagesAlert.errorMessage500)
       },
       complete: () => {
         this.loading = false
@@ -74,7 +78,7 @@ export class CanteraDeEmpleoComponent {
   showAlertError(message: string) {
     this.toastService.openToast(new Toast('bg-engimov-red',
       `<i class="bx bxs-message-error fs-6 text-engimov-red-default"></i>
-              <strong class="mx-1">Error!</strong>`,
+              <strong class="mx-1">${this.messagesAlert.error}!</strong>`,
       message))
   }
 }

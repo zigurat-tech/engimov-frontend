@@ -23,13 +23,13 @@
   <li [ngbNavItem]="2">
     <button ngbNavLink>{{'work_with_us\.cantera'|translate}}</button>
     <ng-template ngbNavContent>
-      <app-cantera-de-empleo [work]="work"></app-cantera-de-empleo>
+      <app-cantera-de-empleo [messagesAlert]="messagesAlert" [work]="work"></app-cantera-de-empleo>
     </ng-template>
   </li>
   <li [ngbNavItem]="3">
     <button ngbNavLink>{{'work_with_us\.comercial'|translate}}</button>
     <ng-template ngbNavContent>
-      <app-contacto-comercial [work]="work"></app-contacto-comercial>
+      <app-contacto-comercial [messagesAlert]="messagesAlert" [work]="work"></app-contacto-comercial>
     </ng-template>
   </li>
 </ul>

@@ -11,17 +11,18 @@ import {UtilsService} from "@app/services/utils.service";
 })
 export class ContactoComercialComponent {
   @Input() work: any
+  @Input() messagesAlert: any
   form: FormGroup
   loading = false
 
-  constructor(private fb: FormBuilder, private toastService: ToastService, private utilsService: UtilsService) {
+  constructor(private fb: FormBuilder, private toastService: ToastService, private utilsService: UtilsService,) {
     this.form = this.fb.group({
       job_offer: [''],
       name: ['', [Validators.required, Validators.maxLength(120)]],
       email: ['', [Validators.required, Validators.email]],
       tel: ['', [Validators.maxLength(15)]],
       sector: ['', [Validators.maxLength(200)]],
-      business_offer: ['',Validators.required],
+      business_offer: ['', Validators.required],
       others: ['',],
     })
   }
@@ -36,10 +37,10 @@ export class ContactoComercialComponent {
       next: (v) => {
         this.loading = false
         this.form.reset()
-        this.toastService.openToast(new Toast('bg-primary',
-          `<i class="bx bxs-message-rounded-check fs-6 text-primary"></i>
-              <strong class="mx-1">Solicitud enviada!</strong>`,
-          'Su solicitud ha sido enviada, por favor espere por nuestra respuesta.'))
+        this.toastService.openToast(new Toast('bg-engimov-blue',
+          `<i class="bx bxs-message-rounded-check fs-6 text-engimov-blue-dark"></i>
+              <strong class="mx-1">${this.messagesAlert.succesTitleAlert}</strong>`,
+          this.messagesAlert.successMessageAlert))
       },
       error: (err) => {
         this.loading = false
@@ -47,8 +48,8 @@ export class ContactoComercialComponent {
         const attrs = Object.keys(err.error);
         let message_alert = ''
 
-        if (err.status === 0)
-          this.showAlertError('Hay un problema de conexión.')
+        // if (err.status === 0)
+        //   this.showAlertError('Hay un problema de conexión.')
         if (err.status >= 400 && err.status < 500) {
           for (let i = 0; i < attrs.length; i++) {
             const key = attrs[i];
@@ -59,7 +60,7 @@ export class ContactoComercialComponent {
           this.showAlertError(message_alert)
         }
         if (err.status >= 500)
-          this.showAlertError('Hay un error en el servidor. Por favor intente de nuevo más tarde.')
+          this.showAlertError(this.messagesAlert.errorMessage500)
       },
       complete: () => {
         this.loading = false
@@ -69,9 +70,9 @@ export class ContactoComercialComponent {
   }
 
   showAlertError(message: string) {
-    this.toastService.openToast(new Toast('bg-danger',
-      `<i class="bx bxs-message-error fs-6 text-danger"></i>
-              <strong class="mx-1">Error!</strong>`,
+    this.toastService.openToast(new Toast('bg-engimov-red',
+      `<i class="bx bxs-message-error fs-6 text-engimov-red-default"></i>
+              <strong class="mx-1">${this.messagesAlert.error}!</strong>`,
       message))
   }
 }
