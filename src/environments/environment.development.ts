@@ -9,7 +9,7 @@ export const environment = {
     appId: "1:593614495826:web:058a430309e455bed4ff8b"
   },
   // url: 'http://127.0.0.1:8000/api',
-  url: 'http://127.0.0.1:15051/api',
-  basic_url: 'http://127.0.0.1:15051',
+  url: 'http://127.0.0.1:8000/api',
+  basic_url: 'http://127.0.0.1:8000',
   // basic_url: 'http://127.0.0.1:8000',
 };
