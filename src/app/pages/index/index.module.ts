@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {IndexRoutingModule} from './index-routing.module';
 import {IndexComponent} from './index.component';
 import {AboutComponent} from "@app/pages/index/components/about/about.component";
-import {ContactComponent} from "@app/components/globals/contact/contact.component";
+import {ContactComponent} from "@app/pages/index/components/contact/contact.component";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {NgxCaptchaModule} from "ngx-captcha";
 import {LoaderModule} from "@app/components/shared/loader/loader.module";
@@ -35,10 +35,6 @@ import {TranslateModule} from "@ngx-translate/core";
         NgbSlide,
         TranslateModule
     ],
-  exports: [
-    AboutComponent,
-    ContactComponent,
-  ],
 })
 export class IndexModule {
 }

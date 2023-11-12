@@ -20,6 +20,7 @@ export class ContactComponent implements OnInit {
               private sanitizer: DomSanitizer,
               private alertService: AlertService,
               private translateService: TranslateService) {
+    this.currentLang = this.translateService.currentLang
     this.updateTranslations()
   }
 
@@ -28,6 +29,8 @@ export class ContactComponent implements OnInit {
   image: string = ''
   loading: boolean = false
   enterprise_data: any[] = [];
+  currentLang = ''
+  data: any
 
   contactForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(100)]),
@@ -43,10 +46,10 @@ export class ContactComponent implements OnInit {
   errorMessageAlert = 'Por favor verifique sus datos e intente de nuevo.'
 
   contact = () => this.utilsService.section_contact().subscribe(response => {
-    const data = response[0]
-    this.title = data.title
-    this.subtitle = data.subtitle
-    this.image = data.image
+    this.data = response[0]
+    this.title = this.data.title[this.currentLang]
+    this.subtitle = this.data.subtitle[this.currentLang]
+    this.image = this.data.image
     this.loading = true
   })
 
@@ -82,7 +85,10 @@ export class ContactComponent implements OnInit {
       this.enterprise_data = data
     });
     this.contactForm.enable()
-    this.translateService.onLangChange.subscribe(v => this.updateTranslations())
+    this.translateService.onLangChange.subscribe(v => {
+      this.updateTranslations()
+      this.loadTitleAndSubtitle()
+    })
   }
 
   get safeHtmlContent(): SafeHtml {
@@ -96,5 +102,11 @@ export class ContactComponent implements OnInit {
       .subscribe(v => this.successMessageAlert = v)
     this.translateService.get('section\.contact\.error_message')
       .subscribe(v => this.errorMessageAlert = v)
+  }
+
+  loadTitleAndSubtitle() {
+    this.currentLang = this.translateService.currentLang
+    this.title = this.data.title[this.currentLang]
+    this.subtitle = this.data.subtitle[this.currentLang]
   }
 }

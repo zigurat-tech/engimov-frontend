@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {UtilsService} from "@app/services/utils.service";
 import {HeroService} from "@app/services/hero.service";
-import {take} from "rxjs";
+import {TranslateService} from "@ngx-translate/core";
+import {LangService} from "@app/services/lang.service";
 
 @Component({
   selector: 'app-hero',
@@ -14,37 +14,39 @@ export class HeroComponent implements OnInit, AfterViewInit {
   image: string = ''
   loading: boolean = false
   show_hero = true
+  currentLang = ''
 
-  constructor(private utilsService: UtilsService, public heroService: HeroService) {
+  constructor(public heroService: HeroService, private translateService: TranslateService,
+              private langService: LangService) {
+    this.currentLang = langService.getStoreLang()
   }
-
-  dataHero = () => this.utilsService.section_index().subscribe(response => {
-    const data = response[0]
-    this.title = data.title
-    this.subtitle = data.subtitle
-    this.image = data.image
-    this.loading = true
-    console.log(response)
-    console.log(data)
-  })
 
   ngOnInit(): void {
     this.heroService.get_show_hero().subscribe(value => {
       this.show_hero = value
+    })
+    this.translateService.onLangChange.subscribe(v => {
+      this.currentLang = this.langService.getStoreLang()
+      this.loadTitleAndSubtitle()
     })
 
     this.loading = false
     this.heroService.get_image().subscribe(value => {
       this.image = value
     })
-    this.heroService.get_subtitle().subscribe(value => {
-      this.subtitle = value
-    })
-    this.heroService.get_title().subscribe(value => {
-      this.title = value
-    })
+
+    this.loadTitleAndSubtitle()
     this.heroService.get_loading().subscribe(value => {
       this.loading = value
+    })
+  }
+
+  loadTitleAndSubtitle() {
+    this.heroService.get_subtitle().subscribe(value => {
+      this.subtitle = value[this.currentLang]
+    })
+    this.heroService.get_title().subscribe(value => {
+      this.title = value[this.currentLang]
     })
   }
 

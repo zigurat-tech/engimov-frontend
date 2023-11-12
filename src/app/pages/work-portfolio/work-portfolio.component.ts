@@ -5,6 +5,7 @@ import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {Work} from "@app/models/work";
 import {WorkCategory} from "@app/models/work_category";
 import {WorkTestimonial} from "@app/models/work_testimonial";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-work-portfolio',
@@ -13,11 +14,14 @@ import {WorkTestimonial} from "@app/models/work_testimonial";
 })
 export class WorkPortfolioComponent implements OnInit, AfterViewInit {
   constructor(private utilsService: UtilsService, public heroService: HeroService, config: NgbModalConfig,
-              private modalService: NgbModal) {
+              private modalService: NgbModal, private translateService: TranslateService) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this.currentLang = this.translateService.currentLang
   }
 
+  currentLang = ''
+  response: any
   listCategories: WorkCategory[] = []
   listWorks: Work[] = []
   header = {title: '', subtitle: ''};
@@ -36,15 +40,22 @@ export class WorkPortfolioComponent implements OnInit, AfterViewInit {
   set_hero_data = () => {
     this.heroService.set_loading(false)
     this.utilsService.section_work_portfolio().subscribe(response => {
+      this.response = response[0]
       this.heroService.set_title(response[0].title)
       this.heroService.set_subtitle(response[0].subtitle)
       this.heroService.set_image(response[0].image)
       this.heroService.set_loading(true)
       this.heroService.title = response[0].title
 
-      this.header.title = response[0].title
-      this.header.subtitle = response[0].subtitle
+      this.header.title = response[0].title[this.currentLang]
+      this.header.subtitle = response[0].subtitle[this.currentLang]
     })
+  }
+
+  loadTitleAndSubtitle() {
+    this.currentLang = this.translateService.currentLang
+    this.header.title = this.response.title[this.currentLang]
+    this.header.subtitle = this.response.subtitle[this.currentLang]
   }
 
   openModal(work: Work, content: TemplateRef<any>) {
@@ -79,6 +90,10 @@ export class WorkPortfolioComponent implements OnInit, AfterViewInit {
       res.forEach((c: any) => this.listCategories.push(new WorkCategory(c.id, c.name)))
     })
     this.loadData([`page_size=${this.page_size}`])
+
+    this.translateService.onLangChange.subscribe(v => {
+      this.loadTitleAndSubtitle()
+    })
   }
 
   filterAndOrder(send_page = false) {

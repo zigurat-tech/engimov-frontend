@@ -5,6 +5,7 @@ import {Category} from "@app/models/category";
 import {Product} from "@app/models/product";
 import {NgbModal, NgbModalConfig} from "@ng-bootstrap/ng-bootstrap";
 import {CartStorageService} from "@app/pages/cart/services/cart-storage.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-manage-sale-products',
@@ -13,11 +14,15 @@ import {CartStorageService} from "@app/pages/cart/services/cart-storage.service"
 })
 export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   constructor(private utilsService: UtilsService, public heroService: HeroService, config: NgbModalConfig,
-              private modalService: NgbModal, private cartStorageService: CartStorageService) {
+              private modalService: NgbModal, private cartStorageService: CartStorageService,
+              private translateService: TranslateService) {
     config.backdrop = 'static';
     config.keyboard = false;
+    this.currentLang = this.translateService.currentLang
   }
 
+  currentLang = ''
+  response: any
   listCategories: Category[] = []
   listProducts: Product[] = []
   header = {title: '', subtitle: ''};
@@ -36,15 +41,22 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
   set_hero_data = () => {
     this.heroService.set_loading(false)
     this.utilsService.section_sale().subscribe(response => {
+      this.response = response[0]
       this.heroService.set_title(response[0].title)
       this.heroService.set_subtitle(response[0].subtitle)
       this.heroService.set_image(response[0].image)
       this.heroService.set_loading(true)
       this.heroService.title = response[0].title
 
-      this.header.title = response[0].title
-      this.header.subtitle = response[0].subtitle
+      this.header.title = response[0].title[this.currentLang]
+      this.header.subtitle = response[0].subtitle[this.currentLang]
     })
+  }
+
+  loadTitleAndSubtitle() {
+    this.currentLang = this.translateService.currentLang
+    this.header.title = this.response.title[this.currentLang]
+    this.header.subtitle = this.response.subtitle[this.currentLang]
   }
 
   openModal(prod: Product, content: TemplateRef<any>) {
@@ -66,6 +78,10 @@ export class ManageSaleProductsComponent implements OnInit, AfterViewInit {
       res.forEach((c: any) => this.listCategories.push(new Category(c.id, c.name)))
     })
     this.loadData([`page_size=${this.page_size}`])
+
+    this.translateService.onLangChange.subscribe(v => {
+      this.loadTitleAndSubtitle()
+    })
   }
 
   ngAfterViewInit(): void {

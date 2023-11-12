@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UtilsService} from "@app/services/utils.service";
+import {TranslateService} from "@ngx-translate/core";
+import {LangService} from "@app/services/lang.service";
 
 @Component({
   selector: 'app-about',
@@ -11,23 +13,34 @@ export class AboutComponent implements OnInit {
   subtitle = ''
   image = ''
   loading = false
-  loadingImage = false
+  currentLang = ''
+  data: any
 
-  constructor(private utilsService: UtilsService) {
+  constructor(private utilsService: UtilsService, private translateService: TranslateService,
+              private langService: LangService) {
+    this.currentLang = langService.getStoreLang()
   }
 
   get_about() {
     this.utilsService.section_about().subscribe(response => {
-      const data = response[0]
-      this.title = data.title
-      this.subtitle = data.subtitle
-      this.image = data.image
+      this.data = response[0]
+      this.title = this.data.title[this.currentLang]
+      this.subtitle = this.data.subtitle[this.currentLang]
+      this.image = this.data.image
       this.loading = true
     })
   }
 
   ngOnInit(): void {
     this.get_about()
+    this.translateService.onLangChange.subscribe(v => {
+      this.currentLang = this.langService.getStoreLang()
+      this.translateData()
+    })
   }
 
+  translateData() {
+    this.title = this.data.title[this.currentLang]
+    this.subtitle = this.data.subtitle[this.currentLang]
+  }
 }

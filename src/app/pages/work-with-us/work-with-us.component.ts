@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HeroService} from "@app/services/hero.service";
 import {UtilsService} from "@app/services/utils.service";
-import {NgbNavConfig} from "@ng-bootstrap/ng-bootstrap";
+import {TranslateService} from "@ngx-translate/core";
 
 
 @Component({
@@ -10,10 +10,13 @@ import {NgbNavConfig} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./work-with-us.component.css']
 })
 export class WorkWithUsComponent implements OnInit {
-  constructor(private heroService: HeroService, private utilsService: UtilsService, config: NgbNavConfig) {
-
+  constructor(private heroService: HeroService, private utilsService: UtilsService,
+              private translateService: TranslateService) {
+    this.currentLang = this.translateService.currentLang
   }
 
+  currentLang = ''
+  response: any
   list_works: any[] = []
   list_categories: any[] = []
   loadingWorks = true
@@ -28,22 +31,33 @@ export class WorkWithUsComponent implements OnInit {
   set_hero_data = () => {
     this.heroService.set_loading(false)
     this.utilsService.section_work_with_us().subscribe(response => {
+      this.response = response[0]
       this.heroService.set_title(response[0].title)
       this.heroService.set_subtitle(response[0].subtitle)
       this.heroService.set_image(response[0].image)
       this.heroService.set_loading(true)
       this.heroService.title = response[0].title
 
-      this.header.title = response[0].title
-      this.header.subtitle = response[0].subtitle
+      this.header.title = response[0].title[this.currentLang]
+      this.header.subtitle = response[0].subtitle[this.currentLang]
     })
   }
   active = 1;
+
+  loadTitleAndSubtitle() {
+    this.currentLang = this.translateService.currentLang
+    this.header.title = this.response.title[this.currentLang]
+    this.header.subtitle = this.response.subtitle[this.currentLang]
+  }
 
   ngOnInit(): void {
     this.set_hero_data()
     this.load_works([])
     this.load_categories()
+
+    this.translateService.onLangChange.subscribe(v => {
+      this.loadTitleAndSubtitle()
+    })
   }
 
   load_works(query_params: string[] = []) {
