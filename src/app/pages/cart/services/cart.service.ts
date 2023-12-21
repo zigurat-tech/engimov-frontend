@@ -39,6 +39,13 @@ export class CartService {
       })
     )
   }
+
+  pay = (form: any): Observable<any> => {
+    const headers = this.getHeaders();
+    console.log(form)
+    return this.http.post(environment.basic_url + '/pay/', form, {headers})
+  }
+
   clear = (): Observable<any> => {
     const headers = this.getHeaders();
     return this.http.post(this.url + 'clear/', {}, {headers}).pipe(

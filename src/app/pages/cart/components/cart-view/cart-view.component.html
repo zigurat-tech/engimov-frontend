@@ -2,12 +2,12 @@
 <section id="cart" class="cart bg-white">
   <div class="container-xl" *ngIf="cartStorageService.length()">
     <div class="section-title">
-      <span>{{'cart\.title'|translate}}</span>
-      <h2>{{'cart\.title'|translate}}</h2>
+      <span>{{ 'cart\.title'|translate }}</span>
+      <h2>{{ 'cart\.title'|translate }}</h2>
       <!--      <p *ngIf="header.subtitle">{{header.subtitle}}</p>-->
     </div>
-    <h4 class="d-inline-block">{{'navbar\.product'|translate}}</h4>
-    <span class="d-inline-block float-end pe-2">{{'products\.price'|translate}} USD</span>
+    <h4 class="d-inline-block">{{ 'navbar\.product'|translate }}</h4>
+    <span class="d-inline-block float-end pe-2">{{ 'products\.price'|translate }} USD</span>
     <hr class="mt-0">
     <div class="cards-horizontal" id="cart-section-products" *ngIf="!cartStorageService.loadingCart">
       <app-cart-item *ngFor="let prod of cartStorageService.productList" [prod]="prod"></app-cart-item>
@@ -16,21 +16,73 @@
     <div class="row">
       <div class="col-12 col-md-4">
         <button class="btn btn-engimov-red rounded-pill" (click)="emptyCart()">
-          <i class="bi bi-cart-x"></i> {{'cart\.clean_cart'|translate}}
+          <i class="bi bi-cart-x"></i> {{ 'cart\.clean_cart'|translate }}
         </button>
       </div>
       <div class="col-12 col-md-8 text-end">
-        <span class="fs-5"><b>{{'cart\.total'|translate}} </b>({{cartStorageService.length()}}
-          {{("product"|translate) + (cartStorageService.length() > 1 ? 's' : '')}}):
-          $ <b>{{cartStorageService.total.toFixed(2)}}</b> USD</span>
+        <span class="fs-5"><b>{{ 'cart\.total'|translate }} </b>({{ cartStorageService.length() }}
+          {{ ("product"|translate) + (cartStorageService.length() > 1 ? 's' : '') }}):
+          $ <b>{{ cartStorageService.total.toFixed(2) }}</b> USD</span>
       </div>
     </div>
-    <h3 class="text-center">{{'cart\.no_disponible'|translate}}</h3>
+    <!--    <h3 class="text-center">{{ 'cart\.no_disponible'|translate }}</h3>-->
+    <!--    formulario de compra-->
+    <hr class="">
+    <form method="post" role="form" (ngSubmit)="pay($event)"
+          class="php-email-form mx-auto my-3" style="width: 90%"
+          [formGroup]="form">
+      <div class="card">
+        <div class="card-header"><h3 class="text-center card-text text-engimov-blue-dark">
+          {{ 'cart\.form\.title'|translate }}</h3></div>
+        <div class="card-body">
+          <h4 class="card-title">{{ 'cart\.form\.datos\.contact'|translate }}:</h4>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="nombre"
+                   required="true" id="id_nombre" name="nombre"
+                   placeholder="{{'section\.contact\.name'|translate}}(s)">
+            <label for="id_nombre">{{ 'section\.contact\.name'|translate }}(s)</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="apellidos"
+                   required="true" id="id_apellidos" name="apellidos"
+                   placeholder="{{'cart\.form\.datos\.lastname'|translate}}">
+            <label for="id_apellidos">{{ 'cart\.form\.datos\.lastname'|translate }}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" formControlName="correo"
+                   required="true" id="id_correo" name="correo"
+                   placeholder="{{'section\.contact\.correo'|translate}}">
+            <label for="id_correo">{{ 'section\.contact\.correo'|translate }}</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="tel" class="form-control" formControlName="telefono_comprador"
+                   required="true" id="id_telefono_comprador" name="telefono_comprador"
+                   placeholder="{{'section\.contact\.tel'|translate}}">
+            <label for="id_telefono_comprador">{{ 'section\.contact\.tel'|translate }}</label>
+          </div>
+          <h4 class="card-title">{{ 'cart\.form\.datos\.address'|translate }}:</h4>
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="detalles_direccion"
+                   required="true" id="id_detalles_direccion" name="detalles_direccion"
+                   placeholder="{{ 'cart\.form\.datos\.address_detail'|translate }}">
+            <label for="id_detalles_direccion">{{ 'cart\.form\.datos\.address_detail'|translate }}</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+              {{ 'btnBuy'|translate }} <i *ngIf="!loading" class="bx bi-credit-card"></i>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status"
+                    aria-hidden="true"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
   </div>
   <div class="container-xl" *ngIf="!cartStorageService.productList.length">
     <div class="section-title">
-      <span>{{'cart\.empty_cart_message'|translate}}</span>
-      <h2>{{'cart\.empty_cart_message'|translate}}</h2>
+      <span>{{ 'cart\.empty_cart_message'|translate }}</span>
+      <h2>{{ 'cart\.empty_cart_message'|translate }}</h2>
     </div>
   </div>
 </section>
